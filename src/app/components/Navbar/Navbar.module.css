@@ -1,0 +1,46 @@
+.element {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    transition: padding 0.2s;
+}
+
+.element:hover, .active {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 150px;
+    flex: 3;
+}
+
+.desc {
+    display: none;
+}
+
+.icon {
+    stroke: white;
+}
+
+.element:hover .icon, .active .icon {
+    stroke: black;
+}
+
+.element:hover h2, .active h2 {
+    color: black;
+}
+
+.active .desc {
+    display: block;
+}
+
+.link_bg {
+    background: linear-gradient(-46deg, rgba(244, 174, 9, 1) 0%, rgba(248, 193, 61, 1) 100%);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.link_bg:hover {
+    background: linear-gradient(46deg, rgba(244, 174, 9, 1) 0%, rgba(248, 193, 61, 1) 100%);
+}
