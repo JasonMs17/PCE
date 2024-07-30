@@ -1,0 +1,35 @@
+import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
+import "./globals.css";
+import Navbar from "./components/Navbar/Navbar";
+import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider } from "next-themes";
+
+const montserrat = Montserrat({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Padjadjaran Career Expo 2024",
+  description: "Padjadjaran Career Expo 2024",
+  icons: {
+    icon: "./favicon.ico",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${montserrat.className} min-h-screen bg-[#F2F2F2] dark:bg-[#000B14]`}>  
+        <NextUIProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Navbar />
+            <main>{children}</main>
+          </ThemeProvider>
+        </NextUIProvider>
+      </body>
+    </html>
+  );
+}

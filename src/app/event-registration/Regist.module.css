@@ -1,0 +1,58 @@
+.index_bg {
+    background: url("/images/element.png");
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.incomplete {
+    background: url('/images/status/incomplete.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.invalid {
+    background: url('/images/status/invalid.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.valid { 
+    background: url('/images/status/valid.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.incomplete_active {
+    background: url('/images/status/incomplete_active.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.invalid_active {
+    background: url('/images/status/invalid_active.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.valid_active {
+    background: url('/images/status/valid_active.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.no_scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no_scrollbar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+}
+
+.status {
+    width: 2em;
+    height: 2em;
+    border-radius: 100px;
+    position: relative;
+}
