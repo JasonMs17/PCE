@@ -4,7 +4,6 @@ import ClassProgram from "@/models/ClassPrograms";
 import SectorCategory from "@/models/SectorCategory";
 import SectorCategories from "@/utils/constant";
 import rateLimit from "@/utils/rateLimit";
-
 export async function POST(req: NextRequest) {
   const data = await req.json();
   const { name, email, whatsappNumber, university, faculty, major, sectorCategory } = data;

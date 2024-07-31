@@ -10,6 +10,7 @@ export async function POST(req: NextRequest) {
     await connectToDatabase();
 
     const sector_category = new SectorCategory({ name });
+
     await sector_category.save();
     return NextResponse.json({ status: 200, error: false, message: "Data stored successfully", sector_category });
   } catch (error) {
@@ -25,10 +26,9 @@ export async function GET() {
 
     const data = await SectorCategory.find();
 
-    return NextResponse.json({status: 200, error: false, message: "Data found successfully", data})
-  }
-  catch (error) {
+    return NextResponse.json({ status: 200, error: false, message: "Data found successfully", data });
+  } catch (error) {
     console.log("error", error);
-    return NextResponse.json({status: 500, error: true, message: "Something went wrong"})
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   }
 }
