@@ -40,11 +40,13 @@ const classProgramSchema = new Schema({
     type: String,
     required: true,
   },
-  sectorCategory: {
-    type: SchemaTypes.ObjectId,
-    ref: "SectorCategory",
-    required: true,
-  },
+  sectorCategory: [
+    {
+      type: SchemaTypes.ObjectId,
+      ref: "SectorCategory",
+      required: true,
+    },
+  ],
   createdAt: {
     type: Date,
     default: () => Date.now(),

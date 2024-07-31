@@ -4,22 +4,31 @@ import SectorCategory from "@/models/SectorCategory";
 
 export async function POST(req: NextRequest) {
   const data = await req.json();
-  const { name, order } = data;
-
-  // Ensure order is a number
-  if (isNaN(order)) {
-    return NextResponse.json({ status: 400, error: true, message: "Invalid order value" });
-  }
+  const { name } = data;
 
   try {
     await connectToDatabase();
 
-    const sector_category = new SectorCategory({ name, order });
+    const sector_category = new SectorCategory({ name });
+
     await sector_category.save();
     return NextResponse.json({ status: 200, error: false, message: "Data stored successfully", sector_category });
   } catch (error) {
     console.log("error: ", error);
 
-    return NextResponse.json({ status: 501, error: true, message: "Something went wrong" });
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  }
+}
+
+export async function GET() {
+  try {
+    await connectToDatabase();
+
+    const data = await SectorCategory.find();
+
+    return NextResponse.json({ status: 200, error: false, message: "Data found successfully", data });
+  } catch (error) {
+    console.log("error", error);
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   }
 }
