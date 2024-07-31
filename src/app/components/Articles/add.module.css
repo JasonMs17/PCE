@@ -1,0 +1,59 @@
+.add_bg {
+    background: linear-gradient(-46deg, rgba(244, 174, 9, 1) 0%, rgba(248, 193, 61, 1) 100%);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.add_bg:hover {
+    background: linear-gradient(46deg, rgba(244, 174, 9, 1) 0%, rgba(248, 193, 61, 1) 100%);
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid white; */
+    width: 100%;
+    padding: 10px;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.head {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: white;
+    color: black;
+}
+
+.operand {
+    padding: 5px 15px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.published {
+    width: 15px;
+    height: 20px;
+    background: url('/images/publish/published.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.draft {
+    width: 15px;
+    height: 20px;
+    background: url('/images/publish/draft.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
