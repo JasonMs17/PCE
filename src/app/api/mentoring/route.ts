@@ -1,7 +1,112 @@
+import ClassProgram from "@/models/ClassPrograms";
+import Mentor from "@/models/Mentor";
+import Mentoring from "@/models/Mentoring";
+import SectorCategory from "@/models/SectorCategory";
+import { MentorNames, SectorCategories } from "@/utils/constant";
+import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
+import rateLimit from "@/utils/rateLimit";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
+  const { name, email, whatsappNumber, schedule, university, faculty, major, mentorName, sectorCategory } = data;
 
-  const {}
+  const rateLimitResult = await rateLimit(request);
+
+  if (!rateLimitResult.success) {
+    return NextResponse.json({ status: 400, error: true, message: "Too many requests, please try again later.", rateLimitResult });
+  }
+
+  const validCategory = SectorCategories.some((category) => {
+    return category.name === sectorCategory;
+  });
+
+  if (!validCategory) {
+    return NextResponse.json({ status: 400, error: true, message: "Invalid sector category" });
+  }
+
+  const validMentor = MentorNames.some((mentor) => {
+    return mentor.name === mentorName;
+  });
+
+  if (!validMentor) {
+    return NextResponse.json({ status: 400, error: true, message: "Invalid mentor name" });
+  }
+
+  try {
+    await connectToDatabase();
+
+    const isRegisteredClassProgram = await ClassProgram.findOne({ email });
+    const sectorCategoryData = await SectorCategory.findOne({ name: sectorCategory });
+
+    const mentorData = await Mentor.findOne({ name: mentorName });
+
+    if (!sectorCategoryData) {
+      return NextResponse.json({ status: 400, error: true, message: "Data not found with the given sector category" });
+    }
+    if (!mentorData) {
+      return NextResponse.json({ status: 400, error: true, message: "Data not found with the given mentor name" });
+    }
+
+    if (!isRegisteredClassProgram) {
+      return NextResponse.json({ status: 400, error: true, message: "Please register in our class program event first" });
+    }
+
+    const isRegistered = await Mentoring.findOne({ email }).select("email");
+
+    if (isRegistered) {
+      return NextResponse.json({ status: 400, error: true, message: "You have registered for this event" });
+    }
+
+    const totalQuotaSector = await Mentoring.countDocuments({ sectorCategory: sectorCategoryData._id });
+    const totalQuotaMentor = await Mentoring.countDocuments({ mentor: mentorData._id });
+
+    if (totalQuotaSector >= sectorCategoryData.quota) {
+      return NextResponse.json({ status: 400, error: true, message: "Sector quota exceeded" });
+    }
+
+    if (totalQuotaMentor >= mentorData.quota) {
+      return NextResponse.json({ status: 400, error: true, message: "Mentor quota exceeded" });
+    }
+
+    const newMentoring = new Mentoring({
+      name,
+      email,
+      whatsappNumber,
+      schedule,
+      university,
+      faculty,
+      major,
+      mentor: mentorData._id,
+      sectorCategory: sectorCategoryData._id,
+    });
+
+    await newMentoring.save();
+
+    return NextResponse.json({ status: 200, error: false, message: "Registered successfully", totalQuotaMentor, totalQuotaSector });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
+  }
+}
+
+export async function GET() {
+  try {
+    await connectToDatabase();
+
+    const data = await Mentoring.find().populate("sectorCategory mentor");
+
+    if (!data) {
+      return NextResponse.json({ status: 400, error: true, message: "Data is empty" });
+    }
+
+    return NextResponse.json({ status: 200, error: false, message: "Data found", data });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
+  }
 }

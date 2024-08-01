@@ -1,7 +1,7 @@
 import Mentor from "@/models/Mentor";
 import SectorCategory from "@/models/SectorCategory";
-import SectorCategories from "@/utils/constant";
-import { connectToDatabase } from "@/utils/db";
+import { SectorCategories } from "@/utils/constant";
+import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import rateLimit from "@/utils/rateLimit";
 import { NextResponse, NextRequest } from "next/server";
 
@@ -47,6 +47,8 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }
 
@@ -54,7 +56,7 @@ export async function GET() {
   try {
     await connectToDatabase();
 
-    const data = await Mentor.find();
+    const data = await Mentor.find().populate("sectorCategory");
 
     if (!data) {
       return NextResponse.json({ status: 400, error: true, message: "Data is empty" });
@@ -64,5 +66,7 @@ export async function GET() {
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }

@@ -1,8 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
-import { connectToDatabase } from "@/utils/db";
+import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import ClassProgram from "@/models/ClassPrograms";
 import SectorCategory from "@/models/SectorCategory";
-import SectorCategories from "@/utils/constant";
+import { SectorCategories } from "@/utils/constant";
 import rateLimit from "@/utils/rateLimit";
 export async function POST(req: NextRequest) {
   const data = await req.json();
@@ -45,6 +45,8 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Error: ", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }
 
@@ -52,7 +54,7 @@ export async function GET() {
   try {
     await connectToDatabase();
 
-    const data = await ClassProgram.find();
+    const data = await ClassProgram.find().populate("sectorCategory");
 
     if (!data) {
       return NextResponse.json({ status: 400, error: true, message: "Data is empty" });
@@ -62,5 +64,7 @@ export async function GET() {
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }

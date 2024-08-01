@@ -1,7 +1,7 @@
 import Mentor from "@/models/Mentor";
 import SectorCategory from "@/models/SectorCategory";
-import SectorCategories from "@/utils/constant";
-import { connectToDatabase } from "@/utils/db";
+import { SectorCategories } from "@/utils/constant";
+import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   try {
     await connectToDatabase();
 
-    const data = await Mentor.findById(id);
+    const data = await Mentor.findById(id).populate("sectorCategory");
 
     if (!data) {
       return NextResponse.json({ status: 400, error: true, message: "Data is empty" });
@@ -24,6 +24,8 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }
 
@@ -84,6 +86,8 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }
 
@@ -107,5 +111,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }

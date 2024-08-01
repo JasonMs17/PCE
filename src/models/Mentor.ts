@@ -4,7 +4,6 @@ interface IMentor extends Document {
   name: string;
   email: string;
   quota: number;
-  bookedSlots: number;
   sectorCategory: Schema.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
@@ -19,14 +18,11 @@ const mentorSchema = new Schema({
   email: {
     type: String,
     minLength: 4,
+    unique: true,
   },
   quota: {
     type: Number,
     default: 15,
-  },
-  bookedSlots: {
-    type: Number,
-    default: 0,
   },
   sectorCategory: {
     type: SchemaTypes.ObjectId,

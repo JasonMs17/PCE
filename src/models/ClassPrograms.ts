@@ -22,6 +22,7 @@ const classProgramSchema = new Schema({
     type: String,
     minLength: 6,
     required: true,
+    unique: true,
   },
   whatsappNumber: {
     type: String,
