@@ -41,19 +41,3 @@
     border-radius: 20px;
     font-weight: bold;
 }
-
-.published {
-    width: 15px;
-    height: 20px;
-    background: url('/images/publish/published.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.draft {
-    width: 15px;
-    height: 20px;
-    background: url('/images/publish/draft.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
