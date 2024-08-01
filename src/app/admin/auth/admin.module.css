@@ -1,0 +1,6 @@
+.index_bg {
+    background: url("/images/rektorat.png");
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
