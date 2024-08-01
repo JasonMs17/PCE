@@ -1,6 +1,13 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, SchemaTypes } from "mongoose";
 
-const { Schema, SchemaTypes, model } = mongoose;
+interface IMentor extends Document {
+  name: string;
+  email: string;
+  quota: number;
+  sectorCategory: Schema.Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 const mentorSchema = new Schema({
   name: {
@@ -11,14 +18,11 @@ const mentorSchema = new Schema({
   email: {
     type: String,
     minLength: 4,
+    unique: true,
   },
   quota: {
     type: Number,
     default: 15,
-  },
-  bookedSlots: {
-    type: Number,
-    default: 0,
   },
   sectorCategory: {
     type: SchemaTypes.ObjectId,
@@ -33,5 +37,11 @@ const mentorSchema = new Schema({
   updatedAt: Date,
 });
 
-const Mentor = mongoose.models.Mentor || model("Mentor", mentorSchema);
+const modelName = "Mentor";
+
+let Mentor = mongoose.models[modelName] as mongoose.Model<IMentor>;
+
+if (!Mentor) {
+  Mentor = mongoose.model<IMentor>(modelName, mentorSchema);
+}
 export default Mentor;

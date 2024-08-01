@@ -1,6 +1,18 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, SchemaTypes, model, mongo } from "mongoose";
 
-const { Schema, SchemaTypes, model } = mongoose;
+interface IMentoring extends Document {
+  name: string;
+  email: string;
+  whatsappNumber: string;
+  schedule: Date;
+  university: string;
+  faculty: string;
+  major: string;
+  mentor: Schema.Types.ObjectId;
+  sectorCategory: Schema.Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
+}
 
 const mentoringSchema = new Schema({
   name: {
@@ -12,6 +24,7 @@ const mentoringSchema = new Schema({
     type: String,
     minLength: 4,
     required: true,
+    unique: true,
   },
   whatsappNumber: {
     type: String,
@@ -39,7 +52,23 @@ const mentoringSchema = new Schema({
     ref: "Mentor",
     required: true,
   },
+  sectorCategory: {
+    type: SchemaTypes.ObjectId,
+    ref: "SectorCategory",
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: () => Date.now(),
+    immutable: true,
+  },
+  updatedAt: Date,
 });
 
-const Mentoring = mongoose.models.Mentoring || model("Mentoring", mentoringSchema);
+const modelName = "Mentoring";
+let Mentoring = mongoose.models[modelName] as mongoose.Model<IMentoring>;
+
+if (!Mentoring) {
+  Mentoring = mongoose.model<IMentoring>(modelName, mentoringSchema);
+}
 export default Mentoring;

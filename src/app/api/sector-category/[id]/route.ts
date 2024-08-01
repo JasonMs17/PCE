@@ -1,5 +1,5 @@
 import SectorCategory from "@/models/SectorCategory";
-import { connectToDatabase } from "@/utils/db";
+import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
@@ -8,19 +8,26 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   try {
     await connectToDatabase();
 
-    const data = await SectorCategory.findById(id);
+    const data = await SectorCategory.findById(id).populate("sectorCategory");
 
     return NextResponse.json({ status: 200, error: false, message: "Data found", data });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }
 
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
   const { id } = params;
-  const { name } = await request.json();
+  const { name, quota } = await request.json();
   const now = new Date(Date.now());
+
+  if (isNaN(quota)) {
+    NextResponse.json({ status: 400, error: true, message: "The quota must a number" });
+  }
+  console.log(quota);
 
   try {
     await connectToDatabase();
@@ -28,6 +35,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     const update = {
       $set: {
         name,
+        quota,
         updatedAt: now,
       },
     };
@@ -42,6 +50,8 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }
 
@@ -61,5 +71,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
   }
 }

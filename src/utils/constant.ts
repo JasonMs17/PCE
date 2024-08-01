@@ -25,4 +25,16 @@ const SectorCategories = [
   },
 ];
 
-export default SectorCategories;
+const MentorNames = [
+  {
+    name: "Ansellma Putri",
+  },
+  {
+    name: "John Shin",
+  },
+  {
+    name: "Inshira Vieta",
+  },
+];
+
+export { SectorCategories, MentorNames };

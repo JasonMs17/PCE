@@ -1,6 +1,4 @@
-import mongoose from "mongoose";
-
-const { Schema, SchemaTypes, model } = mongoose;
+import mongoose, { Schema, SchemaTypes } from "mongoose";
 
 interface IClassProgram extends Document {
   name: string;
@@ -9,7 +7,9 @@ interface IClassProgram extends Document {
   university: string;
   faculty: string;
   major: string;
-  sectorCategory: string;
+  sectorCategory: Schema.Types.ObjectId[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const classProgramSchema = new Schema({
@@ -22,6 +22,7 @@ const classProgramSchema = new Schema({
     type: String,
     minLength: 6,
     required: true,
+    unique: true,
   },
   whatsappNumber: {
     type: String,
