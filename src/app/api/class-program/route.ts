@@ -4,6 +4,7 @@ import ClassProgram from "@/models/ClassPrograms";
 import SectorCategory from "@/models/SectorCategory";
 import { SectorCategories } from "@/utils/constant";
 import rateLimit from "@/utils/rateLimit";
+import transporter from "@/utils/email";
 export async function POST(req: NextRequest) {
   const data = await req.json();
   const { name, email, whatsappNumber, university, faculty, major, sectorCategory } = data;
@@ -38,6 +39,18 @@ export async function POST(req: NextRequest) {
     }
 
     const classProgram = new ClassProgram({ name, email, whatsappNumber, university, faculty, major, sectorCategory: sectorCategoryIds });
+    const template = `<p> I love Alexandra Daddario and Chelsea Islan </p>`;
+
+    const mailOption = {
+      from: process.env.NODEMAIL,
+      to: email,
+      subject: "Class Program Registration",
+      html: template,
+    };
+
+    const send = await transporter.sendMail(mailOption);
+
+    console.log(send.messageId);
 
     await classProgram.save();
 
