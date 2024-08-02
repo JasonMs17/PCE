@@ -3,6 +3,7 @@ import styles from './Regist.module.css';
 import Selector from '../components/Program_Selector/Selector';
 import { SelectorProvider } from '../components/Program_Selector/Selector-Context';
 import Form from '../components/Program_Selector/Form';
+import Label from '../components/Program_Selector/Label';
 
 const Regist = () => {
   return (
@@ -13,15 +14,7 @@ const Regist = () => {
             <Selector />
           </div>
           <div className='h-[85%] w-full flex justify-between'>
-            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] flex flex-col justify-between items-center py-10 px-6'>
-              <label htmlFor='nama' className={`${styles.status} ${styles.valid}`}></label>
-              <label htmlFor='email' className={`${styles.status} ${styles.valid_active}`}></label>
-              <label htmlFor='no' className={`${styles.status} ${styles.invalid}`}></label>
-              <label htmlFor='univ' className={`${styles.status} ${styles.incomplete}`}></label>
-              <label htmlFor='fakultas' className={`${styles.status} ${styles.incomplete}`}></label>
-              <label htmlFor='jurusan' className={`${styles.status} ${styles.incomplete}`}></label>
-              <label htmlFor='sektor' className={`${styles.status} ${styles.incomplete}`}></label>
-            </div>
+            <Label />
             <form action="post" className='flex flex-col w-[92.5%] gap-5'>
               <div className={`h-[90%] w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <Form />

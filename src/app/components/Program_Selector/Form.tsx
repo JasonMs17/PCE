@@ -16,11 +16,11 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="email">Email</label>
-                    <input className={styles.input} type="text" name="email" id="email" placeholder='sunarya@gmail.com' autoComplete='off' required />
+                    <input className={styles.input} type="email" name="email" id="email" placeholder='sunarya@gmail.com' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="no">Nomor Telepon (WA)</label>
-                    <input className={styles.input} type="text" name="no" id="no" placeholder='08123142412' autoComplete='off' required />
+                    <input className={styles.input} type="text" inputMode='numeric' pattern='\d*' name="no" id="no" placeholder='08123142412' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="univ">Universitas</label>
@@ -59,11 +59,11 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="email">Email</label>
-                    <input className={styles.input} type="text" name="email" id="email" placeholder='sunarya@gmail.com' autoComplete='off' required />
+                    <input className={styles.input} type="email" name="email" id="email" placeholder='sunarya@gmail.com' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="no">Nomor Telepon (WA)</label>
-                    <input className={styles.input} type="text" name="no" id="no" placeholder='08123142412' autoComplete='off' required />
+                    <input className={styles.input} type="text" inputMode='numeric' pattern='\d*' name="no" id="no" placeholder='08123142412' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="univ">Universitas</label>
@@ -100,11 +100,11 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="email">Email</label>
-                    <input className={styles.input} type="text" name="email" id="email" placeholder='sunarya@gmail.com' autoComplete='off' required />
+                    <input className={styles.input} type="email" name="email" id="email" placeholder='sunarya@gmail.com' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="no">Nomor Telepon (WA)</label>
-                    <input className={styles.input} type="text" name="no" id="no" placeholder='08123142412' autoComplete='off' required />
+                    <input className={styles.input} type="text" inputMode='numeric' pattern='\d*' name="no" id="no" placeholder='08123142412' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="univ">Universitas</label>
@@ -135,7 +135,7 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="email">Email</label>
-                    <input className={styles.input} type="text" name="email" id="email" placeholder='sunarya@gmail.com' autoComplete='off' required />
+                    <input className={styles.input} type="email" name="email" id="email" placeholder='sunarya@gmail.com' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="univ">Universitas</label>
