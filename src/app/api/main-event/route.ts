@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { connectToDatabase } from "@/utils/db";
+import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import MainEvent from "@/models/MainEvent";
 
 export async function POST(req: NextRequest) {
@@ -16,5 +16,24 @@ export async function POST(req: NextRequest) {
         console.log("error: ", error);
 
         return NextResponse.json({ status: 501, error: true, message: "Something went wrong" });
+    }
+}
+
+export async function GET() {
+    try {
+        await connectToDatabase();
+
+        const data = await MainEvent.find();
+
+        if (!data) {
+            return NextResponse.json({ status: 400, error: true, message: "Data is empty" });
+        }
+
+        return NextResponse.json({ status: 200, error: false, message: "Data found", data });
+    } catch (error) {
+        console.log(error);
+        return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+    } finally {
+        await disconnectFromDatabase();
     }
 }

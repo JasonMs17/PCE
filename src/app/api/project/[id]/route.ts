@@ -21,11 +21,17 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = params;
+
+  if (!id) {
+    return NextResponse.json({ status: 400, error: true, message: "Missing ID" });
+  }
+
   try {
     await connectToDatabase();
 
-    const data = await Project.find();
+    const data = await Project.findById(id); 
 
     if (!data) {
       return NextResponse.json({ status: 400, error: true, message: "Data is empty" });

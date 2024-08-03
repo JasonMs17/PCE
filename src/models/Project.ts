@@ -1,4 +1,4 @@
-import mongoose, { Schema, model, models } from 'mongoose';
+import mongoose, { Schema, model, models, Document } from 'mongoose';
 
 interface IProject extends Document {
     nama: string;
@@ -7,10 +7,7 @@ interface IProject extends Document {
     universitas: string;
     fakultas: string;
     jurusan: string;
-    twibbon?: {
-        data: Buffer;
-        contentType: string;
-    };
+    twibbonUrl: string; 
 }
 
 const projectSchema = new Schema<IProject>({
@@ -20,10 +17,7 @@ const projectSchema = new Schema<IProject>({
     universitas: { type: String, required: true },
     fakultas: { type: String, required: true },
     jurusan: { type: String, required: true },
-    twibbon: { 
-        data: Buffer,  
-        contentType: String,
-    },
+    twibbonUrl: { type: String }, 
 });
 
 const modelName = "Project";
