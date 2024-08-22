@@ -13,6 +13,7 @@
     "@nextui-org/switch": "^2.0.32",
     "@nextui-org/system": "^2.2.3",
     "@nextui-org/theme": "^2.2.7",
+    "@react-google-maps/api": "^2.19.3",
     "@types/mongoose": "^5.11.97",
     "framer-motion": "^11.3.6",
     "mongoose": "^8.5.1",

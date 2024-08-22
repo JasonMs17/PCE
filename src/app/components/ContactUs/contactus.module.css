@@ -1,0 +1,29 @@
+.img_card img {
+    width: 8rem;
+    height: 8rem;
+    bottom: -3rem;
+    right: -3rem;
+    transition: all 0.2s ease;
+}
+
+.img_card:hover img {
+    bottom: -1rem;
+    right: -1rem;
+    transform: scale(1.2);
+}
+
+.img_card_2 img {
+    width: 16rem;
+    height: 16rem;
+    top: -4rem;
+    right: -4rem;
+    transition: all 0.2s ease;
+}
+
+.img_card_2:hover img {
+    top: -3.5rem;
+    right: 0;
+    transform: scale(1.3);
+}
+
+
