@@ -5,7 +5,7 @@ import styles from './events.module.css'
 import MapToggle from './MapToggle'
 import Image from 'next/image'
 
-const EventCard = ({ title = "Event Name", description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae at impedit enim a numquam eum suscipit, necessitatibus totam, laborum expedita iste aut aliquid reiciendis omnis, explicabo dolorem repellat quas doloribus.", time="Waktu", src= "/images/rektorat.png"}) => {
+const EventCard = ({ title = "Event Name", theme="" ,description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae at impedit enim a numquam eum suscipit, necessitatibus totam, laborum expedita iste aut aliquid reiciendis omnis, explicabo dolorem repellat quas doloribus.", time="Waktu", src= "/images/rektorat.png"}) => {
     return (
             <div className={`flex flex-col md:flex-row`}>
                     <Image
@@ -24,12 +24,13 @@ const EventCard = ({ title = "Event Name", description = "Lorem ipsum dolor sit 
                             <MapToggle></MapToggle>
                         </div>
                         <div className={`py-5 px-5`}> 
-                            <h2 className={`text-2xl font-bold mb-2`}>{title}</h2>
+                            <h2 className={`text-2xl font-bold`}>{title}</h2>
+                            <h2 className={`text-xl font-bold mb-2`}>{theme ? `"${theme}"` : null}</h2>
                             <p>{description}</p>
                         </div> 
                     </div>
                     <div className={`py-2.5 px-5 text-white text-center font-bold rounded-[100px]  ${styles.bg_green}`}>
-                        Registration
+                        Register Now
                     </div>
                 </div>
             </div>  

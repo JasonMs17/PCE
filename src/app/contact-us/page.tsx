@@ -102,7 +102,7 @@ const EventsPage = () => {
                             />
           </div>
           <div className={`flex flex-row items-center gap-5`}>
-            <div className={`flex flex-row bg-white rounded-[25px] overflow-hidden hover:text-white ${styles.bg_yellow}`}>
+            <div className={`flex flex-row bg-white rounded-[25px] overflow-hidden dark:text-black dark:hover:text-white hover:text-white ${styles.bg_yellow}`}>
               <Image
                           src={`/images/photoprofile.jpg`}
                           alt="Image description"
@@ -111,12 +111,12 @@ const EventsPage = () => {
                           className="w-3/12"
                           />
               <div className={`py-5 xl:py-10 px-1 xl:px-5 md:px-2.5`}>
-                <h2 className={`text-black text-xl font-bold mb-2`}>Whatsapp</h2>
-                <p className={`text-black font-bold`}>+62 XXX XXXX XXXX</p>
+                <h2 className={`text-xl font-bold mb-2`}>Whatsapp</h2>
+                <p className={`font-bold`}>+62 XXX XXXX XXXX</p>
               </div>
             </div>
             <p>or</p>
-            <div className={`flex flex-row bg-white rounded-[25px] overflow-hidden hover:text-white ${styles.bg_yellow}`}>
+            <div className={`flex flex-row bg-white rounded-[25px] overflow-hidden dark:text-black dark:hover:text-white hover:text-white ${styles.bg_yellow}`}>
               <Image
                           src={`/images/photoprofile.jpg`}
                           alt="Image description"
@@ -125,8 +125,8 @@ const EventsPage = () => {
                           className="w-3/12"
                           />
               <div className={`py-5 xl:py-10 px-1 xl:px-5 md:px-2.5`}>
-                <h2 className={`text-lg text-black md:text-xl font-bold mb-2`}>Email</h2>
-                <p className={`font-bold text-black`}>mail@domain.com</p>
+                <h2 className={`text-lg md:text-xl font-bold mb-2`}>Email</h2>
+                <p className={`font-bold `}>mail@domain.com</p>
               </div>
             </div>
           </div>
