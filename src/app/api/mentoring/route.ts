@@ -4,6 +4,7 @@ import Mentoring from "@/models/Mentoring";
 import SectorCategory from "@/models/SectorCategory";
 import { MentorNames, SectorCategories } from "@/utils/constant";
 import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
+import transporter from "@/utils/email";
 import rateLimit from "@/utils/rateLimit";
 import { NextResponse, NextRequest } from "next/server";
 
@@ -80,6 +81,19 @@ export async function POST(request: NextRequest) {
       mentor: mentorData._id,
       sectorCategory: sectorCategoryData._id,
     });
+
+    const template = "<p> Hello my darkest side do not forget to take a bath </p>";
+
+    const mailOption = {
+      from: process.env.NODEMAIL,
+      to: email,
+      subject: "Mentoring 1 on 1 Registration",
+      html: template,
+    };
+
+    const send = await transporter.sendMail(mailOption);
+
+    console.log(send.messageId);
 
     await newMentoring.save();
 
