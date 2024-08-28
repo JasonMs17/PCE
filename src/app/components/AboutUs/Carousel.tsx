@@ -31,7 +31,7 @@ export default function Carousel() {
     };
   
     return (
-      <div className="relative w-full h-64 overflow-hidden flex justify-center items-center my-20">
+      <div className="relative w-full h-64 overflow-hidden flex justify-center items-center mb-20">
         <div className="relative h-full aspect-video flex justify-center items-center">
           {images.map((image, index) => {
             const position = getPosition(index);
