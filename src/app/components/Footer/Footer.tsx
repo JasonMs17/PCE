@@ -4,19 +4,19 @@ import Image from 'next/image'
 
 const Footer = () => {
     return(
-        <div className='relative w-auto h-fit z-10 rounded-t-[20px] bg-gradient-to-tr from-[#023662] to-[#004B8B] p-10 flex flex-row'>
-            <div>
-                <img src="/images/footer.png" alt="" className='h-20'/>
-                <div className='flex flex-col text-white'>
+        <div className='relative w-full h-fit z-10 rounded-t-[20px] bg-gradient-to-tr from-[#023662] to-[#004B8B] p-5 md:p-10 flex flex-row'>
+            <div className='flex-shrink-0'>
+                <img src="/images/footer.png" alt="" className='h-14 md:h-20'/>
+                <div className='flex flex-col text-white text-xs md:text-base'>
                     <span>© 2024 Padjadjaran Career Expo</span>
                     <span>Created by <Link className="hover:cursor-pointer hover:underline transition-all duration-100" href="/meet-the-team">IT PCE 2024</Link></span>
                 </div>
             </div>
-            <div className='ml-auto text-center flex flex-col text-white'>
+            <div className='ml-auto text-xs md:text-base text-center flex flex-col text-white'>
                 Follow Us On
-                <div className='flex gap-5'>
-                    <a href='https://www.instagram.com/padjadjarancareerexpo/'>
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div className='flex gap-2.5 flex-wrap justify-center'>
+                    <a href='https://www.instagram.com/padjadjarancareerexpo/' className='size-8 md:size-12'>
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className='size-full'>
                             <path d="M34.017 41.9902L14.017 42.0092C9.61699 42.0132 6.01399 38.4172 6.00899 34.0172L5.98999 14.0172C5.98599 9.61724 9.58199 6.01424 13.982 6.00924L33.982 5.99024C38.382 5.98624 41.985 9.58224 41.99 13.9822L42.009 33.9822C42.014 38.3832 38.417 41.9862 34.017 41.9902Z" fill="url(#paint0_radial_53_223)"/>
                             <path d="M34.017 41.9902L14.017 42.0092C9.61699 42.0132 6.01399 38.4172 6.00899 34.0172L5.98999 14.0172C5.98599 9.61724 9.58199 6.01424 13.982 6.00924L33.982 5.99024C38.382 5.98624 41.985 9.58224 41.99 13.9822L42.009 33.9822C42.014 38.3832 38.417 41.9862 34.017 41.9902Z" fill="url(#paint1_radial_53_223)"/>
                             <path d="M24 31C20.141 31 17 27.86 17 24C17 20.14 20.141 17 24 17C27.859 17 31 20.14 31 24C31 27.86 27.859 31 24 31ZM24 19C21.243 19 19 21.243 19 24C19 26.757 21.243 29 24 29C26.757 29 29 26.757 29 24C29 21.243 26.757 19 24 19Z" fill="white"/>
@@ -40,19 +40,19 @@ const Footer = () => {
                         </svg>
                     </a>
                     <a href="">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className='size-8 md:size-12'>
                             <path d="M43.2 33.9C42.8 36 41.1 37.6 39 37.9C35.7 38.4 30.2 39 24 39C17.9 39 12.4 38.4 9 37.9C6.9 37.6 5.2 36 4.8 33.9C4.4 31.6 4 28.2 4 24C4 19.8 4.4 16.4 4.8 14.1C5.2 12 6.9 10.4 9 10.1C12.3 9.6 17.8 9 24 9C30.2 9 35.6 9.6 39 10.1C41.1 10.4 42.8 12 43.2 14.1C43.6 16.4 44.1 19.8 44.1 24C44 28.2 43.6 31.6 43.2 33.9Z" fill="#FF3D00"/>
                             <path d="M20 31V17L32 24L20 31Z" fill="white"/>
                         </svg>
                     </a>
                     <a href="">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className='size-8 md:size-12'>
                             <path d="M42 37C42 39.762 39.762 42 37 42H11C8.239 42 6 39.762 6 37V11C6 8.238 8.239 6 11 6H37C39.762 6 42 8.238 42 11V37Z" fill="#0288D1"/>
                             <path d="M12 19H17V36H12V19ZM14.485 17H14.457C12.965 17 12 15.888 12 14.499C12 13.08 12.995 12 14.514 12C16.035 12 16.972 13.08 17 14.499C17 15.887 16.035 17 14.485 17ZM36 36H31V26.901C31 24.703 29.775 23.203 27.808 23.203C26.307 23.203 25.495 24.215 25.101 25.193C24.957 25.543 25 26.511 25 27V36H20V19H25V21.616C25.721 20.5 26.85 19 29.738 19C33.316 19 35.999 21.25 35.999 26.274L36 36Z" fill="white"/>
                         </svg>
                     </a>
                     <a href="">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"  className='size-8 md:size-12'>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M10.904 6H37.095C39.804 6 42 8.196 42 10.904V37.095C42 39.804 39.804 42 37.096 42H10.904C8.196 42 6 39.804 6 37.096V10.904C6 8.196 8.196 6 10.904 6Z" fill="#212121"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M29.208 20.607C30.784 21.733 32.715 22.395 34.8 22.395V18.384C34.405 18.384 34.012 18.343 33.626 18.261V21.418C31.541 21.418 29.611 20.755 28.034 19.63V27.814C28.034 31.908 24.713 35.227 20.617 35.227C19.089 35.227 17.668 34.765 16.488 33.973C17.835 35.349 19.713 36.203 21.791 36.203C25.887 36.203 29.208 32.884 29.208 28.79V20.607ZM30.657 16.561C29.852 15.682 29.323 14.545 29.208 13.288V12.772H28.095C28.375 14.369 29.331 15.734 30.657 16.561ZM19.079 30.832C18.629 30.242 18.386 29.521 18.387 28.779C18.387 26.906 19.906 25.388 21.78 25.388C22.129 25.388 22.476 25.441 22.809 25.547V21.447C22.42 21.394 22.028 21.371 21.635 21.379V24.57C21.302 24.464 20.955 24.411 20.605 24.411C18.731 24.411 17.212 25.929 17.212 27.802C17.213 29.127 17.972 30.274 19.079 30.832Z" fill="#EC407A"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M28.034 19.63C29.61 20.756 31.541 21.418 33.626 21.418V18.261C32.462 18.013 31.432 17.405 30.657 16.56C29.331 15.733 28.376 14.369 28.096 12.772H25.173V28.79C25.166 30.657 23.65 32.169 21.78 32.169C20.678 32.169 19.699 31.644 19.079 30.831C17.972 30.273 17.213 29.126 17.213 27.802C17.213 25.929 18.732 24.411 20.606 24.411C20.965 24.411 21.311 24.467 21.636 24.57V21.38C17.612 21.463 14.376 24.749 14.376 28.791C14.376 30.809 15.182 32.638 16.49 33.974C17.67 34.766 19.091 35.228 20.619 35.228C24.715 35.228 28.036 31.909 28.036 27.815L28.034 19.63Z" fill="white"/>
