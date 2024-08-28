@@ -5,6 +5,8 @@ interface IMainEvent extends Document {
     email: string;
     universitas: string;
     fakultas: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 const mainEventSchema = new Schema<IMainEvent>({
@@ -12,6 +14,12 @@ const mainEventSchema = new Schema<IMainEvent>({
     email: { type: String, required: true },
     universitas: { type: String, required: true },
     fakultas: { type: String, required: true },
+    createdAt: {
+        type: Date,
+        default: () => Date.now(),
+        immutable: true,
+      },
+      updatedAt: Date,
 });
 
 const modelName = "MainEvent";

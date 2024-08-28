@@ -54,7 +54,6 @@ export async function POST(request: NextRequest) {
 
     const imgbbUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.IMGBB_API_KEY}`;
 
-
     const imgdbResponse = await axios.post(
       imgbbUrl,
       formData,
@@ -87,6 +86,7 @@ export async function POST(request: NextRequest) {
       status: 200,
       error: false,
       message: "Project registered successfully",
+      newProject
     });
   } catch (error: any) {
     console.error("Error during processing:", error.message);

@@ -2,25 +2,6 @@ import Project from "@/models/Project";
 import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import { NextResponse, NextRequest } from "next/server";
 
-export async function POST(request: NextRequest) {
-  const data = await request.json();
-  const { nama, email, no_telp, universitas, fakultas, jurusan, twibbon } = data;
-
-  try {
-    await connectToDatabase();
-
-    const newProject = new Project({ nama, email, no_telp, universitas, fakultas, jurusan, twibbon });
-    await newProject.save();
-
-    return NextResponse.json({ status: 200, error: false, message: "Data created successfully" });
-  } catch (error) {
-    console.log(error);
-    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
-  } finally {
-    await disconnectFromDatabase();
-  }
-}
-
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
   const { id } = params;
 
@@ -49,7 +30,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
   const { id } = params;
   const data = await request.json();
-  const { nama, email, no_telp, universitas, fakultas, jurusan, twibbon } = data;
+  const { nama, email, no_telp, universitas, fakultas, jurusan, twibbonUrl } = data;
 
   if (!id) {
     return NextResponse.json({ status: 400, error: true, message: "Missing ID" });
@@ -59,7 +40,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     await connectToDatabase();
 
     const filter = { _id: id };
-    const update = { $set: { nama, email, no_telp, universitas, fakultas, jurusan, twibbon } };
+    const update = { $set: { nama, email, no_telp, universitas, fakultas, jurusan} };
 
     const result = await Project.updateOne(filter, update);
 
