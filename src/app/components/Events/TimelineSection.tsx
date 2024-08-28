@@ -103,7 +103,7 @@ const TimelineSection = () => {
                     </div>
                 </div>
             </div>
-            <div className='p-20'>
+            <div className='md:p-20'>
             </div>
                 <div className={`${styles.bg_combine} p-2 rounded-md relative`}>
                     <div className={`py-10 px-10 bg-white/90 dark:bg-black/90 text-2xl text-center font-bold rounded-md`}>
