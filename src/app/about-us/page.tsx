@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Carousel from '../components/AboutUs/Carousel';
 
 const AboutUs: React.FC = () => {
   return (
@@ -149,6 +150,15 @@ const AboutUs: React.FC = () => {
           </div>
         </div>
       </div>
+
+      
+      <div className='flex flex-col justify-center items-center px-4 md:px-8'>
+        <h2 className='text-[36px] md:text-[48px] lg:text-[61px] font-bold mb-8 mt-10 text-black dark:text-white'>
+          Throwback PCE
+        </h2>
+      </div>
+
+      <Carousel></Carousel>
     </>
   );
 };
