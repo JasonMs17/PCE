@@ -53,9 +53,9 @@ const Add = () => {
   };
 
   return (
-    <div>
+    <div className='flex justify-end'>
       <button
-        className={`${styles.add_bg} px-10 py-3 rounded-[50px] text-2xl font-bold text-white`}
+        className={`${styles.add_bg} p-2 md:px-10 md:py-3 rounded-[50px] md:text-2xl text-l font-bold text-white`}
         onClick={() => setPopupVisible(true)}
       >
         + Add Article
