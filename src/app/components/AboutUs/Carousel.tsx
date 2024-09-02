@@ -1,11 +1,10 @@
 import { useState } from "react";
 
 const images = [
-  "/images/events/Mini-talkshow.svg",
-  "/images/events/Mini-talkshow.svg",
-  "/images/events/Mini-talkshow.svg",
-  "/images/events/Mini-talkshow.svg",
-  "/images/events/Mini-talkshow.svg",
+  "/images/throwback1.png",
+  "/images/throwback2.png",
+  "/images/throwback3.png",
+  "/images/throwback4.png",
 ];
 
 export default function Carousel() {
