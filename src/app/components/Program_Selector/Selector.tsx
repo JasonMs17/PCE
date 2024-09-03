@@ -24,7 +24,7 @@ const Selector = () => {
   };
 
   return (
-    <div className='w-full flex '>
+    <div className='w-full flex-wrap flex flex-col md:flex-row md:flex-nowrap'>
       <h2 aria-description='1' className={`${styles.selector} ${styles.selected}`} onClick={handleClick}>Class Program</h2>
       <h2 aria-description='2' className={`${styles.selector}`} onClick={handleClick}>Mentoring</h2>
       <h2 aria-description='3' className={`${styles.selector}`} onClick={handleClick}>Project-Based Internship</h2>

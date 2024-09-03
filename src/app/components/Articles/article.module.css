@@ -1,0 +1,4 @@
+.bg_card {
+    background: linear-gradient(180deg,  rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 80%);
+    transition: all 0.2s ease;
+}

@@ -1,0 +1,25 @@
+.bg_yellow {
+    transition: all 0.2s ease;
+}
+
+.bg_yellow:hover {
+    background: linear-gradient(46deg, rgba(244, 174, 9, 1) 0%, rgba(248, 193, 61, 1) 100%);
+}
+
+.bg_yellow:hover svg {
+    fill: white;
+}
+
+.img_card img {
+    width: 8rem;
+    height: 8rem;
+    bottom: -3rem;
+    right: -3rem;
+    transition: all 0.2s ease;
+}
+
+.img_card:hover img {
+    bottom: -1rem;
+    right: -1rem;
+    transform: scale(1.2);
+}

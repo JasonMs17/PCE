@@ -2,30 +2,17 @@ import Project from "@/models/Project";
 import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import { NextResponse, NextRequest } from "next/server";
 
-export async function POST(request: NextRequest) {
-  const data = await request.json();
-  const { nama, email, no_telp, universitas, fakultas, jurusan, twibbon } = data;
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = params;
 
-  try {
-    await connectToDatabase();
-
-    const newProject = new Project({ nama, email, no_telp, universitas, fakultas, jurusan, twibbon });
-    await newProject.save();
-
-    return NextResponse.json({ status: 200, error: false, message: "Data created successfully" });
-  } catch (error) {
-    console.log(error);
-    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
-  } finally {
-    await disconnectFromDatabase();
+  if (!id) {
+    return NextResponse.json({ status: 400, error: true, message: "Missing ID" });
   }
-}
 
-export async function GET() {
   try {
     await connectToDatabase();
 
-    const data = await Project.find();
+    const data = await Project.findById(id); 
 
     if (!data) {
       return NextResponse.json({ status: 400, error: true, message: "Data is empty" });
@@ -43,7 +30,7 @@ export async function GET() {
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
   const { id } = params;
   const data = await request.json();
-  const { nama, email, no_telp, universitas, fakultas, jurusan, twibbon } = data;
+  const { nama, email, no_telp, universitas, fakultas, jurusan, twibbonUrl } = data;
 
   if (!id) {
     return NextResponse.json({ status: 400, error: true, message: "Missing ID" });
@@ -53,7 +40,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     await connectToDatabase();
 
     const filter = { _id: id };
-    const update = { $set: { nama, email, no_telp, universitas, fakultas, jurusan, twibbon } };
+    const update = { $set: { nama, email, no_telp, universitas, fakultas, jurusan} };
 
     const result = await Project.updateOne(filter, update);
 
