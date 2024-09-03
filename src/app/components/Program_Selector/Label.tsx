@@ -9,7 +9,7 @@ const Label = () => {
 
     if (selected === 1) {
         return (
-            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] flex flex-col justify-between items-center py-10 px-6'>
+            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] md:flex flex-col justify-between items-center md:py-10 md:px-6 hidden'>
                 <label htmlFor='nama' className={`${styles.status} ${styles.valid}`}></label>
                 <label htmlFor='email' className={`${styles.status} ${styles.valid_active}`}></label>
                 <label htmlFor='no' className={`${styles.status} ${styles.invalid}`}></label>
@@ -22,7 +22,7 @@ const Label = () => {
     }
     else if (selected === 2) {
         return (
-            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] flex flex-col justify-between items-center py-10 px-6'>
+            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] md:flex flex-col justify-between items-center md:py-10 md:px-6 hidden'>
                 <label htmlFor='nama' className={`${styles.status} ${styles.valid}`}></label>
                 <label htmlFor='email' className={`${styles.status} ${styles.valid_active}`}></label>
                 <label htmlFor='no' className={`${styles.status} ${styles.invalid}`}></label>
@@ -36,7 +36,7 @@ const Label = () => {
     }
     else if (selected === 3) {
         return (
-            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] flex flex-col justify-between items-center py-10 px-6'>
+            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] md:flex flex-col justify-between items-center md:py-10 md:px-6 hidden'>
                 <label htmlFor='nama' className={`${styles.status} ${styles.valid}`}></label>
                 <label htmlFor='email' className={`${styles.status} ${styles.valid_active}`}></label>
                 <label htmlFor='no' className={`${styles.status} ${styles.invalid}`}></label>
@@ -49,7 +49,7 @@ const Label = () => {
     }
     else if (selected === 4) {
         return (
-            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] flex flex-col justify-between items-center py-10 px-6'>
+            <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] md:flex flex-col justify-between items-center md:py-10 md:px-6 hidden'>
                 <label htmlFor='nama' className={`${styles.status} ${styles.valid}`}></label>
                 <label htmlFor='email' className={`${styles.status} ${styles.valid_active}`}></label>
                 <label htmlFor='univ' className={`${styles.status} ${styles.incomplete}`}></label>

@@ -9,7 +9,7 @@ const Form = () => {
 
     if (selected === 1) {
         return (
-            <div className='flex flex-col p-5 text-white gap-5 text-xl'>
+            <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="nama">Nama</label>
                     <input className={styles.input} type="text" name="nama" id="nama" placeholder='Muhammad Sunarya' autoComplete='off' required />
@@ -52,7 +52,7 @@ const Form = () => {
     }
     else if (selected === 2) {
         return (
-            <div className='flex flex-col p-5 text-white gap-5 text-xl'>
+            <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="nama">Nama</label>
                     <input className={styles.input} type="text" name="nama" id="nama" placeholder='Muhammad Sunarya' autoComplete='off' required />
@@ -93,7 +93,7 @@ const Form = () => {
     }
     else if (selected === 3) {
         return (
-            <div className='flex flex-col p-5 text-white gap-5 text-xl'>
+            <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="nama">Nama</label>
                     <input className={styles.input} type="text" name="nama" id="nama" placeholder='Muhammad Sunarya' autoComplete='off' required />
@@ -128,7 +128,7 @@ const Form = () => {
     else if (selected === 4)
     {
         return (
-            <div className='flex flex-col p-5 text-white gap-5 text-xl'>
+            <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="nama">Nama</label>
                     <input className={styles.input} type="text" name="nama" id="nama" placeholder='Muhammad Sunarya' autoComplete='off' required />

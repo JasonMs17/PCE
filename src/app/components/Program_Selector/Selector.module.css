@@ -85,4 +85,8 @@
         width: 50%;
         font-size: 0.8em;
     }
+
+    .input {
+        padding: 0.5em;
+    }
 }
