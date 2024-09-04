@@ -1,7 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import Article from "@/models/Article";
-import { Types } from "mongoose";
 
 export async function POST(req: NextRequest) {
     const data = await req.json();
@@ -116,91 +115,3 @@ export async function GET(req: NextRequest) {
 //     }
 // }
 
-export async function PUT(req: NextRequest) {
-    const data = await req.json();
-    const { id, title, body, thumbnail, author, isPublished } = data;
-
-    if (!id) {
-        return NextResponse.json({
-            status: 400,
-            error: true,
-            message: "ID artikel diperlukan untuk memperbarui artikel"
-        });
-    }
-
-    try {
-        await connectToDatabase();
-
-        const updatedArticle = await Article.findByIdAndUpdate(
-            id,
-            { title, body, thumbnail, author, isPublished },
-            { new: true, runValidators: true }
-        );
-
-        if (!updatedArticle) {
-            return NextResponse.json({
-                status: 404,
-                error: true,
-                message: "Artikel tidak ditemukan"
-            });
-        }
-
-        return NextResponse.json({
-            status: 200,
-            error: false,
-            message: "Artikel berhasil diperbarui",
-            updatedArticle
-        });
-    } catch (error) {
-        console.error("Error: ", error);
-        return NextResponse.json({
-            status: 500,
-            error: true,
-            message: "Terjadi kesalahan"
-        });
-    } finally {
-        await disconnectFromDatabase();
-    }
-}
-
-export async function DELETE(req: NextRequest) {
-    const { id } = await req.json();
-
-    if (!id) {
-        return NextResponse.json({
-            status: 400,
-            error: true,
-            message: "ID artikel diperlukan untuk menghapus artikel"
-        });
-    }
-
-    try {
-        await connectToDatabase();
-
-        const deletedArticle = await Article.findByIdAndDelete(id);
-
-        if (!deletedArticle) {
-            return NextResponse.json({
-                status: 404,
-                error: true,
-                message: "Artikel tidak ditemukan"
-            });
-        }
-
-        return NextResponse.json({
-            status: 200,
-            error: false,
-            message: "Artikel berhasil dihapus",
-            deletedArticle
-        });
-    } catch (error) {
-        console.error("Error: ", error);
-        return NextResponse.json({
-            status: 500,
-            error: true,
-            message: "Terjadi kesalahan"
-        });
-    } finally {
-        await disconnectFromDatabase();
-    }
-}

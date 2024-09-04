@@ -5,7 +5,7 @@ import styles from './admin.module.css';
 import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
@@ -17,15 +17,14 @@ const LoginPage = () => {
       const response = await fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('token', data.token);
         setError('');
-        router.push('/admin/event-attendees'); // Redirect to the dashboard
+        router.push('/admin/event-attendees');
       } else {
         setError(data.message);
       }
@@ -44,15 +43,15 @@ const LoginPage = () => {
             <h1 className='flex text-4xl font-bold text-center text-white'>Portal Admin PCE</h1>
           <form onSubmit={handleSubmit} className='flex gap-10 flex-col w-full'>
             <div className='flex flex-col gap-2'>
-              <label className='text-white text-2xl font-bold md:text-4xl' htmlFor="email">Email</label>
+              <label className='text-white text-4xl font-bold' htmlFor="username">Username</label>
               <input
                 className='p-3 text-xl md:text-2xl bg-transparent border-2 border-solid border-white rounded-[8px] '
                 type="text"
-                name="email"
-                id="email"
-                placeholder='email@gmail.com'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="username"
+                id="username"
+                placeholder='username'
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className='flex flex-col gap-2'>

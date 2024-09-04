@@ -1,13 +1,15 @@
-import { withIronSessionApiRoute } from "iron-session/next";
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { sign } from 'jsonwebtoken';
+import { serialize } from 'cookie';
 
 const admin = {
-  username: "$2a$12$wS5JsuhSd0gCcKlktJN/pe.cORhBLJUsO68xsqM5tK3Yt.cgsocfC",
-  password: "$2a$12$wCefeILgp7lUb5HY15mk5Or0xfd.UNe4zGoPy2GLAAqVXDf9SrVfa",
+  username: process.env.NEXT_PUBLIC_ADMIN_USERNAME,
+  password: process.env.NEXT_PUBLIC_ADMIN_PASSWORD,
 };
 
-const secret = process.env.JWT_SECRET;
+const secret = process.env.NEXT_PUBLIC_JWT_SECRET || "";
+const iat = Math.floor(Date.now() / 1000);
+const expired = iat + 3600;
 
 export async function POST(request: Request) {
   try {
@@ -19,24 +21,43 @@ export async function POST(request: Request) {
       });
     }
 
-    const isUsernameValid = await bcrypt.compare(username, admin.username);
+    const isUsernameValid = await bcrypt.compare(username, admin.username!);
     if (!isUsernameValid) {
-      return new Response(JSON.stringify({ message: "Invalid username or password" }), {
+      return new Response(JSON.stringify({ message: "Invalid username" }), {
         status: 401,
       });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, admin.password);
+    const isPasswordValid = await bcrypt.compare(password, admin.password!);
     if (!isPasswordValid) {
-      return new Response(JSON.stringify({ message: "Invalid password or password" }), {
+      return new Response(JSON.stringify({ message: "Invalid password " }), {
         status: 401,
       });
     }
 
-    const token = jwt.sign({ username }, secret!, { expiresIn: '1h' });
+    const token = sign(
+      {
+        username,
+      },
+      secret,
+      {
+        expiresIn: expired,
+      }
+    );
 
-    return new Response(JSON.stringify({ token }), {
+    const serialized = serialize('OurSiteJWT', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: expired,
+      path: '/'
+    });
+
+    return new Response(JSON.stringify({ message: "Success" }), {
       status: 200,
+      headers: { 
+        'Set-Cookie': serialized,
+      }
     });
 
   } catch (error) {

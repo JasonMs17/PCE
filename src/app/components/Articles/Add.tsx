@@ -6,6 +6,7 @@ import Form from "./Form";
 
 const Add = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
+  const [articleId, setArticleId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -23,10 +24,12 @@ const Add = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const method = articleId ? "PUT" : "POST";
+    const url = articleId ? `/api/articles/${articleId}` : "/api/articles";
 
     try {
-      const response = await fetch("/api/articles", {
-        method: "POST",
+      const response = await fetch(url, {
+        method,
         headers: {
           "Content-Type": "application/json",
         },
@@ -35,9 +38,9 @@ const Add = () => {
 
       const data = await response.json();
       if (data.error) {
-        alert("Failed to add article");
+        alert("Failed to save article");
       } else {
-        alert("Article added successfully");
+        alert(articleId ? "Article updated successfully" : "Article added successfully");
         setPopupVisible(false);
         setFormData({
           title: "",
@@ -45,9 +48,34 @@ const Add = () => {
           thumbnail: "",
           author: "",
         });
+        setArticleId(null);
       }
     } catch (error) {
       console.error("Error:", error);
+      alert("An error occurred");
+    }
+  };
+
+  const loadArticle = async (id: string) => {
+    try {
+      const response = await fetch(`/api/articles/${id}`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      if (data.error) {
+        alert("Failed to load article");
+      } else {
+        setFormData({
+          title: data.article.title,
+          body: data.article.body,
+          thumbnail: data.article.thumbnail,
+          author: data.article.author,
+        });
+        setArticleId(id);
+        setPopupVisible(true);
+      }
+    } catch (error) {
+      console.error("Error loading article:", error);
       alert("An error occurred");
     }
   };
