@@ -1,18 +1,17 @@
+import { connectToDatabase, disconnectFromDatabase } from '@/utils/db';
 import bcrypt from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { serialize } from 'cookie';
+import User from "@/models/User";
 
-const admin = {
-  username: process.env.NEXT_PUBLIC_ADMIN_USERNAME,
-  password: process.env.NEXT_PUBLIC_ADMIN_PASSWORD,
-};
-
-const secret = process.env.NEXT_PUBLIC_JWT_SECRET || "";
+const secret = process.env.JWT_SECRET || "";
 const iat = Math.floor(Date.now() / 1000);
 const expired = iat + 3600;
 
 export async function POST(request: Request) {
   try {
+    await connectToDatabase();
+
     const { username, password } = await request.json();
 
     if (!username || !password) {
@@ -21,14 +20,16 @@ export async function POST(request: Request) {
       });
     }
 
-    const isUsernameValid = await bcrypt.compare(username, admin.username!);
-    if (!isUsernameValid) {
+    const admin = await User.findOne({ username });
+
+    if (!admin) {
       return new Response(JSON.stringify({ message: "Invalid username" }), {
         status: 401,
       });
     }
 
-    const isPasswordValid = await bcrypt.compare(password, admin.password!);
+    const isPasswordValid = await bcrypt.compare(password, admin.password);
+    console.log(isPasswordValid);
     if (!isPasswordValid) {
       return new Response(JSON.stringify({ message: "Invalid password " }), {
         status: 401,
@@ -53,6 +54,8 @@ export async function POST(request: Request) {
       path: '/'
     });
 
+    await disconnectFromDatabase();
+
     return new Response(JSON.stringify({ message: "Success" }), {
       status: 200,
       headers: { 
@@ -61,8 +64,12 @@ export async function POST(request: Request) {
     });
 
   } catch (error) {
+    await disconnectFromDatabase();
+
     return new Response(JSON.stringify({ message: "Something went wrong" }), {
       status: 500,
     });
   }
 }
+
+
