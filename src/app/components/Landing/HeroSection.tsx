@@ -50,10 +50,10 @@ const HeroSection = () => {
   return (
     <section className='bg-[url(/images/background.png)] bg-cover bg-center w-full aspect-video'>
       <div className='relative top-1/2 ml-5 lg:ml-20 w-1/3 -translate-y-1/2'>
-        <h1 className='font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white whitespace-nowrap'>
+        <h1 className='font-bold text-3xl sm:text-4xl md:text-5xl lg:text-7xl text-white whitespace-nowrap'>
           Padjadjaran Career Expo 2024
         </h1>
-        <h1 className='font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white whitespace-nowrap'>
+        <h1 className=' text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-white whitespace-nowrap'>
           Bridging Dreams Empowering Career
         </h1>
         <div className='flex flex-row gap-5 py-5'>
