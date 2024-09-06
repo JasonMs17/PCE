@@ -2,9 +2,10 @@ import mongoose, { Schema, Document } from "mongoose";
 
 export interface IArticle extends Document {
   title: string;
-  author: string;
   body: string;
-  status: boolean,
+  thumbnail: string;
+  author: string;
+  isPublished: boolean,
   createdAt: Date;
   updatedAt: Date;
 }
