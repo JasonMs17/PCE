@@ -26,7 +26,7 @@ const EventsPage = () => {
                           alt="Image description"
                           height={500}
                           width={500}
-                          className={`absolute rounded-full`}
+                          className={`absolute rounded-full rounded-br-none`}
                           />
                   </div>
           </div>
@@ -44,23 +44,23 @@ const EventsPage = () => {
                           alt="Image description"
                           height={500}
                           width={500}
-                          className={`absolute rounded-full`}
+                          className={`absolute rounded-full rounded-br-none`}
                           />
                   </div>
           </div>
           <div className={`flex flex-col justify-between gap-5 w-full xl:w-1/3`}>
-            <div className={`flex flex-row px-5 py-10 justify-between text-black bg-white rounded-[25px] hover:text-white ${styles.bg_yellow}`}>
+            <a href="#why-work-with-us" className={`flex flex-row px-5 py-10 justify-between text-black bg-white rounded-[25px] hover:text-white ${styles.bg_yellow}`}>
               <p className={`font-bold`}>
               Partnership benefits 
               </p>
               <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-            </div>
-            <div className={`flex flex-row px-5 py-10 justify-between text-black bg-white rounded-[25px] hover:text-white  ${styles.bg_yellow}`}>
+            </a>
+            <a href="#ready-work"  className={`flex flex-row px-5 py-10 justify-between text-black bg-white rounded-[25px] hover:text-white  ${styles.bg_yellow}`}>
               <p className={`font-bold`}>
               Let&apos;s get in touch
               </p>
               <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-            </div>
+            </a>
           </div>
         </div>
         <div className={`py-5`}>
@@ -72,7 +72,7 @@ const EventsPage = () => {
                             width={134}
                             className="w-2/12"
                             />
-              <h2 className={`w-8/12 text-3xl font-bold text-center`}>Why work with us?</h2>
+              <h2 id="why-work-with-us" className={`w-8/12 text-3xl font-bold text-center`}>Why work with us?</h2>
               <Image
                             src={`/images/contactus/decoration_1_2.png`}
                             alt="Image description"
@@ -92,7 +92,7 @@ const EventsPage = () => {
                             width={134}
                             className="w-2/12"
                             />
-              <h2 className={`w-8/12 text-3xl font-bold text-center`}>Ready to work with us?</h2>
+              <h2 id="ready-work" className={`w-8/12 text-3xl font-bold text-center`}>Ready to work with us?</h2>
               <Image
                             src={`/images/contactus/decoration_2_2.png`}
                             alt="Image description"
@@ -101,34 +101,27 @@ const EventsPage = () => {
                             className="w-2/12"
                             />
           </div>
-          <div className={`flex flex-row items-center gap-5`}>
-            <div className={`flex flex-row bg-white rounded-[25px] overflow-hidden dark:text-black dark:hover:text-white hover:text-white ${styles.bg_yellow}`}>
-              <Image
-                          src={`/images/photoprofile.jpg`}
-                          alt="Image description"
-                          height={500}
-                          width={500}
-                          className="w-3/12"
-                          />
-              <div className={`py-5 xl:py-10 px-1 xl:px-5 md:px-2.5`}>
-                <h2 className={`text-xl font-bold mb-2`}>Whatsapp</h2>
-                <p className={`font-bold`}>+62 XXX XXXX XXXX</p>
+          <div className={`flex flex-col md:flex-row items-center gap-5 h-96 md:h-32`}>
+            <div className={`flex flex-row h-full w-full bg-white rounded-[25px] overflow-hidden dark:text-black dark:hover:text-white hover:text-white ${styles.bg_yellow}`}>
+            <a href="https://wa.me/6281292107940" target="_blank" rel="noopener noreferrer" className="flex flex-row w-full">
+              <div className='h-full aspect-square bg-[url(/images/whatsapp-icon.svg)] bg-cover'>
               </div>
+              <div className={`flex flex-col justify-center px-2.5 xl:px-5`}>
+                <h2 className={`text-4xl font-bold mb-2`}>Whatsapp</h2>
+                <p className={`font-bold`}>Herlin Aprilya</p>
+                <p className={`font-bold`}>+62 81292107940</p>
+              </div>
+              </a>
             </div>
             <p>or</p>
-            <div className={`flex flex-row bg-white rounded-[25px] overflow-hidden dark:text-black dark:hover:text-white hover:text-white ${styles.bg_yellow}`}>
-              <Image
-                          src={`/images/photoprofile.jpg`}
-                          alt="Image description"
-                          height={500}
-                          width={500}
-                          className="w-3/12"
-                          />
-              <div className={`py-5 xl:py-10 px-1 xl:px-5 md:px-2.5`}>
-                <h2 className={`text-lg md:text-xl font-bold mb-2`}>Email</h2>
-                <p className={`font-bold `}>mail@domain.com</p>
-              </div>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=padjadjarancareerexpo24@gmail.com&su=Pengajuan%20Kerja%20Sama%20Partnership%20PCE%202024" target="_blank" rel="noopener noreferrer" className={`flex flex-row h-full w-full bg-white rounded-[25px] overflow-hidden dark:text-black dark:hover:text-white hover:text-white ${styles.bg_yellow}`}>
+            <div className='h-full aspect-square bg-[url(/images/gmail-icon.svg)] bg-cover'>
             </div>
+              <div className={`flex flex-col justify-center px-2.5 xl:px-5`}>
+                <h2 className={`text-4xl font-bold mb-2`}>Email</h2>
+                <p className={`font-bold `}>padjadjarancareerexpo24@gmail.com</p>
+              </div>
+            </a>
           </div>
         </div>  
       </div>
