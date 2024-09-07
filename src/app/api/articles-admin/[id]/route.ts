@@ -76,3 +76,28 @@ export async function GET(req: NextRequest, { params }) {
         await disconnectFromDatabase();
     }
 }
+
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+  const { id } = params;
+
+  if (!id) {
+    return NextResponse.json({ status: 400, error: true, message: "Missing ID" });
+  }
+
+  try {
+    await connectToDatabase();
+
+    const result = await Article.deleteOne({ _id: id });
+
+    if (result.deletedCount === 0) {
+      return NextResponse.json({ status: 404, error: true, message: "No article found with the given ID" });
+    }
+
+    return NextResponse.json({ status: 200, error: false, message: "Article deleted successfully" });
+  } catch (error) {
+    console.error("Error: ", error);
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+  } finally {
+    await disconnectFromDatabase();
+  }
+}

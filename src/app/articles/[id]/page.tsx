@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import ReactMarkdown from "react-markdown"; // Import react-markdown
 import ArticleCard from "../../components/Articles/ArticleCard";
 import styles from "./article.module.css";
 
 const ArticlePage = () => {
   const { id } = useParams();
-  const router = useRouter();
   const [article, setArticle] = useState(null);
 
   useEffect(() => {

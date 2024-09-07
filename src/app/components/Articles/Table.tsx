@@ -3,9 +3,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./add.module.css";
 import { IArticle } from "@/models/Article";
+import { useRouter } from 'next/navigation';
 
 const Table = () => {
   const [articles, setArticles] = useState<IArticle[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchArticles = async () => {
@@ -25,7 +27,7 @@ const Table = () => {
 
   const togglePublishStatus = async (id: string, currentStatus: boolean) => {
     try {
-      const response = await fetch(`/api/articles/${id}`, {
+      const response = await fetch(`/api/articles-admin/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -52,6 +54,28 @@ const Table = () => {
     }
   };
 
+  
+const deleteArticle = async (id: string) => {
+  const confirmDelete = window.confirm("Are you sure you want to delete this article?");
+  if (!confirmDelete) return; // Cancel deletion
+
+  try {
+    const response = await fetch(`/api/articles-admin/${id}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    if (data.status === 200) {
+      setArticles((prevArticles) => prevArticles.filter((article) => article._id !== id));
+      alert("Article deleted successfully.");
+    } else {
+      alert(data.message);
+    }
+  } catch (error) {
+    console.error("Error deleting article:", error);
+    alert("An error occurred while deleting the article.");
+  }
+};
+
   return (
     <div>
       {articles && articles.length > 0 ? (
@@ -70,7 +94,7 @@ const Table = () => {
                 <td className={`${styles.column}`}>{index + 1}</td>
                 <td className={`${styles.column}`}>{article.title}</td>
                 <td className={`${styles.column} flex gap-2`}>
-                  <button className={`${styles.operand} flex gap-2`}>
+                  <button className={`${styles.operand} flex gap-2`} onClick={() => router.push(`/admin/articles/${article._id}`)}>
                     <svg
                       width="18"
                       height="22"
@@ -111,7 +135,7 @@ const Table = () => {
                     </svg>
                     {article.isPublished ? "Unpublish" : "Publish"}
                   </button>
-                  <button className={`${styles.operand} flex gap-2`}>
+                  <button className={`${styles.operand} flex gap-2`} onClick={() => deleteArticle(article._id)}>
                     <svg
                       width="18"
                       height="22"
