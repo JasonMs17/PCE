@@ -160,8 +160,9 @@ const AboutUs: React.FC = () => {
             <div className='absolute top-0 left-0 bg-blue-700 dark:bg-blue-800 text-white  dark:text-gray-200 z-1 flex justify-center items-center w-[200px] h-[50px] rounded-[20px_0px_80px_0]'>
               <h2 className='text-1xl font-bold'>Empowering Career</h2>
             </div>
-            <p className='text-[24px] text-center leading-6 text-gray-800 dark:text-white font-bold'>
-              Lorem ipsum
+            <p className='text-[16px] text-center leading-6 text-gray-800 dark:text-white font-bold'>
+              PCE membantu mahasiswa mengembangkan keterampilan dan jaringan profesional melalui workshop, seminar, dan pameran.
+
             </p>
           </div>
 
@@ -170,8 +171,8 @@ const AboutUs: React.FC = () => {
             <div className='absolute top-0 left-0 bg-blue-700 dark:bg-blue-800 text-white  dark:text-gray-200 z-1 flex justify-center items-center w-[200px] h-[50px] rounded-[20px_0px_80px_0]'>
               <h2 className='text-1xl font-bold'>Equal Opportunities</h2>
             </div>
-            <p className='text-[24px] text-center leading-6 text-gray-800 dark:text-white font-bold'>
-              Lorem ipsum
+            <p className='text-[16px] text-center leading-6 text-gray-800 dark:text-white font-bold'>
+              PCE memberikan akses informasi dan peluang karir yang setara bagi semua mahasiswa untuk sukses.
             </p>
           </div>
 
@@ -180,8 +181,8 @@ const AboutUs: React.FC = () => {
             <div className='absolute top-0 left-0 bg-blue-700 dark:bg-blue-800 text-white dark:text-gray-200 z-1 flex justify-center items-center w-[200px] h-[50px] rounded-[20px_0px_80px_0]'>
               <h2 className='text-1xl font-bold'>Platform Networking</h2>
             </div>
-            <p className='text-[24px] text-center leading-6 text-gray-800 dark:text-white font-bold'>
-              Lorem Ipsum
+            <p className='text-[16px] text-center leading-6 text-gray-800 dark:text-white font-bold'>
+              PCE menyediakan platform networking bagi mahasiswa dengan para profesional di bidangnya untuk bertukar wawasan dan menjelajahi peluang kerja.
             </p>
           </div>
         </div>

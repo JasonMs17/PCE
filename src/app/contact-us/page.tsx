@@ -15,7 +15,7 @@ const EventsPage = () => {
           <div className={`w-full xl:w-1/3 hidden xl:flex flex-row bg-white/80 rounded-[25px] p-5 overflow-hidden ${styles.img_card}`}>
                   <div className={`w-full flex flex-col justify-between`}>
                       <div>
-                          <h2 className={`text-3xl text-black font-bold mb-2`}>XXXXX</h2>
+                          <h2 className={`text-3xl text-black font-bold mb-2`}>395++</h2>
                           <p className={`text-black font-bold mb-2`}>Participants</p>
                       </div>
                       <p className={`text-black`}>*Last year&apos;s data</p>
@@ -33,7 +33,7 @@ const EventsPage = () => {
           <div className={`w-full xl:w-1/3 flex flex-row bg-white/80 rounded-[25px] p-5 overflow-hidden ${styles.img_card}`}>
                   <div className={`w-full flex flex-col justify-between`}>
                       <div>
-                          <h2 className={`text-3xl text-black font-bold mb-2`}>XXXXX</h2>
+                          <h2 className={`text-3xl text-black font-bold mb-2`}>97++</h2>
                           <p className={`text-black font-bold mb-2`}>Partners and Media Partners</p>
                       </div>
                       <p className={`text-black`}>*Last year&apos;s data</p>
