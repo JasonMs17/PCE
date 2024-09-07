@@ -78,7 +78,7 @@ const ArticlesPage = () => {
             />
           ))}
         </div>
-        <div className="self-center rounded-full bg-black/30 dark:bg-white/30">
+        {/* <div className="self-center rounded-full bg-black/30 dark:bg-white/30">
           <ul className="flex align-stretch text-white gap-4 text-xl py-2">
             <li className="rounded-full flex-1 px-6 py-2 bg-white">
               <a href="#">
@@ -116,7 +116,7 @@ const ArticlesPage = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );
