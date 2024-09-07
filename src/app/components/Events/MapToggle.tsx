@@ -4,7 +4,11 @@ import React, { useState } from 'react';
 import styles from './events.module.css'
 import Image from 'next/image';
 
-export default function MapToggle() {
+interface LocationProps {
+  loc: string;
+}
+
+export default function MapToggle({loc} : LocationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -25,9 +29,9 @@ export default function MapToggle() {
   return (
     <div className="relative">
       <div className={`py-2.5 px-10 text-white text-center font-bold rounded-[100px] ${styles.bg_green}`} onClick={toggle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        Lokasi
+        {loc}
       </div>
-      <div className={`absolute ${transClass} w-96 h-96 top-full left-0 p-5 bg-white rounded-[25px] shadow-md z-50`}>
+      <div className={`absolute ${transClass} w-96 h-96 top-full left-0 p-5 bg-white rounded-[20px] shadow-md z-50`}>
         <Image
           src={`/images/rektorat.png`}
           alt="Image description"

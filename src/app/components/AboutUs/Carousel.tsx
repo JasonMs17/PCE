@@ -30,8 +30,8 @@ export default function Carousel() {
     };
   
     return (
-      <div className="relative w-full h-64 overflow-hidden flex justify-center items-center mb-20">
-        <div className="relative h-full aspect-video flex justify-center items-center">
+      <div className="w-full h-fit overflow-hidden flex justify-center items-center mb-20">
+        <div className="relative w-full lg:w-1/3 aspect-video flex justify-center items-center">
           {images.map((image, index) => {
             const position = getPosition(index);
             const isCenter = position === 0;
@@ -40,7 +40,7 @@ export default function Carousel() {
             return (
               <div
                 key={index}
-                className={`absolute h-full aspect-video transition-all duration-500 ease-out ${
+                className={`absolute h-full aspect-square lg:aspect-video transition-all duration-500 ease-out ${
                     position === null ? "opacity-0 invisible" : "opacity-100 visible"
                 } ${isCenter ? "z-30" : "z-10"}`}
                 style={{

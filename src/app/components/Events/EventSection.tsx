@@ -16,18 +16,20 @@ interface EventSectionProps {
     description: string;
     src: string;
     time: string;
+    location: string;
     speakers: Speaker[];
   }
 
-const EventSection = ({ title, theme, description, src, time, speakers = [] }: EventSectionProps) => {
+const EventSection = ({ title, theme, description, src, time, location, speakers = [] }: EventSectionProps) => {
     return (
-        <div className={`flex flex-col gap-10 bg-white/20 rounded-[25px] dark:bg-black/20 p-5`}>
+        <div className={`flex flex-col gap-10 bg-white/20 rounded-[20px] dark:bg-black/20 p-5`}>
             <EventCard
                 title={title}
                 theme={theme}
                 description={description}
                 src={src}
                 time={time}
+                location={location}
             ></EventCard>
             {speakers?.length > 0 && (
             <div className={`flex flex-row justify-center`}>
