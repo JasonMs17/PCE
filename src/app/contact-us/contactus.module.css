@@ -3,7 +3,7 @@
 }
 
 .bg_yellow:hover {
-    border-radius: 999px;
+    border-radius: 5rem;
     background: linear-gradient(46deg, rgba(244, 174, 9, 1) 0%, rgba(248, 193, 61, 1) 100%);
 }
 
