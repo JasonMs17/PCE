@@ -17,10 +17,11 @@ interface EventSectionProps {
     src: string;
     time: string;
     location: string;
+    maps: string;
     speakers: Speaker[];
   }
 
-const EventSection = ({ title, theme, description, src, time, location, speakers = [] }: EventSectionProps) => {
+const EventSection = ({ title, theme, description, src, time, location, maps, speakers = [] }: EventSectionProps) => {
     return (
         <div className={`flex flex-col gap-10 bg-white/20 rounded-[20px] dark:bg-black/20 p-5`}>
             <EventCard
@@ -30,6 +31,7 @@ const EventSection = ({ title, theme, description, src, time, location, speakers
                 src={src}
                 time={time}
                 location={location}
+                maps={maps}
             ></EventCard>
             {speakers?.length > 0 && (
             <div className={`flex flex-row justify-center`}>
