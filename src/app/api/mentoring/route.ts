@@ -10,7 +10,7 @@ import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   const data = await request.json();
-  const { name, email, whatsappNumber, schedule, university, faculty, major, mentorName, sectorCategory } = data;
+  const { name, email, whatsappNumber, schedule, university, faculty, major, mentorName, sectorCategory, curriculumVitae } = data;
 
   const rateLimitResult = await rateLimit(request);
 
@@ -78,26 +78,27 @@ export async function POST(request: NextRequest) {
       university,
       faculty,
       major,
+      curriculumVitae,
       mentor: mentorData._id,
       sectorCategory: sectorCategoryData._id,
     });
 
-    const template = "<p> Hello my darkest side do not forget to take a bath </p>";
+    // const template = "<p> Hello my darkest side do not forget to take a bath </p>";
 
-    const mailOption = {
-      from: process.env.NODEMAIL,
-      to: email,
-      subject: "Mentoring 1 on 1 Registration",
-      html: template,
-    };
+    // const mailOption = {
+    //   from: process.env.NODEMAIL,
+    //   to: email,
+    //   subject: "Mentoring 1 on 1 Registration",
+    //   html: template,
+    // };
 
-    const send = await transporter.sendMail(mailOption);
+    // const send = await transporter.sendMail(mailOption);
 
-    console.log(send.messageId);
+    // console.log(send.messageId);
 
-    await newMentoring.save();
+    const data = await newMentoring.save();
 
-    return NextResponse.json({ status: 200, error: false, message: "Registered successfully", totalQuotaMentor, totalQuotaSector });
+    return NextResponse.json({ status: 200, error: false, message: "Registered successfully", totalQuotaMentor, totalQuotaSector, data });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });

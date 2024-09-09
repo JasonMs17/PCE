@@ -35,7 +35,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
   const { id } = params;
   const data = await request.json();
-  const { name, email, whatsappNumber, schedule, university, faculty, major, mentorName, sectorCategory } = data;
+  const { name, email, whatsappNumber, schedule, university, faculty, major, mentorName, sectorCategory, curriculumVitae } = data;
   const now = new Date(Date.now());
 
   if (!id) {
@@ -104,6 +104,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
         university,
         faculty,
         major,
+        curriculumVitae,
         mentor: mentorData._id,
         sectorCategory: sectorCategoryData._id,
         updatedAt: now,

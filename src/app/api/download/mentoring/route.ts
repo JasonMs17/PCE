@@ -31,6 +31,7 @@ export async function GET() {
       university: registrar.university,
       faculty: registrar.faculty,
       major: registrar.major,
+      curriculum_vitae: registrar.curriculumVitae,
       mentor: registrar.mentor ? mentorMap[registrar.mentor.toString()] : "Unknown",
       sector_category: registrar.sectorCategory ? sectorCategoryMap[registrar.sectorCategory.toString()] : "Unknown",
       createdAt: registrar.createdAt ? registrar.createdAt.toISOString() : "N/A",
