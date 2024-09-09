@@ -3,13 +3,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "./add.module.css";
 import { IArticle } from "@/models/Article";
+import { useRouter } from 'next/navigation';
 
 const Table = () => {
   const [articles, setArticles] = useState<IArticle[]>([]);
+  const router = useRouter();
+
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch("/api/articles", {
+        const response = await fetch("/api/articles-admin", {
           method: "GET",
         });
         const data = await response.json();
@@ -21,6 +24,58 @@ const Table = () => {
 
     fetchArticles();
   }, []);
+
+  const togglePublishStatus = async (id: string, currentStatus: boolean) => {
+    try {
+      const response = await fetch(`/api/articles-admin/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          isPublished: !currentStatus,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.status === 200) {
+        setArticles((prevArticles) => 
+          prevArticles.map((article) =>
+            article._id === id
+              ? { ...article, isPublished: !currentStatus }
+              : article
+          )
+        );
+      } else {
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error("Error updating article status:", error);
+    }
+  };
+
+  
+const deleteArticle = async (id: string) => {
+  const confirmDelete = window.confirm("Are you sure you want to delete this article?");
+  if (!confirmDelete) return; // Cancel deletion
+
+  try {
+    const response = await fetch(`/api/articles-admin/${id}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    if (data.status === 200) {
+      setArticles((prevArticles) => prevArticles.filter((article) => article._id !== id));
+      alert("Article deleted successfully.");
+    } else {
+      alert(data.message);
+    }
+  } catch (error) {
+    console.error("Error deleting article:", error);
+    alert("An error occurred while deleting the article.");
+  }
+};
+
   return (
     <div>
       {articles && articles.length > 0 ? (
@@ -30,7 +85,7 @@ const Table = () => {
               <th className={`${styles.column} ${styles.head}`}>No</th>
               <th className={`${styles.column}`}>Title</th>
               <th className={`${styles.column}`}>Action</th>
-              <th className={`${styles.column} ${styles.head}`}>Status</th>
+              {/* <th className={`${styles.column} ${styles.head}`}>Status</th> */}
             </tr>
           </thead>
           <tbody>
@@ -39,7 +94,7 @@ const Table = () => {
                 <td className={`${styles.column}`}>{index + 1}</td>
                 <td className={`${styles.column}`}>{article.title}</td>
                 <td className={`${styles.column} flex gap-2`}>
-                  <button className={`${styles.operand} flex gap-2`}>
+                  <button className={`${styles.operand} flex gap-2`} onClick={() => router.push(`/admin/articles/${article._id}`)}>
                     <svg
                       width="18"
                       height="22"
@@ -57,7 +112,12 @@ const Table = () => {
                     </svg>
                     Edit
                   </button>
-                  <button className={`${styles.operand} flex gap-2`}>
+                  <button
+                    className={`${styles.operand} flex gap-2`}
+                    onClick={() =>
+                      togglePublishStatus(article._id, article.isPublished)
+                    }
+                  >
                     <svg
                       width="17"
                       height="22"
@@ -73,9 +133,9 @@ const Table = () => {
                         stroke-linejoin="round"
                       />
                     </svg>
-                    Unpublish
+                    {article.isPublished ? "Unpublish" : "Publish"}
                   </button>
-                  <button className={`${styles.operand} flex gap-2`}>
+                  <button className={`${styles.operand} flex gap-2`} onClick={() => deleteArticle(article._id)}>
                     <svg
                       width="18"
                       height="22"
@@ -92,9 +152,9 @@ const Table = () => {
                       />
                     </svg>
                     Delete
-                  </button>
+                  </button> 
                 </td>
-                <td className={`${styles.column}`}>
+                {/* <td className={`${styles.column}`}>
                   <div
                     className={`px-3 py-2 bg-white flex text-black rounded-[20px] font-bold gap-2`}
                   >
@@ -113,9 +173,9 @@ const Table = () => {
                         stroke-linejoin="round"
                       />
                     </svg>
-                    {article.status}
+                    {article.isPublished}
                   </div>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

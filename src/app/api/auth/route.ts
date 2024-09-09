@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const admin = await User.findOne({ username });
 
     if (!admin) {
-      return new Response(JSON.stringify({ message: "Invalid username" }), {
+      return new Response(JSON.stringify({ message: "Invalid username or password" }), {
         status: 401,
       });
     }
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     const isPasswordValid = await bcrypt.compare(password, admin.password);
     console.log(isPasswordValid);
     if (!isPasswordValid) {
-      return new Response(JSON.stringify({ message: "Invalid password " }), {
+      return new Response(JSON.stringify({ message: "Invalid username or password" }), {
         status: 401,
       });
     }

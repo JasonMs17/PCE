@@ -25,7 +25,7 @@ const Add = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const method = articleId ? "PUT" : "POST";
-    const url = articleId ? `/api/articles/${articleId}` : "/api/articles";
+    const url = articleId ? `/api/articles-admin/${articleId}` : "/api/articles-admin";
 
     try {
       const response = await fetch(url, {

@@ -15,6 +15,34 @@
     flex: 3;
 }
 
+.dropdown {
+    backdrop-filter: blur(10px);
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.dropdown_item {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    transition: all 0.2s;
+    padding: 10px 20px;
+    color: white;
+}
+
+.dropdown_item:hover, .active {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 150px;
+    flex: 3;
+    color: black;
+}
+
 .desc {
     display: none;
 }

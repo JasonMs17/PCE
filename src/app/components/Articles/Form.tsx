@@ -1,4 +1,3 @@
-
 import React, { ChangeEvent, FormEvent } from "react";
 
 interface FormProps {
@@ -12,7 +11,7 @@ interface FormProps {
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  setPopupVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setPopupVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Form: React.FC<FormProps> = ({
@@ -96,7 +95,7 @@ const Form: React.FC<FormProps> = ({
           <button
             type="button"
             className="px-4 py-2 bg-gray-500 text-white rounded"
-            onClick={() => setPopupVisible(false)}
+            onClick={() => setPopupVisible?.(false)}
           >
             Cancel
           </button>
