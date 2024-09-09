@@ -8,6 +8,7 @@ interface IMentoring extends Document {
   university: string;
   faculty: string;
   major: string;
+  curriculumVitae: string;
   mentor: Schema.Types.ObjectId;
   sectorCategory: Schema.Types.ObjectId;
   createdAt: Date;
@@ -27,6 +28,11 @@ const mentoringSchema = new Schema({
     unique: true,
   },
   whatsappNumber: {
+    type: String,
+    minLength: 4,
+    required: true,
+  },
+  curriculumVitae: {
     type: String,
     minLength: 4,
     required: true,
