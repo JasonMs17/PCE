@@ -4,7 +4,6 @@ interface IMentoring extends Document {
   name: string;
   email: string;
   whatsappNumber: string;
-  schedule: Date;
   university: string;
   faculty: string;
   major: string;
@@ -32,15 +31,6 @@ const mentoringSchema = new Schema({
     minLength: 4,
     required: true,
   },
-  curriculumVitae: {
-    type: String,
-    minLength: 4,
-    required: true,
-  },
-  schedule: {
-    type: Date,
-    required: true,
-  },
   university: {
     type: String,
     required: true,
@@ -52,6 +42,10 @@ const mentoringSchema = new Schema({
   major: {
     type: String,
     required: true,
+  },
+  cv: {
+    type: String,
+    required: true
   },
   mentor: {
     type: SchemaTypes.ObjectId,

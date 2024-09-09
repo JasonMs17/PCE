@@ -12,6 +12,14 @@ const sectorCategorySchema = new Schema({
     required: true,
     default: 10,
   },
+  theme: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: () => Date.now(),

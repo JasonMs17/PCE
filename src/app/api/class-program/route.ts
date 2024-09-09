@@ -5,9 +5,23 @@ import SectorCategory from "@/models/SectorCategory";
 import { SectorCategories } from "@/utils/constant";
 import rateLimit from "@/utils/rateLimit";
 import transporter from "@/utils/email";
+
 export async function POST(req: NextRequest) {
-  const data = await req.json();
-  const { name, email, whatsappNumber, university, faculty, major, sectorCategory } = data;
+  //const data = await req.json();
+
+  const formData = await req.text(); // Get the raw body as a string
+  const params = new URLSearchParams(formData); // Parse it as URL-encoded form data
+
+  // Extract form fields
+  const name = params.get('nama');
+  const email = params.get('email');
+  const whatsappNumber = params.get('no');
+  const university = params.get('univ');
+  const faculty = params.get('fakultas');
+  const major = params.get('jurusan');
+  const sectorCategory =[ params.get('sektor')];
+
+
 
   const rateLimitResult = await rateLimit(req);
 
@@ -16,8 +30,11 @@ export async function POST(req: NextRequest) {
   }
   const validCategories = SectorCategories.map((category) => category.name);
 
+  // return NextResponse.json(validCategories);
+
   const invalidCategories = Array.isArray(sectorCategory) ? sectorCategory.some((cat) => !validCategories.includes(cat)) : !validCategories.includes(sectorCategory);
 
+  
   if (invalidCategories) {
     return NextResponse.json({ status: 400, error: true, message: "Invalid sector category" });
   }
@@ -34,6 +51,8 @@ export async function POST(req: NextRequest) {
     const sectorCategoryData = await SectorCategory.find({ name: { $in: sectorCategory } }).select("_id");
     const sectorCategoryIds = sectorCategoryData.map((category) => category._id);
 
+    
+
     if (!sectorCategoryIds) {
       return NextResponse.json({ status: 400, error: true, message: "Sector category not found" });
     }
@@ -41,23 +60,23 @@ export async function POST(req: NextRequest) {
     const classProgram = new ClassProgram({ name, email, whatsappNumber, university, faculty, major, sectorCategory: sectorCategoryIds });
     const template = `<p> I love Alexandra Daddario and Chelsea Islan </p>`;
 
-    const mailOption = {
-      from: process.env.NODEMAIL,
-      to: email,
-      subject: "Class Program Registration",
-      html: template,
-    };
+    // const mailOption = {
+    //   from: process.env.NODEMAIL,
+    //   to: email,
+    //   subject: "Class Program Registration",
+    //   html: template,
+    // }; 
 
-    const send = await transporter.sendMail(mailOption);
+    // const send = await transporter.sendMail(mailOption);
 
-    console.log(send.messageId);
+    // console.log(send.messageId);
 
     await classProgram.save();
 
     return NextResponse.json({ status: 200, error: false, message: "Registration successful", classProgram });
   } catch (error) {
     console.error("Error: ", error);
-    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong, "+error});
   } finally {
     await disconnectFromDatabase();
   }

@@ -30,12 +30,12 @@ export async function GET() {
   try {
     await connectToDatabase();
 
-    const data = await SectorCategory.find().populate("sectorCategory");
+    const data = await SectorCategory.find().lean();
 
     return NextResponse.json({ status: 200, error: false, message: "Data found successfully", data });
   } catch (error) {
     console.log("error", error);
-    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong,"+error });
   } finally {
     await disconnectFromDatabase();
   }

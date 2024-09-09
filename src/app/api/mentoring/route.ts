@@ -8,11 +8,22 @@ import transporter from "@/utils/email";
 import rateLimit from "@/utils/rateLimit";
 import { NextResponse, NextRequest } from "next/server";
 
-export async function POST(request: NextRequest) {
-  const data = await request.json();
-  const { name, email, whatsappNumber, schedule, university, faculty, major, mentorName, sectorCategory, curriculumVitae } = data;
+export async function POST(req: NextRequest) {
+ 
+  const formData = await req.text(); // Get the raw body as a string
+  const params = new URLSearchParams(formData); // Parse it as URL-encoded form data
 
-  const rateLimitResult = await rateLimit(request);
+  const name = params.get("nama");
+  const email = params.get("email");
+  const whatsappNumber = params.get("no");
+  const university = params.get("univ");
+  const faculty = params.get("fakultas");
+  const major = params.get("jurusan");
+  const cv = params.get("cv");
+  const sectorCategory = params.get("sektor")
+  const mentorName = params.get("mentor");
+
+  const rateLimitResult = await rateLimit(req);
 
   if (!rateLimitResult.success) {
     return NextResponse.json({ status: 400, error: true, message: "Too many requests, please try again later.", rateLimitResult });
@@ -74,11 +85,10 @@ export async function POST(request: NextRequest) {
       name,
       email,
       whatsappNumber,
-      schedule,
       university,
       faculty,
       major,
-      curriculumVitae,
+      cv,
       mentor: mentorData._id,
       sectorCategory: sectorCategoryData._id,
     });

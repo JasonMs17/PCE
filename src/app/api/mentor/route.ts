@@ -52,20 +52,28 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(request : NextRequest) {
   try {
     await connectToDatabase();
 
-    const data = await Mentor.find().populate("sectorCategory");
+    const { searchParams } = new URL(request.url);
+    const sectorCategoryName = searchParams.get('sector');
 
-    if (!data) {
+    // const sectorCategories = await SectorCategory.find({ name: sectorCategoryName }).lean();
+    // const sectorCategoryIds = sectorCategories.map(sc => sc._id);
+
+    // const mentors = await Mentor.find({ sectorCategory: { $in: sectorCategoryIds } }).populate('sectorCategory').lean();
+
+    const mentors = await Mentor.find().populate('sectorCategory').lean();
+
+    if (!mentors) {
       return NextResponse.json({ status: 400, error: true, message: "Data is empty" });
     }
 
-    return NextResponse.json({ status: 200, error: false, message: "Data found", data });
+    return NextResponse.json({ status: 200, error: false, message: "Data found", mentors });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
+    return NextResponse.json({ status: 500, error: true, message: "Something went wrong,"+error });
   } finally {
     await disconnectFromDatabase();
   }

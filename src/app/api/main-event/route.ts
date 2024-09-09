@@ -3,8 +3,13 @@ import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import MainEvent from "@/models/MainEvent";
 
 export async function POST(req: NextRequest) {
-    const data = await req.json();
-    const { nama, email, universitas, fakultas } = data;
+    const formData = await req.text(); // Get the raw body as a string
+    const params = new URLSearchParams(formData); // Parse it as URL-encoded form data
+
+    const nama = params.get("nama");
+    const email = params.get("email");
+    const universitas = params.get("univ");
+    const fakultas = params.get("fakultas");
 
     try {
         await connectToDatabase();

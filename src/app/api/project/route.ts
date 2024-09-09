@@ -13,11 +13,11 @@ export async function POST(request: NextRequest) {
     const form = await request.formData();
     const nama = form.get("nama");
     const email = form.get("email");
-    const no_telp = form.get("no_telp");
-    const universitas = form.get("universitas");
+    const no_telp = form.get("no");
+    const universitas = form.get("univ");
     const fakultas = form.get("fakultas");
     const jurusan = form.get("jurusan");
-    const file = form.get("twibbonUrl") as File;
+    const file = form.get("attachment") as File;
 
     if (!file) {
       console.error("No file provided");
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         status: 400,
         error: true,
-        message: "Invalid file type",
+        message: "Invalid file type, file type "+file.type+" are not allowed",
       });
     }
 
