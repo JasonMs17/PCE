@@ -6,7 +6,7 @@ import rateLimit from "@/utils/rateLimit";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
-  const data = await request.json();
+  const data = await request.formData();
   const { name, email, quota, sectorCategory } = data;
 
   //rate limit to call this request

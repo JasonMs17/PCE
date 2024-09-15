@@ -3,6 +3,7 @@
 import React from 'react'
 import styles from './Selector.module.css'
 import { useSelectorContext } from './Selector-Context';
+import FloatingNotification from './Floating_Notification';
 import { useEffect, useState } from "react";
 
 
@@ -11,7 +12,6 @@ const Form = () => {
 
     const [sectors, setSectors] = useState([]);
     const [mentors, setMentors] = useState([]);
-
 
     useEffect(() => {
         const fetchSectors = async () => {
@@ -32,25 +32,81 @@ const Form = () => {
       }, []);
     
 
-    // useEffect(() => {
-    //     const fetchMentors = async () => {
-    //     try {
-    //         const response = await fetch("/api/mentor");
-    //         const result = await response.json();
-    //         setMentors(result.data);
-    //     } catch (error) {
-    //         console.error("Error fetching mentors:", error);
-    //     }
-    //     };
-
-    //     fetchMentors();
-    // }, []);
 
     const { selected, setSelected } = useSelectorContext();
 
+
+    const [isVisible, setIsVisible] = useState(false);
+    const [message, setMessage] = useState('');
+    const [type, setType] = useState('success');
+    const [loading, setLoading] = useState(false); 
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const form = e.target; // Get the form element that triggered the submit event
+        const formData = new FormData(form); // Gather form data
+        let apiEndpoint = "";
+        
+        // Determine which form is being submitted based on the 'selected' state
+        switch (selected) {
+            case 1:
+                apiEndpoint = "/api/class-program";
+                break;
+            case 2:
+                apiEndpoint = "/api/mentoring";
+                break;
+            case 3:
+                apiEndpoint = "/api/project";
+                break;
+            case 4:
+                apiEndpoint = "/api/main-event";
+                break;
+            default:
+                console.error("No valid form selected");
+                return;
+        }
+        
+        // Make a POST request to the appropriate API endpoint
+        setLoading(true);
+        try {
+            console.log("Sending to "+apiEndpoint,Array.from(formData.entries()));
+            const response = await fetch(apiEndpoint, {
+                method: "POST",
+                body: formData,
+            });
+    
+            if (response.ok) {
+                const result = await response.json();
+                console.log("Form submitted to "+apiEndpoint+" responded with:", result);
+                if(result['status'] == 200){
+                    // Handle success (e.g., show success message or redirect)
+                    setMessage(result['message']);
+                    setType('success');
+                }else{
+                    // Handle unsuccess
+                    setMessage(result['message']);
+                    setType('error');
+                }
+            } else {
+                setMessage(response.statusText);
+                setType('error');
+                // Handle failure (e.g., show error message)
+            }
+        } catch (error) {
+            console.error("Error during form submission:", error);
+            // Handle error (e.g., show error message)
+        }finally{
+            setIsVisible(true);
+            setLoading(false);
+        }
+    };
+    
+
+
     if (selected === 1) {
         return (
-            <form action="api/class-program" method="POST" className='flex flex-col md:w-[92.5%] w-full gap-2'>
+            <form action="api/class-program" onSubmit={handleSubmit} className='flex flex-col md:w-[92.5%] w-full gap-2'>
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
@@ -87,20 +143,35 @@ const Form = () => {
                 </div>
             </div>
                 </div>
-                <div className='h-[5%]'>
-                  <button type="submit" className='bg-white px-5 py-3 flex text-black justify-center items-center rounded-[70px] gap-2 font-semibold'>
+                <div className='h-[5%] flex'>
+                  <button type="submit" className='bg-white px-5 py-6 flex text-black justify-center items-center rounded-[70px] gap-2 font-semibold'>
                     Submit
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M2.99991 8L0.95166 1.34375C5.85131 2.76875 10.4717 5.01984 14.6137 8C10.4719 10.9801 5.8518 13.2312 0.95241 14.6562L2.99991 8ZM2.99991 8H8.62491" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </button>
+
+                  {/* Loading spinner */}
+                  {loading && (
+                        <div className="flex items-center h-full justify-center mt-2 p-5">
+                            <div className="w-10 h-10 mr-2 w-min-10 h-min-10 w-max-10 h-max-10 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+                            <h2>Sending, please wait...</h2>
+                        </div>
+                  )}
                 </div>
+                {/* Floating message box */}
+                <FloatingNotification
+                    message={message}
+                    type={type}
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                />
               </form>
         )
     }
     else if (selected === 2) {
         return (
-            <form action="api/mentoring" method="POST" className='flex flex-col md:w-[92.5%] w-full gap-2'>
+            <form action="api/mentoring" onSubmit={handleSubmit} className='flex flex-col md:w-[92.5%] w-full gap-2'>
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
@@ -142,34 +213,61 @@ const Form = () => {
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="mentor">Mentor</label>
                     <select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
-                        {/* {mentors.map((mentor) => (
+                        {mentors.map((mentor) => (
                             <option value={mentor.name}>{mentor.name} - sisa quota : {mentor.quota}</option>
-                        ))} */}
+                        ))}
                          <option value="Nama Mentor satu">Mentor satu - sisa quota : 20</option>
                          <option value="Nama Mentor dua">Mentor dua - sisa quota : 30</option>
                     </select>
                 </div>
             </div>
                 </div>
-                <div className='h-[5%]'>
-                  <button type="submit" className='bg-white px-5 py-3 flex text-black justify-center items-center rounded-[70px] gap-2 font-semibold'>
-                    Submit
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2.99991 8L0.95166 1.34375C5.85131 2.76875 10.4717 5.01984 14.6137 8C10.4719 10.9801 5.8518 13.2312 0.95241 14.6562L2.99991 8ZM2.99991 8H8.62491" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
+                <div className='h-[5%] flex'>
+                    <button type="submit" className='bg-white px-5 py-6 flex text-black justify-center items-center rounded-[70px] gap-2 font-semibold'>
+                        Submit
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.99991 8L0.95166 1.34375C5.85131 2.76875 10.4717 5.01984 14.6137 8C10.4719 10.9801 5.8518 13.2312 0.95241 14.6562L2.99991 8ZM2.99991 8H8.62491" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+
+                    {/* Loading spinner */}
+                    {loading && (
+                            <div className="flex items-center h-full justify-center mt-2 p-5">
+                                <div className="w-10 h-10 mr-2 w-min-10 h-min-10 w-max-10 h-max-10 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+                                <h2>Sending, please wait...</h2>
+                            </div>
+                    )}
                 </div>
+                {/* Floating message box */}
+                <FloatingNotification
+                    message={message}
+                    type={type}
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                />
               </form>
         )
     }
     else if (selected === 3) {
         return (
-            <form action="api/project" method="POST" encType="multipart/form-data" className='flex flex-col md:w-[92.5%] w-full gap-2'>
+            <form action="api/project" method="POST" onSubmit={handleSubmit} encType="multipart/form-data" className='flex flex-col md:w-[92.5%] w-full gap-2'>
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
-                    <label htmlFor="nama">Nama</label>
-                    <input className={styles.input} type="text" name="nama" id="nama" placeholder='Muhammad Sunarya' autoComplete='off' required />
+                    <label htmlFor="nama">Nama Tim</label>
+                    <input className={styles.input} type="text" name="namaTim" id="namaTim" placeholder='Nama Tim' autoComplete='off' required />
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <label htmlFor="nama">Nama Ketua</label>
+                    <input className={styles.input} type="text" name="namaKetua" id="namaKetua" placeholder='Muhammad Sunarya' autoComplete='off' required />
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <label htmlFor="nama">Nama Anggota 1</label>
+                    <input className={styles.input} type="text" name="nama1" id="nama1" placeholder='Muhammad Sunarya' autoComplete='off' required />
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <label htmlFor="nama">Nama Anggota 2</label>
+                    <input className={styles.input} type="text" name="nama2" id="nama2" placeholder='Muhammad Sunarya' autoComplete='off' />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="email">Email</label>
@@ -192,26 +290,53 @@ const Form = () => {
                     <input className={styles.input} type="text" name="jurusan" id="jurusan" placeholder='Biologi' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <label htmlFor="attachment">Twibbon</label>
-                    <input className={styles.input} type="file" name="attachment" id="attachment" required />
+                    <label htmlFor="sektor">Pilihan Sektor</label>
+                    <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
+                        {sectors.map((sector) => (
+                            <option value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
+                        ))}
+                    </select>
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <label htmlFor="jurusan">Link Drive Twibbon</label>
+                    <input className={styles.input} type="text" name="twibbonUrl" id="twibbon" placeholder='https://drive.google.com/...' autoComplete='off' required />
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <label htmlFor="attachment">Bukti Pembayaran</label>
+                    <input className={styles.input} type="file" name="pembayaran" id="pembayaran" required />
                 </div>
             </div>
                 </div>
-                <div className='h-[5%]'>
-                  <button type="submit" className='bg-white px-5 py-3 flex text-black justify-center items-center rounded-[70px] gap-2 font-semibold'>
-                    Submit
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2.99991 8L0.95166 1.34375C5.85131 2.76875 10.4717 5.01984 14.6137 8C10.4719 10.9801 5.8518 13.2312 0.95241 14.6562L2.99991 8ZM2.99991 8H8.62491" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
+                <div className='h-[5%] flex'>
+                    <button type="submit" className='bg-white px-5 py-6 flex text-black justify-center items-center rounded-[70px] gap-2 font-semibold'>
+                        Submit
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.99991 8L0.95166 1.34375C5.85131 2.76875 10.4717 5.01984 14.6137 8C10.4719 10.9801 5.8518 13.2312 0.95241 14.6562L2.99991 8ZM2.99991 8H8.62491" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+
+                    {/* Loading spinner */}
+                    {loading && (
+                            <div className="flex items-center h-full justify-center mt-2 p-5">
+                                <div className="w-10 h-10 mr-2 w-min-10 h-min-10 w-max-10 h-max-10 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+                                <h2>Sending, please wait...</h2>
+                            </div>
+                    )}
                 </div>
+                {/* Floating message box */}
+                <FloatingNotification
+                    message={message}
+                    type={type}
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                />
               </form>
         )
     }
     else if (selected === 4)
     {
         return (
-            <form action="api/main-event" method="POST" className='flex flex-col md:w-[92.5%] w-full gap-2'>
+            <form action="api/main-event" method="POST" onSubmit={handleSubmit} className='flex flex-col md:w-[92.5%] w-full gap-2'>
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                     <div className='flex flex-col gap-2'>
@@ -232,14 +357,29 @@ const Form = () => {
                     </div>
                 </div>
                 </div>
-                <div className='h-[5%]'>
-                  <button type="submit" className='bg-white px-5 py-3 flex text-black justify-center items-center rounded-[70px] gap-2 font-semibold'>
-                    Submit
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2.99991 8L0.95166 1.34375C5.85131 2.76875 10.4717 5.01984 14.6137 8C10.4719 10.9801 5.8518 13.2312 0.95241 14.6562L2.99991 8ZM2.99991 8H8.62491" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
+                <div className='h-[5%] flex'>
+                    <button type="submit" className='bg-white px-5 py-6 flex text-black justify-center items-center rounded-[70px] gap-2 font-semibold'>
+                        Submit
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.99991 8L0.95166 1.34375C5.85131 2.76875 10.4717 5.01984 14.6137 8C10.4719 10.9801 5.8518 13.2312 0.95241 14.6562L2.99991 8ZM2.99991 8H8.62491" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </button>
+
+                    {/* Loading spinner */}
+                    {loading && (
+                            <div className="flex items-center h-full justify-center mt-2 p-5">
+                                <div className="w-10 h-10 mr-2 w-min-10 h-min-10 w-max-10 h-max-10 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+                                <h2>Sending, please wait...</h2>
+                            </div>
+                    )}
                 </div>
+                {/* Floating message box */}
+                <FloatingNotification
+                    message={message}
+                    type={type}
+                    isVisible={isVisible}
+                    setIsVisible={setIsVisible}
+                />
               </form>
         )
     }

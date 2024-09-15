@@ -9,17 +9,16 @@ import transporter from "@/utils/email";
 export async function POST(req: NextRequest) {
   //const data = await req.json();
 
-  const formData = await req.text(); // Get the raw body as a string
-  const params = new URLSearchParams(formData); // Parse it as URL-encoded form data
+  const formData = await req.formData(); 
 
   // Extract form fields
-  const name = params.get('nama');
-  const email = params.get('email');
-  const whatsappNumber = params.get('no');
-  const university = params.get('univ');
-  const faculty = params.get('fakultas');
-  const major = params.get('jurusan');
-  const sectorCategory =[ params.get('sektor')];
+  const name = formData.get('nama');
+  const email = formData.get('email');
+  const whatsappNumber = formData.get('no');
+  const university = formData.get('univ');
+  const faculty = formData.get('fakultas');
+  const major = formData.get('jurusan');
+  const sectorCategory =[ formData.get('sektor')];
 
 
 
@@ -28,16 +27,12 @@ export async function POST(req: NextRequest) {
   if (!rateLimitResult.success) {
     return NextResponse.json({ status: 400, error: true, message: "Too many requests, please try again later.", rateLimitResult });
   }
-  const validCategories = SectorCategories.map((category) => category.name);
 
-  // return NextResponse.json(validCategories);
-
-  const invalidCategories = Array.isArray(sectorCategory) ? sectorCategory.some((cat) => !validCategories.includes(cat)) : !validCategories.includes(sectorCategory);
-
-  
-  if (invalidCategories) {
-    return NextResponse.json({ status: 400, error: true, message: "Invalid sector category" });
-  }
+  // const validCategories = SectorCategories.map((category) => category.name);
+  // const invalidCategories = Array.isArray(sectorCategory) ? sectorCategory.some((cat) => !validCategories.includes(cat)) : !validCategories.includes(sectorCategory);
+  // if (invalidCategories) {
+  //   return NextResponse.json({ status: 400, error: true, message: "Invalid sector category" });
+  // }
 
   try {
     await connectToDatabase();
@@ -54,9 +49,10 @@ export async function POST(req: NextRequest) {
     
 
     if (!sectorCategoryIds) {
-      return NextResponse.json({ status: 400, error: true, message: "Sector category not found" });
+      return NextResponse.json({ status: 400, error: true, message: "Sector category not found or invalid" });
     }
 
+    // return NextResponse.json({name, email, whatsappNumber, university, faculty, major});
     const classProgram = new ClassProgram({ name, email, whatsappNumber, university, faculty, major, sectorCategory: sectorCategoryIds });
     const template = `<p> I love Alexandra Daddario and Chelsea Islan </p>`;
 
@@ -73,7 +69,7 @@ export async function POST(req: NextRequest) {
 
     await classProgram.save();
 
-    return NextResponse.json({ status: 200, error: false, message: "Registration successful", classProgram });
+    return NextResponse.json({ status: 200, error: false, message: "Registration successful. Please check your Email.", classProgram });
   } catch (error) {
     console.error("Error: ", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong, "+error});

@@ -10,18 +10,17 @@ import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
  
-  const formData = await req.text(); // Get the raw body as a string
-  const params = new URLSearchParams(formData); // Parse it as URL-encoded form data
+  const formData = await req.formData(); 
 
-  const name = params.get("nama");
-  const email = params.get("email");
-  const whatsappNumber = params.get("no");
-  const university = params.get("univ");
-  const faculty = params.get("fakultas");
-  const major = params.get("jurusan");
-  const cv = params.get("cv");
-  const sectorCategory = params.get("sektor")
-  const mentorName = params.get("mentor");
+  const name = formData.get("nama");
+  const email = formData.get("email");
+  const whatsappNumber = formData.get("no");
+  const university = formData.get("univ");
+  const faculty = formData.get("fakultas");
+  const major = formData.get("jurusan");
+  const cv = formData.get("cv");
+  const sectorCategory = formData.get("sektor")
+  const mentorName = formData.get("mentor");
 
   const rateLimitResult = await rateLimit(req);
 
@@ -29,21 +28,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ status: 400, error: true, message: "Too many requests, please try again later.", rateLimitResult });
   }
 
-  const validCategory = SectorCategories.some((category) => {
-    return category.name === sectorCategory;
-  });
+  // const validCategory = SectorCategories.some((category) => {
+  //   return category.name === sectorCategory;
+  // });
 
-  if (!validCategory) {
-    return NextResponse.json({ status: 400, error: true, message: "Invalid sector category" });
-  }
+  // if (!validCategory) {
+  //   return NextResponse.json({ status: 400, error: true, message: "Invalid sector category" });
+  // }
 
-  const validMentor = MentorNames.some((mentor) => {
-    return mentor.name === mentorName;
-  });
+  // const validMentor = MentorNames.some((mentor) => {
+  //   return mentor.name === mentorName;
+  // });
 
-  if (!validMentor) {
-    return NextResponse.json({ status: 400, error: true, message: "Invalid mentor name" });
-  }
+  // if (!validMentor) {
+  //   return NextResponse.json({ status: 400, error: true, message: "Invalid mentor name" });
+  // }
 
   try {
     await connectToDatabase();

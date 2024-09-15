@@ -3,20 +3,19 @@ import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import MainEvent from "@/models/MainEvent";
 
 export async function POST(req: NextRequest) {
-    const formData = await req.text(); // Get the raw body as a string
-    const params = new URLSearchParams(formData); // Parse it as URL-encoded form data
+    const formData = await req.formData(); 
 
-    const nama = params.get("nama");
-    const email = params.get("email");
-    const universitas = params.get("univ");
-    const fakultas = params.get("fakultas");
+    const nama = formData.get("nama");
+    const email = formData.get("email");
+    const universitas = formData.get("univ");
+    const fakultas = formData.get("fakultas");
 
     try {
         await connectToDatabase();
 
         const main_event = new MainEvent({ nama, email, universitas, fakultas });
         await main_event.save();
-        return NextResponse.json({ status: 200, error: false, message: "Data stored successfully", main_event });
+        return NextResponse.json({ status: 200, error: false, message: "You have successfully registered, kindly check your email for invitation", main_event });
     } catch (error) {
         console.log("error: ", error);
 

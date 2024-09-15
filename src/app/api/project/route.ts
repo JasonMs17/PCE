@@ -4,22 +4,29 @@ import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import axios from "axios";
 import FormData from "form-data";
 import { Buffer } from "buffer"; 
+import SectorCategory from "@/models/SectorCategory";
 
 const MAX_FILE_SIZE_MB = 1;
 const ALLOWED_EXTENSIONS = ["image/png", "image/jpeg", "image/jpg"];
 
 export async function POST(request: NextRequest) {
   try {
-    const form = await request.formData();
-    const nama = form.get("nama");
-    const email = form.get("email");
-    const no_telp = form.get("no");
-    const universitas = form.get("univ");
-    const fakultas = form.get("fakultas");
-    const jurusan = form.get("jurusan");
-    const file = form.get("attachment") as File;
+    const formData = await request.formData();
 
-    if (!file) {
+    const namaTim = formData.get("namaTim"); 
+    const namaKetua = formData.get("namaKetua");
+    const nama1 = formData.get("nama1");
+    const nama2 = formData.get("nama2");
+    const email = formData.get("email");
+    const no_telp = formData.get("no");
+    const universitas = formData.get("univ");
+    const fakultas = formData.get("fakultas");
+    const jurusan = formData.get("jurusan");
+    const sectorCategory =[ formData.get('sektor')];
+    const twibbonUrl = formData.get("twibbonUrl");
+    const pembayaranFile = formData.get("pembayaran") as File;
+
+    if (!pembayaranFile) {
       console.error("No file provided");
       return NextResponse.json({
         status: 400,
@@ -29,16 +36,16 @@ export async function POST(request: NextRequest) {
     }
 
     // Validasi
-    if (!ALLOWED_EXTENSIONS.includes(file.type)) {
+    if (!ALLOWED_EXTENSIONS.includes(pembayaranFile.type)) {
       console.error("Invalid file type");
       return NextResponse.json({
         status: 400,
         error: true,
-        message: "Invalid file type, file type "+file.type+" are not allowed",
+        message: "Invalid file type, file type "+pembayaranFile.type+" are not allowed",
       });
     }
 
-    const fileSizeMB = file.size / (1024 * 1024);
+    const fileSizeMB = pembayaranFile.size / (1024 * 1024);
     if (fileSizeMB > MAX_FILE_SIZE_MB) {
       console.error("File size exceeds the limit");
       return NextResponse.json({
@@ -47,37 +54,45 @@ export async function POST(request: NextRequest) {
         message: `File size exceeds ${MAX_FILE_SIZE_MB} MB limit.`,
       });
     }
-
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const formData = new FormData();
-    formData.append("image", buffer, file.name);
-
+    
+    await connectToDatabase();
+    
+    const sectorCategoryData = await SectorCategory.find({ name: { $in: sectorCategory } }).select("_id");
+    const sectorCategoryIds = sectorCategoryData.map((category) => category._id);
+    
+    const buffer = Buffer.from(await pembayaranFile.arrayBuffer());
+    const form = new FormData();
+    form.append("image", buffer, pembayaranFile.name);
+    
     const imgbbUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.IMGBB_API_KEY}`;
-
+    
     const imgdbResponse = await axios.post(
       imgbbUrl,
-      formData,
+      form,
       {
         headers: {
-          ...formData.getHeaders(),
+          ...form.getHeaders(),
         },
       }
     );
 
     console.log("Image Upload Response:", imgdbResponse.data);
 
-    const twibbonUrl = imgdbResponse.data.data.url;
-
-    await connectToDatabase();
-
+    const pembayaran = imgdbResponse.data.data.url;
+    
     const newProject = new Project({
-      nama,
+      namaTim,
+      namaKetua,
+      nama1,
+      nama2,
       email,
       no_telp,
       universitas,
       fakultas,
       jurusan,
+      sectorCategoryIds,
       twibbonUrl,
+      pembayaran,
     });
 
     await newProject.save();
@@ -85,12 +100,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       status: 200,
       error: false,
-      message: "Project registered successfully",
+      message: "Project registered successfully, please kindly check your email",
       newProject
     });
   } catch (error: any) {
     console.error("Error during processing:", error.message);
-    let errorMessage = "Something went wrong";
+    let errorMessage = "Something went wrong, "+error.message;
 
     if (error.response && error.response.data) {
       // cek error imgbb
