@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
   // Extract form fields
   const name = formData.get('nama');
-  const email = formData.get('email');
+  const email = formData.get('email').toLowerCase();
   const whatsappNumber = formData.get('no');
   const university = formData.get('univ');
   const faculty = formData.get('fakultas');
@@ -28,6 +28,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ status: 400, error: true, message: "Too many requests, please try again later.", rateLimitResult });
   }
 
+
+  //ngambil sector dan mentor full dari DB saja
   // const validCategories = SectorCategories.map((category) => category.name);
   // const invalidCategories = Array.isArray(sectorCategory) ? sectorCategory.some((cat) => !validCategories.includes(cat)) : !validCategories.includes(sectorCategory);
   // if (invalidCategories) {
