@@ -4,6 +4,8 @@ import { sign } from 'jsonwebtoken';
 import { serialize } from 'cookie';
 import User from "@/models/User";
 
+import { NextResponse, NextRequest } from "next/server";
+
 const secret = process.env.JWT_SECRET || "";
 const iat = Math.floor(Date.now() / 1000);
 const expired = iat + 3600;

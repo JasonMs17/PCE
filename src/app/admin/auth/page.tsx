@@ -8,10 +8,13 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); 
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+
+    setLoading(true);
 
     try {
       const response = await fetch('/api/auth', {
@@ -24,12 +27,17 @@ const LoginPage = () => {
 
       if (response.ok) {
         setError('');
+        console.log("login successfull ", response); //debug
         router.push('/admin/event-attendees');
       } else {
+        console.log("error login", data);
         setError(data.message);
       }
     } catch (error) {
-      setError('Something went wrong');
+      console.log("error login", error); //debug
+      setError('Something went wrong, '+error.message);
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -70,6 +78,13 @@ const LoginPage = () => {
             <div className='flex flex-col'>
                 <button className='bg-white p-3 text-black text-center rounded-[20px] font-medium text-xl md:text-2xl' type="submit">Masuk</button>
             </div>
+            {/* Loading spinner */}
+            {loading && (
+                  <div className="flex items-center h-full justify-center p-5">
+                      <div className="w-10 h-10 mr-2 w-min-10 h-min-2 w-max-10 h-max-10 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
+                      <h2 className="text-white">Log you in, please wait...</h2>
+                  </div>
+            )}
           </form>
         </div>
       </div>

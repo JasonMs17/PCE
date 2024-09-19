@@ -21,6 +21,9 @@ const Form = () => {
             const result2 = await response2.json();
             const result1 = await response1.json();
     
+            console.log("mentor : "+response2);
+
+
             setSectors(result1.data);
             setMentors(result2.data);
           } catch (error) {
@@ -41,10 +44,10 @@ const Form = () => {
     const [type, setType] = useState('success');
     const [loading, setLoading] = useState(false); 
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     
-        const form = e.target; // Get the form element that triggered the submit event
+        const form = e.target as HTMLFormElement; // Get the form element that triggered the submit event
         const formData = new FormData(form); // Gather form data
         let apiEndpoint = "";
         
@@ -67,7 +70,7 @@ const Form = () => {
                 return;
         }
         
-        // Make a POST request to the appropriate API endpoint
+
         setLoading(true);
         try {
             console.log("Sending to "+apiEndpoint,Array.from(formData.entries()));
@@ -80,25 +83,31 @@ const Form = () => {
                 const result = await response.json();
                 console.log("Form submitted to "+apiEndpoint+" responded with:", result);
                 if(result['status'] == 200){
-                    // Handle success (e.g., show success message or redirect)
                     setMessage(result['message']);
                     setType('success');
+
+                    form.reset();
+
+                    if(apiEndpoint == "/api/class-program"){
+                        const button = document.querySelector('[aria-description="2"]');
+                        if(button) {
+                            button.click();
+                            console.log();
+                        }
+                    }
                 }else{
-                    // Handle unsuccess
                     setMessage(result['message']);
                     setType('error');
                 }
             } else {
                 setMessage(response.statusText);
                 setType('error');
-                // Handle failure (e.g., show error message)
             }
         } catch (error) {
             console.error("Error during form submission:", error);
-            // Handle error (e.g., show error message)
         }finally{
-            setIsVisible(true);
-            setLoading(false);
+            setIsVisible(true); //munculkan floating notification
+            setLoading(false); //matikan animasi loading
         }
     };
     
@@ -254,19 +263,19 @@ const Form = () => {
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
-                    <label htmlFor="nama">Nama Tim</label>
+                    <label htmlFor="namaTim">Nama Tim</label>
                     <input className={styles.input} type="text" name="namaTim" id="namaTim" placeholder='Nama Tim' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <label htmlFor="nama">Nama Ketua</label>
+                    <label htmlFor="namaKetua">Nama Ketua</label>
                     <input className={styles.input} type="text" name="namaKetua" id="namaKetua" placeholder='Muhammad Sunarya' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <label htmlFor="nama">Nama Anggota 1</label>
+                    <label htmlFor="nama1">Nama Anggota 1</label>
                     <input className={styles.input} type="text" name="nama1" id="nama1" placeholder='Muhammad Sunarya' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <label htmlFor="nama">Nama Anggota 2</label>
+                    <label htmlFor="nama2">Nama Anggota 2</label>
                     <input className={styles.input} type="text" name="nama2" id="nama2" placeholder='Muhammad Sunarya' autoComplete='off' />
                 </div>
                 <div className='flex flex-col gap-2'>
@@ -298,7 +307,7 @@ const Form = () => {
                     </select>
                 </div>
                 <div className='flex flex-col gap-2'>
-                    <label htmlFor="jurusan">Link Drive Twibbon</label>
+                    <label htmlFor="twibbon">Link Drive Twibbon</label>
                     <input className={styles.input} type="text" name="twibbonUrl" id="twibbon" placeholder='https://drive.google.com/...' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>

@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
 
     console.log("Image Upload Response:", imgdbResponse.data);
 
-    const pembayaran = imgdbResponse.data.data.url;
+    const pembayaranUrl = imgdbResponse.data.data.url;
     
     const newProject = new Project({
       namaTim,
@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
       jurusan,
       sectorCategoryIds,
       twibbonUrl,
-      pembayaran,
+      pembayaranUrl,
     });
 
     await newProject.save();
