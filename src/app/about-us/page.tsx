@@ -156,7 +156,7 @@ const AboutUs: React.FC = () => {
         </h2>
         <div className='flex flex-col md:flex-row justify-center items-center gap-8'>
           {/* Value 1 */}
-          <div className='relative bg-white dark:bg-white-800 shadow-lg p-8 w-[288px] h-[288px] rounded-[20px] flex items-center justify-center z-1'>
+          <div className='relative bg-white dark:bg-gray-800 shadow-lg p-8 w-[288px] h-[288px] rounded-[20px] flex items-center justify-center z-1'>
             <div className='absolute top-0 left-0 bg-blue-700 dark:bg-blue-800 text-white  dark:text-gray-200 z-1 flex justify-center items-center w-[200px] h-[50px] rounded-[20px_0px_80px_0]'>
               <h2 className='text-1xl font-bold'>Empowering Career</h2>
             </div>
@@ -167,7 +167,7 @@ const AboutUs: React.FC = () => {
           </div>
 
           {/* Value 2 */}
-          <div className='relative bg-white dark:bg-white-800 shadow-lg p-8 w-[288px] h-[288px] rounded-[20px] flex items-center justify-center z-1'>
+          <div className='relative bg-white dark:bg-gray-800 shadow-lg p-8 w-[288px] h-[288px] rounded-[20px] flex items-center justify-center z-1'>
             <div className='absolute top-0 left-0 bg-blue-700 dark:bg-blue-800 text-white  dark:text-gray-200 z-1 flex justify-center items-center w-[200px] h-[50px] rounded-[20px_0px_80px_0]'>
               <h2 className='text-1xl font-bold'>Equal Opportunities</h2>
             </div>
@@ -177,7 +177,7 @@ const AboutUs: React.FC = () => {
           </div>
 
           {/* Value 3 */}
-          <div className='relative bg-white dark:bg-white-800 shadow-lg p-8 w-[288px] h-[288px] rounded-[20px] flex items-center justify-center z-1'>
+          <div className='relative bg-white dark:bg-gray-800 shadow-lg p-8 w-[288px] h-[288px] rounded-[20px] flex items-center justify-center z-1'>
             <div className='absolute top-0 left-0 bg-blue-700 dark:bg-blue-800 text-white dark:text-gray-200 z-1 flex justify-center items-center w-[200px] h-[50px] rounded-[20px_0px_80px_0]'>
               <h2 className='text-1xl font-bold'>Platform Networking</h2>
             </div>

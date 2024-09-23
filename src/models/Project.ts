@@ -10,7 +10,7 @@ interface IProject extends Document {
   universitas: string;
   fakultas: string;
   jurusan: string;
-  sectorCategory: Schema.Types.ObjectId[]; //new
+  sectorCategory: string; //new
   twibbonUrl: string;
   pembayaranUrl: string; //new 
   createdAt: Date;
@@ -27,7 +27,7 @@ const projectSchema = new Schema<IProject>({
   universitas: { type: String, required: true },
   fakultas: { type: String, required: true },
   jurusan: { type: String, required: true },
-  sectorCategory: [{type: SchemaTypes.ObjectId,ref: "SectorCategory",required: true,},],
+  sectorCategory: {type: String, required: true},
   twibbonUrl: { type: String, required: true},
   pembayaranUrl: { type: String, required: true },
   createdAt: {

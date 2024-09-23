@@ -43,7 +43,7 @@ const ClassTable = () => {
                             <td className={`${styles.column}`}>{program.university}</td>
                             <td className={`${styles.column}`}>{program.faculty}</td>
                             <td className={`${styles.column}`}>{program.major}</td>
-                            <td className={`${styles.column}`}>{program.sectorCategory.join(', ')}</td>
+                            <td className={`${styles.column}`}>{program.sectorCategory.map(item => item.name.trim()).join(', ')}</td>
                         </tr>
                     ))}
                 </tbody>

@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     const universitas = formData.get("univ");
     const fakultas = formData.get("fakultas");
     const jurusan = formData.get("jurusan");
-    const sectorCategory =[ formData.get('sektor')];
+    const sectorCategory =formData.get('sektor');
     const twibbonUrl = formData.get("twibbonUrl");
     const pembayaranFile = formData.get("pembayaran") as File;
 
@@ -57,9 +57,6 @@ export async function POST(request: NextRequest) {
     
     await connectToDatabase();
     
-    const sectorCategoryData = await SectorCategory.find({ name: { $in: sectorCategory } }).select("_id");
-    const sectorCategoryIds = sectorCategoryData.map((category) => category._id);
-    
     const buffer = Buffer.from(await pembayaranFile.arrayBuffer());
     const form = new FormData();
     form.append("image", buffer, pembayaranFile.name);
@@ -90,7 +87,7 @@ export async function POST(request: NextRequest) {
       universitas,
       fakultas,
       jurusan,
-      sectorCategoryIds,
+      sectorCategory,
       twibbonUrl,
       pembayaranUrl,
     });

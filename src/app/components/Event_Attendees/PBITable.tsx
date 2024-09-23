@@ -12,6 +12,7 @@ const PBITable = () => {
             const result = await response.json();
             if (result.status === 200) {
                 setProjects(result.data);
+                console.log(result.data);
             }
         };
 
