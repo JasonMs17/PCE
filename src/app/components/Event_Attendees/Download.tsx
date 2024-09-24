@@ -51,7 +51,7 @@ const Download = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.column}>
+      <div className={styles.download_selection}>
         <select
           value={selectedOption}
           onChange={(e) => setSelectedOption(e.target.value)}
@@ -63,7 +63,7 @@ const Download = () => {
           <option value="mainEvent">Main Event</option>
         </select>
       </div>
-      <div className={styles.column}>
+      <div className={styles.download_selection}>
         <button
           className={`${styles.download_bg} md:px-5 md:py-2 p-1 rounded-[20em] flex gap-3 md:text-2xl text-m justify-center items-center text-white`}
           onClick={handleDownload}

@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     const universitas = formData.get("univ");
     const fakultas = formData.get("fakultas");
     const jurusan = formData.get("jurusan");
-    const sectorCategory =formData.get('sektor');
+    const sectorCategory =formData.get("sektor");
     const twibbonUrl = formData.get("twibbonUrl");
     const pembayaranFile = formData.get("pembayaran") as File;
 
@@ -141,6 +141,48 @@ export async function GET(request: NextRequest) {
     });
   } catch (error) {
     console.error("Error during GET request:", error);
+    return NextResponse.json({
+      status: 500,
+      error: true,
+      message: "Something went wrong",
+    });
+  } finally {
+    await disconnectFromDatabase();
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({
+        status: 400,
+        error: true,
+        message: "Data ID is required",
+      });
+    }
+
+    await connectToDatabase();
+
+    const deletedData = await Project.findByIdAndDelete(id);
+
+    if (!deletedData) {
+      return NextResponse.json({
+        status: 404,
+        error: true,
+        message: "Data not found",
+      });
+    }
+
+    return NextResponse.json({
+      status: 200,
+      error: false,
+      message: "Data deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error during DELETE request:", error);
     return NextResponse.json({
       status: 500,
       error: true,
