@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     const namaKetua = formData.get("namaKetua");
     const nama1 = formData.get("nama1");
     const nama2 = formData.get("nama2");
-    const email = formData.get("email");
+    const email = formData.get("email").toLowerCase();
     const no_telp = formData.get("no");
     const universitas = formData.get("univ");
     const fakultas = formData.get("fakultas");

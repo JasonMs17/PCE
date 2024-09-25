@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
   const formData = await req.formData(); 
 
   const name = formData.get("nama");
-  const email = formData.get("email");
+  const email = formData.get("email").toLowerCase();
   const whatsappNumber = formData.get("no");
   const university = formData.get("univ");
   const faculty = formData.get("fakultas");
@@ -92,18 +92,18 @@ export async function POST(req: NextRequest) {
       sectorCategory: sectorCategoryData._id,
     });
 
-    // const template = "<p> Hello my darkest side do not forget to take a bath </p>";
+    const template = "<p> Hello my darkest side do not forget to take a bath </p>";
 
-    // const mailOption = {
-    //   from: process.env.NODEMAIL,
-    //   to: email,
-    //   subject: "Mentoring 1 on 1 Registration",
-    //   html: template,
-    // };
+    const mailOption = {
+      from: process.env.NODEMAIL,
+      to: email,
+      subject: "Mentoring 1 on 1 Registration",
+      html: template,
+    };
 
-    // const send = await transporter.sendMail(mailOption);
+    const send = await transporter.sendMail(mailOption);
 
-    // console.log(send.messageId);
+    console.log(send.messageId);
 
     const data = await newMentoring.save();
 

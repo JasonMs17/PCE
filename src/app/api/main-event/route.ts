@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
     const formData = await req.formData(); 
 
     const nama = formData.get("nama");
-    const email = formData.get("email");
+    const email = formData.get("email").toLowerCase();
     const universitas = formData.get("univ");
     const fakultas = formData.get("fakultas");
 
