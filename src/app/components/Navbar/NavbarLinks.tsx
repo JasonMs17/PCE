@@ -4,36 +4,31 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const NavbarLinks = () => {
-    const [pos, setPos] = useState('menu');
-  
-    useEffect(() => {
-      const activePage = window.location.pathname;
-      
-      document.querySelectorAll(`.${styles.element}`).forEach((link) => {
-        const href = (link as HTMLAnchorElement).getAttribute('href');
-        if (href === activePage) {
-          link.classList.add(styles.active);
-        }
-      });
-    }, []);
-    
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-      document.querySelectorAll(`.${styles.element}`).forEach((link) => {
-        link.classList.remove(styles.active);
-      });
-      event.currentTarget.classList.add(styles.active);
-    };
+  const pathname = usePathname();
+  const [dropdownRegist, setDropdownRegist] = useState(false);
 
-    const pathname = usePathname()
-    const [dropdownRegist, setDropdownRegist] = useState(false)
-
-    const handleDropdownRegist = (event: React.MouseEvent<HTMLElement>) => {
-      document.querySelectorAll(`.${styles.element}`).forEach((link) => {
+  useEffect(() => {
+    document.querySelectorAll(`.${styles.element}`).forEach((link) => {
+    const href = (link as HTMLAnchorElement).getAttribute('href');
+    if (href === pathname) {
+        link.classList.add(styles.active);
+    } else {
         link.classList.remove(styles.active);
-        });
-      event.currentTarget.classList.add(styles.active);
-      setDropdownRegist(!dropdownRegist);
     }
+    });
+  }, [pathname]);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    document.querySelectorAll(`.${styles.element}`).forEach((link) => {
+    link.classList.remove(styles.active);
+    });
+    event.currentTarget.classList.add(styles.active);
+  };
+
+  const handleDropdownRegist = (event: React.MouseEvent<HTMLElement>) => {
+    handleClick;
+    setDropdownRegist(!dropdownRegist);
+  };
 
     return (
       

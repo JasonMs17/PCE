@@ -21,11 +21,12 @@ const Form = () => {
             const result2 = await response2.json();
             const result1 = await response1.json();
     
-            console.log("mentor : "+response2);
 
 
-            setSectors(result1.data);
-            setMentors(result2.data);
+            await setSectors(result1.data);
+            await setMentors(result2.mentors);
+            console.log("DATA MENTOR : ", result2);
+            console.log("DATA SEKTOR : ", result1);
           } catch (error) {
             console.error("Error fetching data:", error);
           }
@@ -225,8 +226,6 @@ const Form = () => {
                         {mentors.map((mentor) => (
                             <option value={mentor.name}>{mentor.name} - sisa quota : {mentor.quota}</option>
                         ))}
-                         <option value="Nama Mentor satu">Mentor satu - sisa quota : 20</option>
-                         <option value="Nama Mentor dua">Mentor dua - sisa quota : 30</option>
                     </select>
                 </div>
             </div>
@@ -301,8 +300,8 @@ const Form = () => {
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
-                        {sectors.map((sector) => (
-                            <option value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
+                        {["Project Ideation", "Marketing Campaign"].map((sector) => (
+                            <option value={sector}>{sector}</option>
                         ))}
                     </select>
                 </div>

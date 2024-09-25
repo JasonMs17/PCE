@@ -4,7 +4,7 @@ import Image from "next/image"; // Jika Anda menggunakan Next.js
 const PartnersSection = () => {
   // Array untuk menyimpan path logo partner
   const partnerLogos = [
-    "images/sponsor/image 217.svg"
+    "/images/sponsor/PTKAI.png"
   ];
 
   // Array untuk menyimpan path logo media partner

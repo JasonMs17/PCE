@@ -9,17 +9,17 @@ const TimelineSection = () => {
         <div className={`flex flex-col gap-10`}>
             <div className={`relative`}>
                 <div className='absolute hidden md:flex flex-col h-full py-12 justify-between top-0 bottom-0 left-0 right-0'>
-                    <div className="w-full h-1/6 border-t-4 border-dashed border-black dark:border-white"></div>
+                    <div className="w-full h-[15%] border-b-4 border-dashed border-black dark:border-white"></div>
                     <div className="w-full h-1/6 relative">
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-[72%] md:w-[70%] border-t-4 border-dashed border-black dark:border-white"></div>
+                            <div className="w-[72%] md:w-[70%] md:h-0 lg:h-12 xl:h-4 border-t-4 border-dashed border-black dark:border-white"></div>
                         </div>
                     </div>
-                    <div className="w-full h-1/6 border-b-4 border-dashed border-black dark:border-white"></div>
+                    <div className="w-full h-[14%] lg:h-[17.5%] xl:h-[10%] border-t-4 border-dashed border-black dark:border-white"></div>
                 </div>
                 <div className='absolute hidden md:flex flex-row h-full justify-between top-0 bottom-0 left-0 right-0'>
-                    <div className={`self-end h-1/2 ${styles.w_custom} border-r-4 border-dashed border-black dark:border-white`}></div>
-                    <div className={`h-1/2 ${styles.w_custom} border-l-4 border-dashed border-black dark:border-white`}></div>
+                    <div className={`self-end md:h-1/2 lg:h-[55%] xl:h-1/2 ${styles.w_custom} border-r-4 border-dashed border-black dark:border-white`}></div>
+                    <div className={`md:h-1/2 lg:h-[45%] xl:h-1/2 ${styles.w_custom} border-l-4 border-dashed border-black dark:border-white`}></div>
                 </div>
                 <div className='absolute hidden md:block top-full -bottom-1/2 left-3/4 right-0'>
                     <div className={`h-1/2 ${styles.m_custom} border-r-4 border-b-4 rounded-br-[25px] border-dashed border-black dark:border-white`}></div>
@@ -28,10 +28,10 @@ const TimelineSection = () => {
                     <div className={`${styles.h_custom} m-1/2`}></div>
                     <div className={`h-1/2 m-1/2 lg:h-[40%] md:h-[30%] border-l-4 border-t-4 rounded-tl-[25px] border-dashed border-black dark:border-white`}></div>
                 </div>
-                <div className='absolute md:hidden md:block top-0 -bottom-32 left-0 right-1/2 border-r-4 border-dashed border-black dark:border-white'>
+                <div className='absolute md:hidden top-0 -bottom-32 left-0 right-1/2 border-r-4 border-dashed border-black dark:border-white'>
                 </div>
                 <div className={`grid grid-cols-1 md:grid-cols-3 grid-flow-row gap-16 w-full relative`}>
-                    <div className={`py-5 px-20 text-xl text-white text-center rounded-md ${styles.bg_blue}`}>
+                    <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md ${styles.bg_blue}`}>
                         <p className={`font-bold mb-2`}>
                             12 Oktober 2024
                         </p>
@@ -39,7 +39,7 @@ const TimelineSection = () => {
                             Project Based Internship (onboarding)
                         </p>
                     </div>
-                    <div className={`py-5 px-20 text-xl text-white text-center rounded-md  ${styles.bg_yellow}`}>
+                    <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md  ${styles.bg_yellow}`}>
                         <p className={`font-bold mb-2`}>
                             19 Oktober 2024
                         </p>
@@ -47,16 +47,16 @@ const TimelineSection = () => {
                             Class Program 1
                         </p>
                     </div>
-                    <div className={`py-5 px-20 text-xl text-white text-center rounded-md  ${styles.bg_green}`}>
+                    <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md  ${styles.bg_green}`}>
                         <p className={`font-bold mb-2`}>
-                            20 - 25 Oktober
+                            20 - 25 Oktober 2024
 
                         </p>
                         <p>
                             Mentoring 1
                         </p>
                     </div>
-                    <div className={`py-5 px-20 text-xl text-white text-center rounded-md  ${styles.bg_blue}`}>
+                    <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md  ${styles.bg_blue}`}>
                         <p className={`font-bold mb-2`}>
                             26 Oktober 2024
                         </p>
@@ -64,7 +64,7 @@ const TimelineSection = () => {
                             Class Program 2
                         </p>
                     </div>
-                    <div className={`py-5 px-20 text-xl text-white text-center rounded-md  ${styles.bg_green}`}>
+                    <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md  ${styles.bg_green}`}>
                         <p className={`font-bold mb-2`}>
                             27 Oktober - 1 November 2024
                         </p>
@@ -72,7 +72,7 @@ const TimelineSection = () => {
                             Mentoring 2
                         </p>
                     </div>
-                    <div className={`py-5 px-20 text-xl text-white text-center rounded-md  ${styles.bg_yellow}`}>
+                    <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md  ${styles.bg_yellow}`}>
                         <p className={`font-bold mb-2`}>
                             2 November 2024
                         </p>
