@@ -13,6 +13,7 @@ interface IProject extends Document {
   sectorCategory: string; //new
   twibbonUrl: string;
   pembayaranUrl: string; //new 
+  isConfirmed: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -30,6 +31,7 @@ const projectSchema = new Schema<IProject>({
   sectorCategory: {type: String, required: true},
   twibbonUrl: { type: String, required: true},
   pembayaranUrl: { type: String, required: true },
+  isConfirmed: { type: Boolean,required: true},
   createdAt: {
     type: Date,
     default: () => Date.now(),

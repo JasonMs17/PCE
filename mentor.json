@@ -1,0 +1,168 @@
+[
+
+    {
+        "name": "Rashifa Nindya Putri",
+        "email": "1",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b8"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Anza Zahya Qeysha",
+        "email": "2",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b8"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Kevin Faza Dermawan",
+        "email": "3",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b8"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Georgius Benny",
+        "email": "4",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b8"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Tiur Margaretha Malau",
+        "email": "5",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b8"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+
+    {
+        "name": "Ari Firmansyah",
+        "email": "6",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b7"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Ragil Muhammad Ridho",
+        "email": "7",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b7"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+
+    {
+        "name": "Arum Kusuma Wardhani",
+        "email": "8",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b4"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Devani Olivia Winardi",
+        "email": "9",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b4"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Farhan Aidhil Suhartono",
+        "email": "10",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b4"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Noah Permana",
+        "email": "11",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b4"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+
+    {
+        "name": "Mu'arrif Dafa",
+        "email": "12",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b9"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Roja Fadhlur Rahman",
+        "email": "13",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b9"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+
+    {
+        "name": "Agis Maulana",
+        "email": "14",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4ba"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Nisa Nurrofiah",
+        "email": "15",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4ba"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Rifki Zainul Haq",
+        "email": "16",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4ba"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Arfan Farokhi",
+        "email": "17",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4ba"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+
+    {
+        "name": "Seisha Putri Naomy ",
+        "email": "18",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b5"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Adibah Utami Yasmin",
+        "email": "19",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b5"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    },
+    {
+        "name": "Fahmi Nur Alim",
+        "email": "20",
+        "sectorCategory": {"$oid": "66db2a9539feaa847e49c4b5"},
+        "quota": 3,
+        "createdAt": {"$date": "2024-09-26T12:00:00Z"},
+        "updatedAt": {"$date": "2024-09-26T12:00:00Z"}
+    }
+]

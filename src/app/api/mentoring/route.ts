@@ -1,3 +1,4 @@
+import { NextResponse, NextRequest } from "next/server";
 import ClassProgram from "@/models/ClassPrograms";
 import Mentor from "@/models/Mentor";
 import Mentoring from "@/models/Mentoring";
@@ -6,7 +7,7 @@ import { MentorNames, SectorCategories } from "@/utils/constant";
 import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import transporter from "@/utils/email";
 import rateLimit from "@/utils/rateLimit";
-import { NextResponse, NextRequest } from "next/server";
+import EmailMentoring from "@/app/components/email/mentoring";
 
 export async function POST(req: NextRequest) {
  
@@ -27,22 +28,6 @@ export async function POST(req: NextRequest) {
   if (!rateLimitResult.success) {
     return NextResponse.json({ status: 400, error: true, message: "Too many requests, please try again later.", rateLimitResult });
   }
-
-  // const validCategory = SectorCategories.some((category) => {
-  //   return category.name === sectorCategory;
-  // });
-
-  // if (!validCategory) {
-  //   return NextResponse.json({ status: 400, error: true, message: "Invalid sector category" });
-  // }
-
-  // const validMentor = MentorNames.some((mentor) => {
-  //   return mentor.name === mentorName;
-  // });
-
-  // if (!validMentor) {
-  //   return NextResponse.json({ status: 400, error: true, message: "Invalid mentor name" });
-  // }
 
   try {
     await connectToDatabase();
@@ -69,12 +54,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ status: 400, error: true, message: "You have registered for this event" });
     }
 
-    const totalQuotaSector = await Mentoring.countDocuments({ sectorCategory: sectorCategoryData._id });
+    // const totalQuotaSector = await Mentoring.countDocuments({ sectorCategory: sectorCategoryData._id });
     const totalQuotaMentor = await Mentoring.countDocuments({ mentor: mentorData._id });
 
-    if (totalQuotaSector >= sectorCategoryData.quota) {
-      return NextResponse.json({ status: 400, error: true, message: "Sector quota exceeded" });
-    }
+    // if (totalQuotaSector >= sectorCategoryData.quota) {
+    //   return NextResponse.json({ status: 400, error: true, message: "Sector quota exceeded" });
+    // }
 
     if (totalQuotaMentor >= mentorData.quota) {
       return NextResponse.json({ status: 400, error: true, message: "Mentor quota exceeded" });
@@ -92,7 +77,7 @@ export async function POST(req: NextRequest) {
       sectorCategory: sectorCategoryData._id,
     });
 
-    const template = "<p> Hello my darkest side do not forget to take a bath </p>";
+    const template = EmailMentoring(sectorCategory, mentorName);
 
     const mailOption = {
       from: process.env.NODEMAIL,
@@ -120,7 +105,7 @@ export async function GET() {
   try {
     await connectToDatabase();
 
-    const data = await Mentoring.find().populate("sectorCategory mentor");
+    const data = await Mentoring.find().populate("sectorCategory").populate("mentor");
 
     if (!data) {
       return NextResponse.json({ status: 400, error: true, message: "Data is empty" });

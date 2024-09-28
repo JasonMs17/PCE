@@ -4,7 +4,8 @@ import React from 'react'
 import styles from './Selector.module.css'
 import { useSelectorContext } from './Selector-Context';
 import FloatingNotification from './Floating_Notification';
-import { useEffect, useState } from "react";
+import { useEffect, useState, ChangeEvent } from "react";
+import Mentoring from '@/models/Mentoring';
 
 
 
@@ -12,6 +13,8 @@ const Form = () => {
 
     const [sectors, setSectors] = useState([]);
     const [mentors, setMentors] = useState([]);
+    const [filteredMentors, setFilteredMentors] = useState([]);
+    const [isShowMentor, setIsShowMentors] = useState(false);
 
     useEffect(() => {
         const fetchSectors = async () => {
@@ -21,8 +24,6 @@ const Form = () => {
             const result2 = await response2.json();
             const result1 = await response1.json();
     
-
-
             await setSectors(result1.data);
             await setMentors(result2.mentors);
             console.log("DATA MENTOR : ", result2);
@@ -111,6 +112,12 @@ const Form = () => {
             setLoading(false); //matikan animasi loading
         }
     };
+
+    const showMentor = (event: ChangeEvent<HTMLSelectElement>) =>{
+        setIsShowMentors(true);
+        setFilteredMentors(mentors.filter(mentor => mentor.sectorCategory.name === event.target.value));
+        console.log(filteredMentors);
+    }
     
 
 
@@ -145,7 +152,7 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="sektor">Pilihan Sektor</label>
-                    <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
+                    <select onChange={showMentor} className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
                             <option value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
                         ))}
@@ -222,11 +229,12 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="mentor">Mentor</label>
-                    <select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
-                        {mentors.map((mentor) => (
-                            <option value={mentor.name}>{mentor.name} - sisa quota : {mentor.quota}</option>
+                    {isShowMentor && (<select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
+                        {filteredMentors.map((mentor) => (
+                            <option value={mentor.name}>{mentor.name}</option>
                         ))}
                     </select>
+                    )}
                 </div>
             </div>
                 </div>

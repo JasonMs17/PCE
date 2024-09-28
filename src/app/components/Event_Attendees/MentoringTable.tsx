@@ -13,6 +13,7 @@ const MentoringTable = () => {
             if (result.status === 200) {
                 setMentoringData(result.data);
             }
+
         };
 
         fetchData();
@@ -61,6 +62,11 @@ const MentoringTable = () => {
                     </tr>
                 </thead>
                 <tbody>
+                    {mentoringData && (
+                        <tr>
+                            <td className={`${styles.column}`} colSpan={11}><b>Empty Set</b></td>
+                        </tr>
+                    )}
                     {mentoringData.map((mentoring, index) => (
                         <tr className={`${styles.row}`} key={mentoring.email}>
                             <td className={`${styles.column}`}>{index + 1}</td>
@@ -71,8 +77,8 @@ const MentoringTable = () => {
                             <td className={`${styles.column}`}>{mentoring.university}</td>
                             <td className={`${styles.column}`}>{mentoring.faculty}</td>
                             <td className={`${styles.column}`}>{mentoring.major}</td>
-                            <td className={`${styles.column}`}>{mentoring.mentor.name}</td>
-                            <td className={`${styles.column}`}>{mentoring.sectorCategory.name}</td>
+                            <td className={`${styles.column}`}>{(mentoring.mentor)? mentoring.mentor.name : "Mentor's Data is Null"}</td>
+                            <td className={`${styles.column}`}>{(mentoring.sectorCategory)? mentoring.sectorCategory.name : "Sector's Data is Null"}</td>
                             <td className={`${styles.column}`}>
                                 <button className={`${styles.operand} flex gap-2`} onClick={() => handleDelete(mentoring._id)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

@@ -42,9 +42,41 @@ const PBITable = () => {
         }
     };
 
+    const handleConfirm = async (id) => {
+        const confirming = window.confirm("Are you sure you want to confirm the payment of this register?");
+        if (!confirming) return;
+
+        const response = await fetch(`/api/project?id=${id}`, {
+            
+            method: 'PUT',
+
+        });
+
+        const result = await response.json();
+
+        if (result.status === 200) {
+
+            setProjects((prevProjects) => {
+                prevProjects.forEach(user => {
+                    if (user._id === id){
+                        user.isConfirmed = true;
+                    }
+                });
+                return prevProjects;
+            });
+
+            window.alert(result.message);
+
+        } else {
+
+            console.error('Failed to delete data:', result.message);
+            window.alert(result.message);
+        }
+    };
+
     return (
-        <div>
-            <table className={`w-full`}>
+        <div className={`overflow-scroll`}>
+            <table className={`w-full overflow-scroll`}>
                 <thead>
                     <tr className={`${styles.head} ${styles.row}`}>
                         <th className={`${styles.column}`}>No</th>
@@ -60,6 +92,7 @@ const PBITable = () => {
                         <th className={`${styles.column}`}>Sector</th>
                         <th className={`${styles.column}`}>Twibbon URL</th>
                         <th className={`${styles.column}`}>Proof of Payment</th>
+                        <th className={`${styles.column}`}>Confirm Payment</th>
                         <th className={`${styles.column}`}>Actions</th>
                     </tr>
                 </thead>
@@ -78,14 +111,23 @@ const PBITable = () => {
                             <td className={`${styles.column}`}>{project.jurusan}</td>
                             <td className={`${styles.column}`}>a</td>
                             <td className={`${styles.column}`}>
-                                <a href={project.twibbonUrl} target="_blank" rel="noopener noreferrer">
+                                <a href={project.twibbonUrl} className={`${styles.link}`} target="_blank" rel="noopener noreferrer">
                                     View Twibbon
                                 </a>
                             </td>
                             <td className={`${styles.column}`}>
-                                <a href={project.pembayaranUrl} target="_blank" rel="noopener noreferrer">
+                                <a href={project.pembayaranUrl} className={`${styles.link}`} target="_blank" rel="noopener noreferrer">
                                     View Proof of Payment
                                 </a>
+                            </td>
+                            <td className={`${styles.column}`}>
+                                <button className={`${styles.operand} flex gap-2`} onClick={() => handleConfirm(project._id)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check" viewBox="0 0 24 24">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+
+                                    Confirm Payment
+                                </button> 
                             </td>
                             <td className={`${styles.column}`}>
                                 <button className={`${styles.operand} flex gap-2`} onClick={() => handleDelete(project._id)}>

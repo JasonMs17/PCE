@@ -36,5 +36,7 @@ export async function GET() {
   } catch (error) {
     console.log("error", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong,"+error });
-  } 
+  } finally {
+    await disconnectFromDatabase();
+  }
 }

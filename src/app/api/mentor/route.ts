@@ -59,11 +59,6 @@ export async function GET(request : NextRequest) {
     const { searchParams } = new URL(request.url);
     const sectorCategoryName = searchParams.get('sector');
 
-    // const sectorCategories = await SectorCategory.find({ name: sectorCategoryName }).lean();
-    // const sectorCategoryIds = sectorCategories.map(sc => sc._id);
-
-    // const mentors = await Mentor.find({ sectorCategory: { $in: sectorCategoryIds } }).populate('sectorCategory').lean();
-
     const mentors = await Mentor.find().populate('sectorCategory').lean();
 
     if (!mentors) {
@@ -74,7 +69,5 @@ export async function GET(request : NextRequest) {
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong,"+error });
-  } finally {
-    await disconnectFromDatabase();
-  }
+  } 
 }

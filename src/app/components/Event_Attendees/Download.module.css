@@ -50,6 +50,11 @@
     border: 1px solid white;
 }
 
+.link {
+    color:rgb(0, 0, 219);
+    text-decoration: underline;
+}
+
 .row {
     color: white;
     text-align: center;

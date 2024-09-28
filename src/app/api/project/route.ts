@@ -5,6 +5,8 @@ import axios from "axios";
 import FormData from "form-data";
 import { Buffer } from "buffer"; 
 import SectorCategory from "@/models/SectorCategory";
+import transporter from "@/utils/email";
+import EmailProjectBasedAcc from "@/app/components/email/project-based-email-acc";
 
 const MAX_FILE_SIZE_MB = 1;
 const ALLOWED_EXTENSIONS = ["image/png", "image/jpeg", "image/jpg"];
@@ -17,12 +19,12 @@ export async function POST(request: NextRequest) {
     const namaKetua = formData.get("namaKetua");
     const nama1 = formData.get("nama1");
     const nama2 = formData.get("nama2");
-    const email = formData.get("email").toLowerCase();
+    const email = (formData.get("email"))? formData.get("email").toLowerCase() : null ;
     const no_telp = formData.get("no");
     const universitas = formData.get("univ");
     const fakultas = formData.get("fakultas");
     const jurusan = formData.get("jurusan");
-    const sectorCategory =formData.get("sektor");
+    const sectorCategory = formData.get("sektor");
     const twibbonUrl = formData.get("twibbonUrl");
     const pembayaranFile = formData.get("pembayaran") as File;
 
@@ -77,6 +79,8 @@ export async function POST(request: NextRequest) {
 
     const pembayaranUrl = imgdbResponse.data.data.url;
     
+
+    const isConfirmed = false;
     const newProject = new Project({
       namaTim,
       namaKetua,
@@ -90,9 +94,11 @@ export async function POST(request: NextRequest) {
       sectorCategory,
       twibbonUrl,
       pembayaranUrl,
+      isConfirmed,
     });
 
     await newProject.save();
+
 
     return NextResponse.json({
       status: 200,
@@ -187,6 +193,59 @@ export async function DELETE(request: NextRequest) {
       status: 500,
       error: true,
       message: "Something went wrong",
+    });
+  } finally {
+    await disconnectFromDatabase();
+  }
+}
+
+export async function PUT(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({
+        status: 400,
+        error: true,
+        message: "Data ID is required",
+      });
+    }
+
+    await connectToDatabase();
+
+    const fetchedData = await Project.findByIdAndUpdate(id, {isConfirmed: true}, {new : true});
+
+
+    const template = EmailProjectBasedAcc(fetchedData.sectorCategory, fetchedData.namaTim, fetchedData.namaKetua, fetchedData.nama1, fetchedData.nama2);
+    const mailOption = {
+      from: process.env.NODEMAIL,
+      to: fetchedData.email,
+      subject: "Accepted Project Based Internship with Padjadjaran Career Expo 2024",
+      html: template,
+    };
+
+    const send = await transporter.sendMail(mailOption);
+
+    if (!fetchedData) {
+      return NextResponse.json({
+        status: 404,
+        error: true,
+        message: "Data not found",
+      });
+    }
+
+    return NextResponse.json({
+      status: 200,
+      error: false,
+      message: "User "+fetchedData.email+" confirmed and email sended successfully",
+    });
+  } catch (error) {
+    console.error("Error, ", error);
+    return NextResponse.json({
+      status: 500,
+      error: true,
+      message: "Something went wrong, "+ error,
     });
   } finally {
     await disconnectFromDatabase();

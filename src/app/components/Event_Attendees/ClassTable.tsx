@@ -79,6 +79,11 @@ const ClassTable = () => {
                             </td>                        
                         </tr>
                     ))}
+                    {classPrograms.length <= 0 && (
+                        <tr>
+                            <td className={`${styles.column}`} colSpan={11}><b>Empty Set</b></td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
         </div>
