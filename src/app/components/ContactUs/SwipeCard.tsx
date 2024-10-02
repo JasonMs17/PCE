@@ -7,27 +7,27 @@ const SwipeCards = () => {
     {
       id: 1,
       description: 'In-touch Marketing PCE',
-      src: '/images/notify-heart-dynamic-color.svg',
+      src: '/images/contactus/Marketing.svg',
     },
     {
       id: 2,
       description: 'Brand awareness & Positioning Benefit',
-      src: '/images/megaphone-dynamic-color.svg',
+      src: '/images/contactus/Awareness.svg',
     },
     {
       id: 3,
       description: 'Building Professional Relationships',
-      src: '/images/target-dynamic-color.svg',
+      src: '/images/contactus/Relationship.svg',
     },
     {
         id: 4,
         description: 'Possibility for Growing Market Influence',
-        src: '/images/rocket-dynamic-color.svg',
+        src: '/images/contactus/Growing.svg',
       },
       {
         id: 5,
         description: 'Shared Collaboration and Community Obligation',
-        src: 'images/location-dynamic-color.svg',
+        src: 'images/contactus/Share.svg',
       },
   ]);
 

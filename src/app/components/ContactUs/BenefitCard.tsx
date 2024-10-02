@@ -14,6 +14,7 @@ const BenefitCard = ({description = "Benefit Desc", src='/images/photoprofile.jp
                         height={500}
                         width={500}
                         className="absolute rounded-full"
+                        draggable="false"
                         />
                 </div>
                 <div className={`w-full flex flex-col`}>
