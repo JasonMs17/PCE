@@ -35,7 +35,7 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.log("error login", error); //debug
-      setError('Something went wrong, '+error.message);
+      setError('Something went wrong, '+ (error as Error).message);
     }finally{
       setLoading(false);
     }
