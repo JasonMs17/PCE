@@ -41,7 +41,7 @@ export async function GET() {
         "Content-Disposition": 'attachment; filename="class_program_list.xlsx"',
       },
     });
-  } catch (error instanceof Error) {
+  } catch (error) {
     console.error("Error generating the Excel file:", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {

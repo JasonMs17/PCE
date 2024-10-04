@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
             message: "Artikel berhasil disimpan",
             newArticle
         });
-    } catch(error instanceof Error) {
+    } catch(error) {
         console.error("Error: ", error);
         return NextResponse.json({
             status: 500,
@@ -57,7 +57,7 @@ export async function GET(req: NextRequest) {
             message: "Articles successfully fetched",
             articles
         });
-    } catch (error instanceof Error) {
+    } catch (error) {
         console.error("Error: ", error);
         return NextResponse.json({
             status: 500,
@@ -103,7 +103,7 @@ export async function GET(req: NextRequest) {
 //             message: "Artikel berhasil ditemukan",
 //             articles
 //         });
-//     } catch (error instanceof Error) {
+//     } catch (error ) {
 //         console.error("Error: ", error);
 //         return NextResponse.json({
 //             status: 500,

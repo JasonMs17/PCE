@@ -24,7 +24,7 @@ export async function GET(req: NextRequest, { params }) {
           message: "Article successfully fetched",
           article
       });
-  } catch (error instanceof Error) {
+  } catch (error) {
       console.error("Error: ", error);
       return NextResponse.json({
           status: 500,

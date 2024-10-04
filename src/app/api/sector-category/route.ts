@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
     await sector_category.save();
     return NextResponse.json({ status: 200, error: false, message: "Data stored successfully", sector_category });
-  } catch (errorinstanceOf Error){
+  } catch (error){
     console.log("error: ", error);
 
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
@@ -33,7 +33,7 @@ export async function GET() {
     const data = await SectorCategory.find().lean();
 
     return NextResponse.json({ status: 200, error: false, message: "Data found successfully", data });
-  } catch (error instanceOf Error) {
+  } catch (error) {
     console.log("error", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong,"+error });
   } finally {

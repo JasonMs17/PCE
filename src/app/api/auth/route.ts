@@ -65,7 +65,7 @@ export async function POST(request: Request) {
       }
     });
 
-  } catch (error instanceof Error) {
+  } catch (error) {
     await disconnectFromDatabase();
 
     return new Response(JSON.stringify({ message: "Something went wrong" }), {

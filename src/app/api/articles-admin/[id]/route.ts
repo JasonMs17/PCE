@@ -35,8 +35,8 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     }
 
     return NextResponse.json({ status: 200, error: false, message: "Article updated successfully", result });
-  } catch (error instanceof Error) {
-    console.log(error instanceof Error);
+  } catch (error ) {
+    console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {
     await disconnectFromDatabase();
@@ -65,7 +65,7 @@ export async function GET(req: NextRequest, { params }) {
             message: "Article successfully fetched",
             article
         });
-    } catch (error instanceof Error) {
+    } catch (error) {
         console.error("Error: ", error);
         return NextResponse.json({
             status: 500,
@@ -94,7 +94,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
     }
 
     return NextResponse.json({ status: 200, error: false, message: "Article deleted successfully" });
-  } catch (error instanceof Error) {
+  } catch (error) {
     console.error("Error: ", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {

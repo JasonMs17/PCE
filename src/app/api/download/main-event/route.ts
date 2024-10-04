@@ -35,7 +35,7 @@ export async function GET() {
     );
 
     return new Response(buffer, { headers });
-  } catch (error instanceof Error) {
+  } catch (error) {
     console.error("Error generating the Excel file:", error);
     return NextResponse.json({
       status: 500,

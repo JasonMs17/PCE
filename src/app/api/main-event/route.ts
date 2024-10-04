@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
         const main_event = new MainEvent({ nama, email, universitas, fakultas });
         await main_event.save();
         return NextResponse.json({ status: 200, error: false, message: "You have successfully registered, kindly check your email for invitation", main_event });
-    } catch (error instanceof Error) {
+    } catch (error) {
         console.log("error: ", error);
 
         return NextResponse.json({ status: 501, error: true, message: "Something went wrong" });
@@ -34,7 +34,7 @@ export async function GET() {
         }
 
         return NextResponse.json({ status: 200, error: false, message: "Data found", data });
-    } catch (error instanceof Error) {
+    } catch (error) {
         console.log(error);
         return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
     } finally {
@@ -102,7 +102,7 @@ export async function DELETE(request: NextRequest) {
   
       });
   
-    } catch (error instanceof Error) {
+    } catch (error) {
   
       console.error("Error during DELETE request:", error);
   

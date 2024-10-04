@@ -28,7 +28,7 @@ const Form = () => {
             await setMentors(result2.mentors);
             console.log("DATA MENTOR : ", result2);
             console.log("DATA SEKTOR : ", result1);
-          } catch (error instanceof Error) {
+          } catch (error) {
             console.error("Error fetching data:", error);
           }
         };
@@ -105,7 +105,7 @@ const Form = () => {
                 setMessage(response.statusText);
                 setType('error');
             }
-        } catch (error instanceof Error) {
+        } catch (error) {
             console.error("Error during form submission:", error);
         }finally{
             setIsVisible(true); //munculkan floating notification

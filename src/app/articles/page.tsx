@@ -18,7 +18,7 @@ const ArticlesPage = () => {
         } else {
           console.error(data.message);
         }
-      } catch (error instanceof Error) {
+      } catch (error) {
         console.error("Error fetching articles: ", error);
       }
     };

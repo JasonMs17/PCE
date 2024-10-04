@@ -46,7 +46,7 @@ export async function disconnectFromDatabase(): Promise<void> {
       await mongoose.disconnect();
       cached.conn = null;
       cached.promise = null;
-    } catch (error instanceof Error) {
+    } catch (error) {
       console.error("Error disconnecting from database:", error);
     }
   }

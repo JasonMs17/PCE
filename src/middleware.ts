@@ -23,7 +23,7 @@ export async function middleware(req: NextRequest) {
         url.pathname = '/admin/auth';
         return NextResponse.redirect(url);
       }
-    } catch (error instanceof Error) {
+    } catch (error) {
       console.error('JWT verification error:', error);
       const url = req.nextUrl.clone();
       url.pathname = '/admin/auth';

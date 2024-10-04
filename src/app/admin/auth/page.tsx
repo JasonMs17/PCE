@@ -33,7 +33,7 @@ const LoginPage = () => {
         console.log("error login", data);
         setError(data.message);
       }
-    } catch (error instanceof Error) {
+    } catch (error) {
       console.log("error login", error); //debug
       setError('Something went wrong, '+error.message);
     }finally{
