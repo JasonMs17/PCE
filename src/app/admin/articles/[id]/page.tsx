@@ -58,7 +58,7 @@ const ArticleEditPage = () => {
       } else {
         alert(data.message);
       }
-    } catch (errors) {
+    } catch (error) {
       console.error('Error updating article:', error);
       alert('An error occurred while updating the article.');
     }
