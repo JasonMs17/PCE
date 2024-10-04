@@ -121,7 +121,7 @@ const deleteArticle = async (id: string) => {
                   <button
                     className={`${styles.operand} flex gap-2`}
                     onClick={() =>
-                      togglePublishStatus(article._id, article.isPublished)
+                      togglePublishStatus(article._id as string, article.isPublished)
                     }
                   >
                     <svg
@@ -141,7 +141,7 @@ const deleteArticle = async (id: string) => {
                     </svg>
                     {article.isPublished ? "Unpublish" : "Publish"}
                   </button>
-                  <button className={`${styles.operand} flex gap-2`} onClick={() => deleteArticle(article._id)}>
+                  <button className={`${styles.operand} flex gap-2`} onClick={() => deleteArticle(article._id as string)}>
                     <svg
                       width="18"
                       height="22"
