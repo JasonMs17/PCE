@@ -43,7 +43,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function GET(req: NextRequest, { params }) {
+export async function GET(req: NextRequest, { params }: { params: {id: string}}) {
     const { id } = params;
 
     try {
