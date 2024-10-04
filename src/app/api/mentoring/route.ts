@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
   const faculty = formData.get("fakultas");
   const major = formData.get("jurusan");
   const cv = formData.get("cv");
-  const sectorCategory = formData.get("sektor")
+  const sectorCategory = formData.get("sektor") as string;
   const mentorName = formData.get("mentor");
 
   const rateLimitResult = await rateLimit(req);
