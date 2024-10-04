@@ -43,7 +43,8 @@ export async function POST(req: NextRequest) {
 
     const sectorCategoryData = await SectorCategory.find({ name: { $in: sectorCategory } }).select("_id theme");
     const sectorCategoryIds = sectorCategoryData.map((category) => category._id);
-    const sectorCategoryTheme = sectorCategoryData.map((category) => category.theme);
+    const sectorCategoryTheme: string[] = sectorCategoryData.map((category) => category.theme);
+
 
 
   
@@ -51,9 +52,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ status: 400, error: true, message: "Sector category not found or invalid" });
     }
 
-    // return NextResponse.json({name, email, whatsappNumber, university, faculty, major});
+
     const classProgram = new ClassProgram({ name, email, whatsappNumber, university, faculty, major, sectorCategory: sectorCategoryIds });
-    const template = EmailClassProgram(sectorCategory[0]!, sectorCategoryTheme);
+    const template = EmailClassProgram(typeof sectorCategory[0] === 'string' ? sectorCategory[0] : (sectorCategory[0] as File).name, sectorCategoryTheme);
+
 
   
 

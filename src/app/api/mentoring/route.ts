@@ -77,7 +77,7 @@ export async function POST(req: NextRequest) {
       sectorCategory: sectorCategoryData._id,
     });
 
-    const template = EmailMentoring(sectorCategory, mentorName);
+    const template = EmailMentoring(sectorCategory!, mentorName);
 
     const mailOption = {
       from: process.env.NODEMAIL,
