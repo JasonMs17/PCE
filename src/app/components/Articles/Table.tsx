@@ -40,15 +40,21 @@ const Table = () => {
       const data = await response.json();
       if (data.status === 200) {
         setArticles((prevArticles) => 
-          prevArticles.map((article) =>
-            article._id === id
-              ? { ...article, isPublished: !currentStatus }
-              : article
-          )
+            prevArticles.map((article) => {
+                if (article._id === id) {
+                    // Create a new object with the updated isPublished property
+                    return {
+                        ...article,
+                        isPublished: !currentStatus,
+                    } as IArticle; // Type assertion here
+                }
+                return article; // Return the unchanged article
+            })
         );
-      } else {
+    } else {
         console.error(data.message);
-      }
+    }
+    
     } catch (error) {
       console.error("Error updating article status:", error);
     }
