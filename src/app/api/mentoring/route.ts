@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
 
     const data = await newMentoring.save();
 
-    return NextResponse.json({ status: 200, error: false, message: "Registered successfully", totalQuotaMentor, totalQuotaSector, data });
+    return NextResponse.json({ status: 200, error: false, message: "Registered successfully", totalQuotaMentor, data });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
