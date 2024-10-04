@@ -33,7 +33,7 @@ const TimelineSection = () => {
                 <div className={`grid grid-cols-1 md:grid-cols-3 grid-flow-row gap-16 w-full relative`}>
                     <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md ${styles.bg_blue}`}>
                         <p className={`font-bold mb-2`}>
-                            12 Oktober 2024
+                            19 Oktober 2024
                         </p>
                         <p>
                             Project Based Internship (onboarding)
@@ -41,7 +41,7 @@ const TimelineSection = () => {
                     </div>
                     <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md  ${styles.bg_yellow}`}>
                         <p className={`font-bold mb-2`}>
-                            19 Oktober 2024
+                            26 Oktober 2024
                         </p>
                         <p>
                             Class Program 1
@@ -58,7 +58,7 @@ const TimelineSection = () => {
                     </div>
                     <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md  ${styles.bg_blue}`}>
                         <p className={`font-bold mb-2`}>
-                            26 Oktober 2024
+                            2 November 2024
                         </p>
                         <p>
                             Class Program 2
@@ -74,7 +74,7 @@ const TimelineSection = () => {
                     </div>
                     <div className={`py-5 md:px-5 lg:px-20 text-xl text-white text-center rounded-md  ${styles.bg_yellow}`}>
                         <p className={`font-bold mb-2`}>
-                            2 November 2024
+                            9 November 2024
                         </p>
                         <p>
                             Project Based Internship (Pitching Day)
@@ -87,7 +87,7 @@ const TimelineSection = () => {
             <div className={`${styles.bg_combine} p-2 rounded-md relative`}>
                 <div className={`py-10 px-10 bg-white/90 dark:bg-black/90 text-2xl text-center font-bold rounded-md`}>
                     <p className={`font-bold mb-2`}>
-                        8 November 2024
+                        19-20 November 2024
                     </p>
                     Main Event
                 </div>
