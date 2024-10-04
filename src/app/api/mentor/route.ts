@@ -7,7 +7,11 @@ import { NextResponse, NextRequest } from "next/server";
 
 export async function POST(request: NextRequest) {
   const data = await request.formData();
-  const { name, email, quota, sectorCategory } = data;
+    
+  const name = data.get('name') as string; // Cast to string if needed
+  const email = data.get('email') as string; // Cast to string if needed
+  const quota = data.get('quota') as string; // Cast to string if needed
+  const sectorCategory = data.get('sectorCategory') as string; // Cast to string if needed
 
   //rate limit to call this request
   const rateLimitResult = await rateLimit(request);
