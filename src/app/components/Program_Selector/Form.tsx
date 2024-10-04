@@ -154,8 +154,10 @@ const Form = () => {
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select onChange={showMentor} className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
-                            <option key={sector.name} value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
-                        ))}
+                           <option key={sector.name} value={sector.name}>
+                               {sector.name} ({sector.theme}) - {sector.date}
+                           </option>
+                         ))}
                     </select>
                 </div>
             </div>
@@ -223,8 +225,10 @@ const Form = () => {
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
-                            <option key={sector.name} value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
-                        ))}
+  <option key={sector.name} value={sector.name}>
+    {sector.name} ({sector.theme}) - {sector.date}
+  </option>
+))}
                     </select>
                 </div>
                 <div className='flex flex-col gap-2'>
