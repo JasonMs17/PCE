@@ -55,7 +55,11 @@ const ArticlePage = () => {
             </p>
           </div>
 
-          <img src={article.thumbnail} alt="Article Thumbnail" border="0" />
+          <img 
+              src={article.thumbnail} 
+              alt="Article Thumbnail" 
+              style={{ border: "0" }} 
+          />
 
           {/* Render body markdown content */}
           <ReactMarkdown>{article.body}</ReactMarkdown>
