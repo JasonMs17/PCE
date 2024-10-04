@@ -42,6 +42,7 @@ const EventsPage = () => {
               description={PreEvents[1].description}
               time={PreEvents[1].textDate}
               location={PreEvents[1].eventLocation}
+              maps={PreEvents[1].location}
               ></EventSection>
             <EventSection
               src={PreEvents[2].image}
