@@ -223,7 +223,7 @@ export async function PUT(request: NextRequest) {
 
     const mailOption = {
       from: process.env.NODEMAIL,
-      to: fetchedData.email,
+      to: fetchedData!.email,
       subject: "Accepted Project Based Internship with Padjadjaran Career Expo 2024",
       html: template,
     };
