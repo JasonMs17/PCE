@@ -217,7 +217,10 @@ export async function PUT(request: NextRequest) {
     const fetchedData = await Project.findByIdAndUpdate(id, {isConfirmed: true}, {new : true});
 
 
-    const template = EmailProjectBasedAcc(fetchedData.sectorCategory, fetchedData.namaTim, fetchedData.namaKetua, fetchedData.nama1, fetchedData.nama2);
+    const template = fetchedData ? 
+    EmailProjectBasedAcc(fetchedData.sectorCategory, fetchedData.namaTim, fetchedData.namaKetua, fetchedData.nama1, fetchedData.nama2) 
+    : null; // or some default value or handling
+
     const mailOption = {
       from: process.env.NODEMAIL,
       to: fetchedData.email,
