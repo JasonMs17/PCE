@@ -91,8 +91,8 @@ const Form = () => {
                     form.reset();
 
                     if(apiEndpoint == "/api/class-program"){
-                        const button = document.querySelector('[aria-description="2"]');
-                        if(button) {
+                        const button = document.querySelector('[aria-description="2"]') as HTMLButtonElement | HTMLAnchorElement;
+                        if (button) {
                             button.click();
                             console.log();
                         }
