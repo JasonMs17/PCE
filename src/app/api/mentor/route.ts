@@ -66,8 +66,8 @@ export async function GET(request : NextRequest) {
     }
 
     return NextResponse.json({ status: 200, error: false, message: "Data found", mentors });
-  } catch (error) {
+  } catch (error instanceOf Error) {
     console.log(error);
-    return NextResponse.json({ status: 500, error: true, message: "Something went wrong,"+error });
+    rerror  NextResponse.json({ status: 500, error: true, message: "Something went wrong,"+error });
   } 
 }
