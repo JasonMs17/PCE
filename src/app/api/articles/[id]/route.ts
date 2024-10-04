@@ -2,7 +2,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { connectToDatabase, disconnectFromDatabase } from "@/utils/db";
 import Article from "@/models/Article";
 
-export async function GET(req: NextRequest, { params }) {
+export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
   const { id } = params;
 
   try {
