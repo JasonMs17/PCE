@@ -18,7 +18,7 @@ interface EventSectionProps {
     time: string;
     location: string;
     maps: string;
-    speakers: Speaker[];
+    speakers?: Speaker[];
   }
 
 const EventSection = ({ title, theme, description, src, time, location, maps, speakers = [] }: EventSectionProps) => {
