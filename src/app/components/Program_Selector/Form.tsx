@@ -154,7 +154,7 @@ const Form = () => {
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select onChange={showMentor} className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
-                            <option value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
+                            <option key={sector.name} value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
                         ))}
                     </select>
                 </div>
@@ -223,7 +223,7 @@ const Form = () => {
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
-                            <option value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
+                            <option key={sector.name} value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
                         ))}
                     </select>
                 </div>
@@ -231,7 +231,7 @@ const Form = () => {
                     <label htmlFor="mentor">Mentor</label>
                     {isShowMentor && (<select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
                         {filteredMentors.map((mentor) => (
-                            <option value={mentor.name}>{mentor.name}</option>
+                            <option key={mentor.name} value={mentor.name}>{mentor.name}</option>
                         ))}
                     </select>
                     )}
@@ -309,7 +309,7 @@ const Form = () => {
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {["Project Ideation", "Marketing Campaign"].map((sector) => (
-                            <option value={sector}>{sector}</option>
+                            <option key={sector} value={sector}>{sector}</option>
                         ))}
                     </select>
                 </div>
