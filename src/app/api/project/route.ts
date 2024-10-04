@@ -145,7 +145,7 @@ export async function GET(request: NextRequest) {
       message: "Data found",
       data,
     });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.error("Error during GET request:", error);
     return NextResponse.json({
       status: 500,
@@ -187,7 +187,7 @@ export async function DELETE(request: NextRequest) {
       error: false,
       message: "Data deleted successfully",
     });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.error("Error during DELETE request:", error);
     return NextResponse.json({
       status: 500,
@@ -240,7 +240,7 @@ export async function PUT(request: NextRequest) {
       error: false,
       message: "User "+fetchedData.email+" confirmed and email sended successfully",
     });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.error("Error, ", error);
     return NextResponse.json({
       status: 500,

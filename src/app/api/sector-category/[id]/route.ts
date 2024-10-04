@@ -11,7 +11,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
     const data = await SectorCategory.findById(id).populate("sectorCategory");
 
     return NextResponse.json({ status: 200, error: false, message: "Data found", data });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {
@@ -47,7 +47,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     }
 
     return NextResponse.json({ status: 200, error: false, message: "Data updated successfully", result });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {
@@ -68,7 +68,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
     }
 
     return NextResponse.json({ status: 200, error: false, message: "Data deleted successfully", result });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {

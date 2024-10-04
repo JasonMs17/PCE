@@ -26,7 +26,7 @@ const ArticleEditPage = () => {
         } else {
           console.error(data.message);
         }
-      } catch (error) {
+      } catch (error instanceof Error) {
         console.error('Error fetching article:', error);
       }
     };
@@ -58,7 +58,7 @@ const ArticleEditPage = () => {
       } else {
         alert(data.message);
       }
-    } catch (error) {
+    } catch (error instanceof Error) {
       console.error('Error updating article:', error);
       alert('An error occurred while updating the article.');
     }

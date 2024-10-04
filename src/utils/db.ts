@@ -30,7 +30,7 @@ export async function connectToDatabase(): Promise<Mongoose> {
     cached.promise = mongoose
       .connect(database_url)
       .then((mongoose) => mongoose)
-      .catch((error) => {
+      .catch((error ) => {
         cached.promise = null;
         throw error;
       });
@@ -46,7 +46,7 @@ export async function disconnectFromDatabase(): Promise<void> {
       await mongoose.disconnect();
       cached.conn = null;
       cached.promise = null;
-    } catch (error) {
+    } catch (error instanceof Error) {
       console.error("Error disconnecting from database:", error);
     }
   }

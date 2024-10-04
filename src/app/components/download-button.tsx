@@ -33,7 +33,7 @@ function DownloadButton() {
             // Cleanup by removing the link element
             document.body.removeChild(link);
             window.URL.revokeObjectURL(url); // Clean up the URL object
-        } catch (error) {
+        } catch (error instanceof Error) {
             console.error("Error downloading the file:", error);
         }
     };

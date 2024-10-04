@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
             message: "Published articles successfully fetched",
             articles
         });
-    } catch (error) {
+    } catch (error instanceof Error) {
         console.error("Error: ", error);
         return NextResponse.json({
             status: 500,

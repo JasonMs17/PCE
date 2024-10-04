@@ -49,7 +49,7 @@ export async function GET() {
     headers.set("Content-Disposition", "attachment; filename='mentoring_list.xlsx'");
 
     return new Response(buffer, { headers });
-  } catch (error) {
+  } catch (error  instanceof Error) {
     console.error("Error generating the Excel file:", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {

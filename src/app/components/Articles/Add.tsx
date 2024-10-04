@@ -50,7 +50,7 @@ const Add = () => {
         });
         setArticleId(null);
       }
-    } catch (error) {
+    } catch (error instanceof Error) {
       console.error("Error:", error);
       alert("An error occurred");
     }
@@ -74,7 +74,7 @@ const Add = () => {
         setArticleId(id);
         setPopupVisible(true);
       }
-    } catch (error) {
+    } catch (error instanceof Error) {
       console.error("Error loading article:", error);
       alert("An error occurred");
     }

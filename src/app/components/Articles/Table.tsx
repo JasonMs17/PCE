@@ -17,7 +17,7 @@ const Table = () => {
         });
         const data = await response.json();
         setArticles(data.articles);
-      } catch (error) {
+      } catch (error instanceof Error) {
         console.error("Error fetching articles:", error);
       }
     };
@@ -49,7 +49,7 @@ const Table = () => {
       } else {
         console.error(data.message);
       }
-    } catch (error) {
+    } catch (error instanceof Error) {
       console.error("Error updating article status:", error);
     }
   };
@@ -70,7 +70,7 @@ const deleteArticle = async (id: string) => {
     } else {
       alert(data.message);
     }
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.error("Error deleting article:", error);
     alert("An error occurred while deleting the article.");
   }

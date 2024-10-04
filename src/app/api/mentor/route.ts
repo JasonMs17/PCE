@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
     await newMentor.save();
 
     return NextResponse.json({ status: 200, error: false, message: "Data created successfully" });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {
@@ -66,7 +66,7 @@ export async function GET(request : NextRequest) {
     }
 
     return NextResponse.json({ status: 200, error: false, message: "Data found", mentors });
-  } catch (error instanceOf Error) {
+  } catch (error instanceof Error) {
     console.log(error);
     rerror  NextResponse.json({ status: 500, error: true, message: "Something went wrong,"+error });
   } 

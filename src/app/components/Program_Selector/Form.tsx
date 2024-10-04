@@ -28,7 +28,7 @@ const Form = () => {
             await setMentors(result2.mentors);
             console.log("DATA MENTOR : ", result2);
             console.log("DATA SEKTOR : ", result1);
-          } catch (error instanceOf Error) {
+          } catch (error instanceof Error) {
             console.error("Error fetching data:", error);
           }
         };
@@ -105,7 +105,7 @@ const Form = () => {
                 setMessage(response.statusText);
                 setType('error');
             }
-        } catch (error instanceOf Error) {
+        } catch (error instanceof Error) {
             console.error("Error during form submission:", error);
         }finally{
             setIsVisible(true); //munculkan floating notification
@@ -154,10 +154,8 @@ const Form = () => {
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select onChange={showMentor} className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
-                           <option key={sector.name} value={sector.name}>
-                               {sector.name} ({sector.theme}) - {sector.date}
-                           </option>
-                         ))}
+                            <option value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
+                        ))}
                     </select>
                 </div>
             </div>
@@ -225,17 +223,15 @@ const Form = () => {
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
-  <option key={sector.name} value={sector.name}>
-    {sector.name} ({sector.theme}) - {sector.date}
-  </option>
-))}
+                            <option value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
+                        ))}
                     </select>
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="mentor">Mentor</label>
                     {isShowMentor && (<select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
                         {filteredMentors.map((mentor) => (
-                            <option key={mentor.name} value={mentor.name}>{mentor.name}</option>
+                            <option value={mentor.name}>{mentor.name}</option>
                         ))}
                     </select>
                     )}
@@ -313,11 +309,11 @@ const Form = () => {
                     <label htmlFor="sektor">Pilihan Sektor</label>
                     <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {["Project Ideation", "Marketing Campaign"].map((sector) => (
-                            <option key={sector} value={sector}>{sector}</option>
+                            <option value={sector}>{sector}</option>
                         ))}
                     </select>
                 </div>
-         option  <div className='flex flex-col gap-2'>
+                <div className='flex flex-col gap-2'>
                     <label htmlFor="twibbon">Link Drive Twibbon</label>
                     <input className={styles.input} type="text" name="twibbonUrl" id="twibbon" placeholder='https://drive.google.com/...' autoComplete='off' required />
                 </div>

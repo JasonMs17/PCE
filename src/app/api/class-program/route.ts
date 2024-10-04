@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
     await classProgram.save();
 
     return NextResponse.json({ status: 200, error: false, message: "Registration successful. Please check your Email.", classProgram });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.error("Error: ", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong, "+error});
   }
@@ -87,7 +87,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ status: 200, error: false, message: "Data found", data });
-  } catch (error) {
+  } catch (error instanceof Error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });
   } finally {
@@ -155,7 +155,7 @@ export async function DELETE(request: NextRequest) {
 
     });
 
-  } catch (error) {
+  } catch (error instanceof Error) {
 
     console.error("Error during DELETE request:", error);
 
