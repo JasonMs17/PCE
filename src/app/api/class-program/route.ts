@@ -53,7 +53,8 @@ export async function POST(req: NextRequest) {
 
     // return NextResponse.json({name, email, whatsappNumber, university, faculty, major});
     const classProgram = new ClassProgram({ name, email, whatsappNumber, university, faculty, major, sectorCategory: sectorCategoryIds });
-    const template = EmailClassProgram(sectorCategory[0], sectorCategoryTheme);
+    const template = EmailClassProgram(sectorCategory[0]!, sectorCategoryTheme);
+
   
 
     const mailOption = {
