@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 "use client"
 
 import EventsSection from "./components/Landing/EventsSection";
