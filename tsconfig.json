@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     "module": "esnext",
     "strictNullChecks": false,
+    "noImplicitThis": false,
     "noImplicitAny": false,
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
