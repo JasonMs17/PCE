@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   const formData = await req.formData(); 
 
   const name = formData.get("nama");
-  const email = formData.get("email").toLowerCase();
+  const email = (formData.get('email') ?? '').toString().toLowerCase();
   const whatsappNumber = formData.get("no");
   const university = formData.get("univ");
   const faculty = formData.get("fakultas");
