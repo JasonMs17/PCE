@@ -27,7 +27,6 @@ export async function GET() {
       name: registrar.name,
       email: registrar.email,
       whatsapp_number: registrar.whatsappNumber,
-      schedule: registrar.schedule ? registrar.schedule.toISOString() : "N/A",
       university: registrar.university,
       faculty: registrar.faculty,
       major: registrar.major,
