@@ -10,13 +10,19 @@ export async function GET() {
     const projects = await Project.find();
 
     const data = projects.map((project) => ({
-      nama: project.nama,
+      namaTim: project.namaTim,
+      namaKetua: project.namaKetua,
+      nama1: project.nama1,
+      nama2: project.nama2,
       email: project.email,
       no_telp: project.no_telp,
       universitas: project.universitas,
       fakultas: project.fakultas,
       jurusan: project.jurusan,
+      sectorCategory: project.sectorCategory,
       twibbonUrl: project.twibbonUrl || "N/A",
+      pembayaranUrl: project.pembayaranUrl || "N/A",
+      isConfirmed: project.isConfirmed || false,
       createdAt: project.createdAt ? project.createdAt.toISOString() : "N/A",
       updatedAt: project.updatedAt ? project.updatedAt.toISOString() : "N/A",
     }));
