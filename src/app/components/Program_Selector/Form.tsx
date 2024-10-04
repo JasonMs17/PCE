@@ -13,8 +13,7 @@ const Form = () => {
 
     const [sectors, setSectors] = useState([]);
     const [mentors, setMentors] = useState([]);
-    const [filteredMentors, setFilteredMentors] = useState([]);
-    const [isShowMentor, setIsShowMentors] = useState(false);
+
 
     useEffect(() => {
         const fetchSectors = async () => {
@@ -114,9 +113,21 @@ const Form = () => {
     };
 
     const showMentor = (event: ChangeEvent<HTMLSelectElement>) =>{
-        setIsShowMentors(true);
-        setFilteredMentors(mentors.filter(mentor => mentor.sectorCategory.name === event.target.value));
-        console.log(filteredMentors);
+        const filteredMentors = mentors.filter(mentor => mentor.sectorCategory.name === event.target.value);
+        console.log("filtered mentor ",filteredMentors);
+
+        const select = document.querySelector('select#mentor');
+
+        // Clear existing options (if needed)
+        select.innerHTML = '';
+
+        // Loop through the filteredMentors array and create <option> elements
+        filteredMentors.forEach(mentor => {
+            const option = document.createElement('option');
+            option.value = mentor.name;
+            option.textContent = mentor.name;
+            select.appendChild(option);
+        });
     }
     
 
@@ -152,7 +163,7 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="sektor">Pilihan Sektor</label>
-                    <select onChange={showMentor} className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
+                    <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
                             <option key={sector.name} value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
                         ))}
@@ -221,20 +232,18 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="sektor">Pilihan Sektor</label>
-                    <select className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
+                    <select onChange={showMentor} className={`${styles.input} ${styles.select}`} name="sektor" id="sektor" required>
                         {sectors.map((sector) => (
-                            <option key={sector.name} value={sector.name}>{sector.name} ({sector.theme}) - {sector.date}</option>
+                            <option key={sector.name} value={sector.name}>{sector.name} ({sector.theme})</option>
                         ))}
                     </select>
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="mentor">Mentor</label>
-                    {isShowMentor && (<select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
-                        {filteredMentors.map((mentor) => (
-                            <option key={mentor.name} value={mentor.name}>{mentor.name}</option>
-                        ))}
+                    <select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
+                       {/* mentor options */}
                     </select>
-                    )}
+                    
                 </div>
                 
             </div>
