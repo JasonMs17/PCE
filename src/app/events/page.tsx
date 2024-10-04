@@ -51,7 +51,8 @@ const EventsPage = () => {
               description={PreEvents[2].description}
               time={PreEvents[2].textDate}
               location={PreEvents[2].eventLocation}
-              speakers={[{},{},{}]}
+              maps={PreEvents[2].location}
+              // speakers={[{},{},{}]}
               ></EventSection>
             <div className={`py-5`}>
           </div>
