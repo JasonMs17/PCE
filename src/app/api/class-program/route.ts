@@ -43,8 +43,7 @@ export async function POST(req: NextRequest) {
 
     const sectorCategoryData = await SectorCategory.find({ name: { $in: sectorCategory } }).select("_id theme");
     const sectorCategoryIds = sectorCategoryData.map((category) => category._id);
-    const sectorCategoryTheme: string = sectorCategoryData.map((category) => category.theme);
-
+    const sectorCategoryTheme: string = sectorCategoryData.map((category) => category.theme).join(', ');
 
 
   
