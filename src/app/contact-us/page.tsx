@@ -7,8 +7,10 @@ import Image from 'next/image';
 const EventsPage = () => {
   return (  
     <div className={`flex flex-col items-center`}>
-      <div className='w-full py-32 mt-20 text-center font-bold text-xl md:text-4xl'>
-        bridging dreams, empowering careers
+      <div className='w-full py-12 sm:py-24 md:py-32 mt-20 text-center font-bold text-xl md:text-4xl bg-[url(/images/contactus/bg.jpg)] bg-center bg-cover'>
+        <p className='mix-blend-luminosity'>
+          bridging dreams, empowering careers
+        </p>
       </div>
       <div className={`container px-5`}>
         <div className={`flex flex-col md:flex-row gap-5 p-5`}>
