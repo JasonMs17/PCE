@@ -226,7 +226,7 @@ const EmailProjectBasedAcc = (theme : string, namaTim : string, namaKetua : stri
                                                         <tbody>
                                                             <tr>
                                                                 <td style="width:74px;"> <img alt
-                                                                        src="img/f971f22648c48d8281049e7e54a6702f.png"
+                                                                        src="https://github.com/Muhammad-ZhafranShiddiq/imagePCE/blob/c79cc9b2a81d1117a13cb27dc3973486ca3775a6/PCE.png?raw=true"
                                                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
                                                                         width="74" height="auto">
                                                                 </td>
@@ -283,7 +283,7 @@ const EmailProjectBasedAcc = (theme : string, namaTim : string, namaKetua : stri
                                                                                     <a href="https://www.instagram.com/padjadjarancareerexpo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                                                                                         target="_blank"> <img
                                                                                             alt="Instagram" height="24"
-                                                                                            src="img/9374093e9ce4057999d5cfdc9893b9a2.png"
+                                                                                            src="https://github.com/Muhammad-ZhafranShiddiq/imagePCE/blob/main/Instagram.png?raw=true"
                                                                                             style="display:block;"
                                                                                             width="24"></a>
                                                                                 </td>
@@ -311,7 +311,7 @@ const EmailProjectBasedAcc = (theme : string, namaTim : string, namaKetua : stri
                                                                                     <a href="https://youtube.com/@pceunpad?si=bVceq29C2t5bBeVE"
                                                                                         target="_blank"> <img
                                                                                             alt="YouTube" height="24"
-                                                                                            src="img/8a7540ed0e78a989d0ff1aa9558bc15f.png"
+                                                                                            src="https://github.com/Muhammad-ZhafranShiddiq/imagePCE/blob/c79cc9b2a81d1117a13cb27dc3973486ca3775a6/Youtube.png?raw=true"
                                                                                             style="display:block;"
                                                                                             width="24"></a>
                                                                                 </td>
@@ -339,7 +339,7 @@ const EmailProjectBasedAcc = (theme : string, namaTim : string, namaKetua : stri
                                                                                     <a href="https://www.linkedin.com/company/padjadjaran-career-week/"
                                                                                         target="_blank"> <img
                                                                                             alt="LinkedIn" height="24"
-                                                                                            src="img/8b9f4d3c2dd4fe9140186fa3f7473123.png"
+                                                                                            src="https://github.com/Muhammad-ZhafranShiddiq/imagePCE/blob/main/Linkedin.png?raw=true"
                                                                                             style="display:block;"
                                                                                             width="24"></a>
                                                                                 </td>
@@ -368,7 +368,7 @@ const EmailProjectBasedAcc = (theme : string, namaTim : string, namaKetua : stri
                                                                                     <a href="https://www.tiktok.com/@pceunpad?is_from_webapp=1&sender_device=pc"
                                                                                         target="_blank"> <img alt
                                                                                             height="24"
-                                                                                            src="img/0251df1d98ef0ae5f97733190b4d95e5.png"
+                                                                                            src="https://github.com/Muhammad-ZhafranShiddiq/imagePCE/blob/c79cc9b2a81d1117a13cb27dc3973486ca3775a6/Tiktok.png?raw=true"
                                                                                             style="display:block;"
                                                                                             width="21"></a>
                                                                                 </td>
@@ -504,7 +504,7 @@ const EmailProjectBasedAcc = (theme : string, namaTim : string, namaKetua : stri
                                                                 </span><span
                                                                 style="font-size:16px;font-family:'Inter','Arial',sans-serif;font-weight:700;color:#000000;line-height:150%;mso-line-height-alt:24px;mso-ansi-font-size:16px;">:</span><span
                                                                 style="font-size:16px;font-family:'Inter','Arial',sans-serif;font-weight:400;color:#000000;line-height:150%;mso-line-height-alt:24px;mso-ansi-font-size:16px;">
-                                                                Sabtu, 12 Oktober 2024</span></span>
+                                                                Sabtu, 19 Oktober 2024</span></span>
                                                     </p>
                                                     <p
                                                         style="Margin:0;mso-line-height-alt:24px;mso-ansi-font-size:16px;">
@@ -675,7 +675,7 @@ const EmailProjectBasedAcc = (theme : string, namaTim : string, namaKetua : stri
                                                         <tbody>
                                                             <tr>
                                                                 <td style="width:74px;"> <img alt
-                                                                        src="img/f971f22648c48d8281049e7e54a6702f.png"
+                                                                        src="https://github.com/Muhammad-ZhafranShiddiq/imagePCE/blob/c79cc9b2a81d1117a13cb27dc3973486ca3775a6/PCE.png?raw=true"
                                                                         style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
                                                                         width="74" height="auto">
                                                                 </td>
