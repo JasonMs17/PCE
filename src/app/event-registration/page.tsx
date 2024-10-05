@@ -9,8 +9,8 @@
     return (
       <SelectorProvider>
         <div className={`${styles.index_bg} flex justify-center items-center md:p-20 p-4`}>
-          <div className='w-[90%] h-[75vh] bg-black/20 md:p-10 p-4 rounded-[25px] flex flex-col justify-between dark:bg-white/20'>
-            <div className={`w-full bg-black/20 flex flex-row justify-between rounded-[15px] text-white font-medium h-[10%] text-xl cursor-pointer text-center overflow-y-scroll ${styles.no_scrollbar}`}>
+          <div className='w-[90%] h-[75vh] bg-black/20 md:p-10 p-4 mt-8 rounded-[25px] flex flex-col justify-between dark:bg-white/20'>
+            <div className={`w-full bg-black/20 flex flex-row justify-between rounded-[15px] text-white font-medium h-[12.5%] text-xl cursor-pointer text-center overflow-y-scroll ${styles.no_scrollbar}`}>
               <Selector />
             </div>
             <div className='h-[85%] w-full flex justify-between gap-2'>

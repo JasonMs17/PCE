@@ -6,7 +6,7 @@ import styles from './Selector.module.css'
 
 const Label = () => {
     const {selected, setSelected} = useSelectorContext()
-
+    return (<div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] md:flex flex-col justify-between items-center md:py-10 md:px-6 hidden'></div>);
     if (selected === 1) {
         return (
             <div className='h-[100%] w-[5%] bg-black/20 rounded-[15px] md:flex flex-col justify-between items-center md:py-10 md:px-6 hidden'>
