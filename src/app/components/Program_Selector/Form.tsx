@@ -25,8 +25,8 @@ const Form = () => {
     
             await setSectors(result1.data);
             await setMentors(result2.mentors);
-            console.log("DATA MENTOR : ", result2);
-            console.log("DATA SEKTOR : ", result1);
+            // console.log("DATA MENTOR : ", result2);
+            // console.log("DATA SEKTOR : ", result1);
           } catch (error) {
             console.error("Error fetching data:", error);
           }
