@@ -59,7 +59,7 @@ export default function Home() {
           <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
           <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_778_2944"/>
           </filter>
-          </defs>     
+          </defs>    
         </svg>
         <HeroSection/>
         <TrailerSection/>     
