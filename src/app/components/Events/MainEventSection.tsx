@@ -4,6 +4,7 @@ import React from 'react'
 import styles from './events.module.css'
 import Image from 'next/image'
 import { MainEvent } from '@/static/Events'
+import Link from 'next/link' 
 
 const MainEventSection = () => {
 
@@ -27,9 +28,11 @@ const MainEventSection = () => {
                 <p className={`text-center`}>{MainEvent.description}</p>
             </div>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.728497129167!2d107.77147267446607!3d-6.9230239677606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c4ad43e13e87%3A0x71dd00c9438b2236!2sBale%20Santika!5e0!3m2!1sen!2sid!4v1724298019078!5m2!1sen!2sid" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className='w-full h-auto aspect-[21/9] rounded-[25px]'></iframe>
+            <Link href={"/event-registration"}>
             <div className={`py-2.5 px-5 text-white text-center font-bold rounded-[100px]  ${styles.bg_green}`}>
                 Registrasi
             </div>
+            </Link>
         </div>
     );
 }

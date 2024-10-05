@@ -72,7 +72,7 @@ const NavbarLinks = () => {
             </svg>
             <h2 className={`font-medium text-nowrap ${styles.desc}`}>Registration</h2>
             {dropdownRegist && 
-            <div className={`${styles.dropdown} absolute flex flex-col translate-y-full -bottom-10 bg-black/20 dark:bg-white/20 text-nowrap w-fit`}>
+            <div className={'${styles.dropdown} fixed flex flex-col bottom-24 lg:-bottom-72 bg-black/20 dark:bg-white/20 text-nowrap w-fit'}>
               <Link href="/event-registration" className={`${styles.dropdown_item} rounded-[20px]`}>Class Program</Link>
               <Link href="/event-registration" className={`${styles.dropdown_item} rounded-[20px]`}>Mentoring</Link>
               <Link href="/event-registration" className={`${styles.dropdown_item} rounded-[20px]`}>Project-Based Internship</Link>

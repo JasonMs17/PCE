@@ -63,8 +63,9 @@ export async function POST(request: NextRequest) {
     const form = new FormData();
     form.append("image", buffer, pembayaranFile.name);
     
-    const imgbbUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.IMGBB_API_KEY}`;
-    
+    // const imgbbUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${process.env.IMGBB_API_KEY}`;
+    const imgbbUrl = `https://api.imgbb.com/1/upload?key=${process.env.IMGBB_API_KEY}`;
+
     const imgdbResponse = await axios.post(
       imgbbUrl,
       form,
