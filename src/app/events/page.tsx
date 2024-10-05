@@ -20,7 +20,9 @@ const EventsPage = () => {
               description={UpcomingEvent.description}
               time={UpcomingEvent.textDate}
               location={UpcomingEvent.eventLocation}
-              maps={UpcomingEvent.location}></EventCard>
+              maps={UpcomingEvent.location}
+              link={UpcomingEvent.registLink}
+              ></EventCard>
           </div>
         </div>
         <div className={`py-5`}>
@@ -34,6 +36,7 @@ const EventsPage = () => {
               time={PreEvents[0].textDate}
               location={PreEvents[0].eventLocation}
               maps={PreEvents[0].location}
+              link={PreEvents[0].registLink}
               ></EventSection>
             <EventSection
               src={PreEvents[1].image}
@@ -43,6 +46,7 @@ const EventsPage = () => {
               time={PreEvents[1].textDate}
               location={PreEvents[1].eventLocation}
               maps={PreEvents[1].location}
+              link={PreEvents[1].registLink}
               ></EventSection>
             <EventSection
               src={PreEvents[2].image}
@@ -52,6 +56,7 @@ const EventsPage = () => {
               time={PreEvents[2].textDate}
               location={PreEvents[2].eventLocation}
               maps={PreEvents[2].location}
+              link={PreEvents[2].registLink}
               // speakers={[{},{},{}]}
               ></EventSection>
             <div className={`py-5`}>
