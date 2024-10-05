@@ -29,11 +29,11 @@ const Navbar = () => {
         </div>
         <div className='flex gap-5 items-center justify-center'>
           <Toggle />
-        {/* <Link href={"/event-registration"}> */}
+        <Link href={"/event-registration"}>
           <div className={`py-2.5 px-5 font-bold rounded-[100px]  ${styles.link_bg}`}>
             Register
           </div>
-          {/* </Link> */}
+        </Link>
         </div>
       </div>
     </div>
