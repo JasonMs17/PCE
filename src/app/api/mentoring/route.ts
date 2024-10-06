@@ -45,13 +45,13 @@ export async function POST(req: NextRequest) {
     }
 
     if (!isRegisteredClassProgram) {
-      return NextResponse.json({ status: 400, error: true, message: "Please register in our class program event first" });
+      return NextResponse.json({ status: 400, error: true, message: "Mohon mendaftar di Class Program terlebih dahulu sebelum mendaftar di Class Mentoring" });
     }
 
     const isRegistered = await Mentoring.findOne({ email }).select("email");
 
     if (isRegistered) {
-      return NextResponse.json({ status: 400, error: true, message: "You have registered for this event" });
+      return NextResponse.json({ status: 400, error: true, message: "Kamu sudah terdaftar di Mentoring! Jangan lupa cek email dahulu." });
     }
 
     // const totalQuotaSector = await Mentoring.countDocuments({ sectorCategory: sectorCategoryData._id });
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     // }
 
     if (totalQuotaMentor >= mentorData.quota) {
-      return NextResponse.json({ status: 400, error: true, message: "Mentor quota exceeded" });
+      return NextResponse.json({ status: 400, error: true, message: "Maaf, quota mentor ini sudah penuh. Silakan pilih mentor lain. " });
     }
 
     const newMentoring = new Mentoring({
@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
 
     const data = await newMentoring.save();
 
-    return NextResponse.json({ status: 200, error: false, message: "Registered successfully", totalQuotaMentor, data });
+    return NextResponse.json({ status: 200, error: false, message: "Registrasi berhasil!. Jangan lupa cek email kamu ya!", totalQuotaMentor, data });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong" });

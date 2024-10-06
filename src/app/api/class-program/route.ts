@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     const isRegistered = await ClassProgram.findOne({ email }).select("email");
 
     if (isRegistered) {
-      return NextResponse.json({ status: 400, error: true, message: "You have registered for this event" });
+      return NextResponse.json({ status: 400, error: true, message: "Kamu sudah terdaftar di Class Program! Jangan lupa cek email dahulu." });
     }
 
     const sectorCategoryData = await SectorCategory.find({ name: { $in: sectorCategory } }).select("_id theme");
@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
 
     await classProgram.save();
 
-    return NextResponse.json({ status: 200, error: false, message: "Registration successful. Please check your Email.", classProgram });
+    return NextResponse.json({ status: 200, error: false, message: "Registrasi Class Program berhasil! Silakan cek email kamu. <br> Sekarang kamu sudah dapat mendaftar kelas Mentoring!", classProgram });
   } catch (error) {
     console.error("Error: ", error);
     return NextResponse.json({ status: 500, error: true, message: "Something went wrong, "+error});
