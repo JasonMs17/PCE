@@ -5,6 +5,7 @@ interface IMentor extends Document {
   email: string;
   quota: number;
   sectorCategory: Schema.Types.ObjectId;
+  linkedin: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -27,6 +28,11 @@ const mentorSchema = new Schema({
   sectorCategory: {
     type: SchemaTypes.ObjectId,
     ref: "SectorCategory",
+    required: true,
+  },
+  linkedin: {
+    type: String,
+    minLength: 1,
     required: true,
   },
   createdAt: {

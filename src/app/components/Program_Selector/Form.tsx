@@ -115,19 +115,49 @@ const Form = () => {
     const showMentor = (event: ChangeEvent<HTMLSelectElement>) =>{
         const filteredMentors = mentors.filter(mentor => mentor.sectorCategory.name === event.target.value);
         console.log("filtered mentor ",filteredMentors);
-
-        const select = document.querySelector('select#mentor');
-
-        // Clear existing options (if needed)
-        select.innerHTML = '';
-
-        // Loop through the filteredMentors array and create <option> elements
+        const radioContainer = document.getElementById('mentor-list');
+        radioContainer.innerHTML = '';  // Clear the container before inserting new radio buttons
+        
         filteredMentors.forEach(mentor => {
-            const option = document.createElement('option');
-            option.value = mentor.name;
-            option.textContent = mentor.name;
-            select.appendChild(option);
+            const label = document.createElement('label');
+            const input = document.createElement('input');
+            const link = document.createElement('a');
+            const mentorNameText = document.createTextNode(mentor.name);  // Create a text node for the mentor's name
+        
+            // Creating a wrapper div for the radio button and name
+            const textWrapper = document.createElement('div');
+        
+            // Configure the radio button (input)
+            input.type = 'radio';
+            input.name = 'mentor';  // The name must be the same for all radio buttons
+            input.value = mentor.name;
+            input.required = true;  // Makes the field required
+            input.classList.add('w-5', 'h-5', 'text-blue-600', 'bg-gray-100', 'border-gray-300', 'focus:ring-blue-500', 'focus:ring-2', 'rounded-[15%]','mr-2');
+        
+            // Creating the LinkedIn link
+            link.href = mentor.linkedin;  // Assuming mentor has a 'linkedin' property with the URL
+            link.textContent = 'LinkedIn';
+            link.target = '_blank';  // Opens the link in a new tab
+            link.classList.add('text-blue-600', 'underline', 'hover:text-blue-800', 'hover:underline');
+        
+            // Append the radio button and mentor's name to the wrapper div
+            textWrapper.appendChild(input);
+            textWrapper.appendChild(mentorNameText);
+        
+            // Add Tailwind classes to the wrapper div and label for flexbox styling
+            label.classList.add('flex', 'justify-between', 'items-center', 'mb-3', 'text-lg', 'font-medium', 'text-gray-700');
+            textWrapper.classList.add('flex', 'items-center');
+        
+            // Append the wrapper (radio button + mentor name) and LinkedIn link to the label
+            label.appendChild(textWrapper);
+            label.appendChild(link);  // Append LinkedIn link to the far right
+        
+            // Append the label to the radio container
+            radioContainer.appendChild(label);
         });
+        
+
+        
     }
     
 
@@ -240,9 +270,12 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="mentor">Mentor</label>
-                    <select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
-                       {/* mentor options */}
-                    </select>
+                    {/* <select className={`${styles.input} ${styles.select}`} name="mentor" id="mentor" required>
+                       
+                    </select> */}
+                    <div id="mentor-list" className='flex flex-col'>
+
+                    </div>
                     
                 </div>
                 
