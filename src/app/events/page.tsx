@@ -59,6 +59,37 @@ const EventsPage = () => {
               link={PreEvents[2].registLink}
               // speakers={[{},{},{}]}
               ></EventSection>
+            <EventSection
+              src={PreEvents[3].image}
+              title={PreEvents[3].title}
+              theme={PreEvents[3].theme}
+              description={PreEvents[3].description}
+              time={PreEvents[3].textDate}
+              location={PreEvents[3].eventLocation}
+              maps={PreEvents[3].location}
+              link={PreEvents[3].registLink}
+              ></EventSection>
+            <EventSection
+              src={PreEvents[4].image}
+              title={PreEvents[4].title}
+              theme={PreEvents[4].theme}
+              description={PreEvents[4].description}
+              time={PreEvents[4].textDate}
+              location={PreEvents[4].eventLocation}
+              maps={PreEvents[4].location}
+              link={PreEvents[4].registLink}
+              // speakers={[{},{},{}]}
+              ></EventSection>
+              <EventSection
+              src={PreEvents[5].image}
+              title={PreEvents[5].title}
+              theme={PreEvents[5].theme}
+              description={PreEvents[5].description}
+              time={PreEvents[5].textDate}
+              location={PreEvents[5].eventLocation}
+              maps={PreEvents[5].location}
+              link={PreEvents[5].registLink}
+              ></EventSection>
             <div className={`py-5`}>
           </div>
         </div>

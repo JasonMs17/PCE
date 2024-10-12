@@ -13,11 +13,15 @@ export default function MapToggle({loc, maps} : LocationProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   const toggle = () => {
-    setIsOpen(!isOpen);
+    if (maps !== "") {
+      setIsOpen(!isOpen);
+    }
   };
 
   const handleMouseEnter = () => {
-    setIsHovered(true);
+    if (maps !== "") {
+      setIsHovered(true);
+    }
   };
 
   const handleMouseLeave = () => {

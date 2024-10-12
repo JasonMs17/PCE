@@ -169,6 +169,16 @@ const Form = () => {
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
+                    <div className={`${styles.info} flex flex-row gap-2 items-center`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                        </svg>
+                        <p>
+                            Booklet dapat diperoleh dari <a href='https://bit.ly/BookletPBIPCE2024'><b>link berikut.</b></a>
+                        </p>
+                    </div>
+                </div>
+                <div className='flex flex-col gap-2'>
                     <label htmlFor="nama">Nama</label>
                     <input className={styles.input} type="text" name="nama" id="nama" placeholder='Muhammad Sunarya' autoComplete='off' required />
                 </div>
@@ -233,6 +243,16 @@ const Form = () => {
             <form action="api/mentoring" onSubmit={handleSubmit} className='flex flex-col md:w-[92.5%] w-full gap-2'>
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
+                <div className='flex flex-col gap-2'>
+                    <div className={`${styles.info} flex flex-row gap-2 items-center`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                        </svg>
+                        <p>
+                            Booklet dapat diperoleh dari <a href='https://bit.ly/BookletPBIPCE2024'><b>link berikut.</b></a>
+                        </p>
+                    </div>
+                </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="nama">Nama</label>
                     <input className={styles.input} type="text" name="nama" id="nama" placeholder='Muhammad Sunarya' autoComplete='off' required />
@@ -314,6 +334,16 @@ const Form = () => {
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
                 <div className='flex flex-col gap-2'>
+                    <div className={`${styles.info} flex flex-row gap-2 items-center`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                        </svg>
+                        <p>
+                            Booklet dapat diperoleh dari <a href='https://bit.ly/BookletPBIPCE2024'><b>link berikut.</b></a>
+                        </p>
+                    </div>
+                </div>
+                <div className='flex flex-col gap-2'>
                     <label htmlFor="namaTim">Nama Tim</label>
                     <input className={styles.input} type="text" name="namaTim" id="namaTim" placeholder='Nama Tim' autoComplete='off' required />
                 </div>
@@ -359,10 +389,29 @@ const Form = () => {
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="twibbon">Link Drive Twibbon</label>
+                    <div className={`${styles.info} flex flex-row gap-2 items-center`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                        </svg>
+                        <p>
+                            Twibbon dapat diperoleh dari <a href='https://bit.ly/PBITwibbonPCE2024'><b>link berikut.</b></a>
+                        </p>
+                    </div>
                     <input className={styles.input} type="text" name="twibbonUrl" id="twibbon" placeholder='https://drive.google.com/...' autoComplete='off' required />
                 </div>
                 <div className='flex flex-col gap-2'>
                     <label htmlFor="attachment">Bukti Pembayaran</label>
+                    <div className={`${styles.info} flex flex-row gap-2 items-top`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                        </svg>
+                        <p>
+                            Harga Pendaftaran : Rp 100.000/tim
+                            <br/>   Mandiri : 1320025890394 (Vannisa Jasmine)
+                            <br/>   Shopeepay : 081223401915 (Vannisa Jasmine)
+                            <br/>   Seabank : 901085325960 (Vannisa Jasmine)
+                        </p>
+                    </div>
                     <input className={styles.input} type="file" name="pembayaran" id="pembayaran" required />
                 </div>
             </div>
@@ -399,6 +448,16 @@ const Form = () => {
             <form action="api/main-event" method="POST" onSubmit={handleSubmit} className='flex flex-col md:w-[92.5%] w-full gap-2'>
                 <div className={`h-[90%] md:w-full bg-black/20 rounded-[15px] overflow-y-scroll ${styles.no_scrollbar}`}>
                 <div className='flex flex-col md:p-5 p-4 text-white gap-5 text-xl'>
+                    <div className='flex flex-col gap-2'>
+                        <div className={`${styles.info} flex flex-row gap-2 items-center`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                            </svg>
+                            <p>
+                                Booklet dapat diperoleh dari <a href='https://bit.ly/BookletPBIPCE2024'><b>link berikut.</b></a>
+                            </p>
+                        </div>
+                    </div>
                     <div className='flex flex-col gap-2'>
                         <label htmlFor="nama">Nama</label>
                         <input className={styles.input} type="text" name="nama" id="nama" placeholder='Muhammad Sunarya' autoComplete='off' required />
