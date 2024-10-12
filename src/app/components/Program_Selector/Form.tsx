@@ -146,7 +146,7 @@ const Form = () => {
             textWrapper.appendChild(mentorNameText);
         
 
-            label.classList.add('flex', 'justify-between', 'items-center', 'mb-3', 'text-lg', 'font-medium', 'text-gray-700');
+            label.classList.add('flex', 'justify-between', 'items-center', 'mb-3', 'text-lg', 'font-medium', 'text-white');
             textWrapper.classList.add('flex', 'items-center');
         
 
