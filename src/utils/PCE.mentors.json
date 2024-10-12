@@ -1,0 +1,436 @@
+[{
+  "_id": {
+    "$oid": "670640b56eba98fa990190db"
+  },
+  "name": "Rashifa Nindya Putri",
+  "email": "1",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b8"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/rashifa-nindya/",
+  "title": "Ex Reporter Intern at CNN Indonesia TV",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190dc"
+  },
+  "name": "Anza Zahya Qeysha",
+  "email": "2",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b8"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/aenzeta/",
+  "title": "CEO of Bersinar Kampus",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190de"
+  },
+  "name": "Kevin Faza Dermawan",
+  "email": "4",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b8"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/kevinfaza?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Ex Legal Counsel PT Pertamina Hulu Energi",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190df"
+  },
+  "name": "Tinessia Melia Dhini",
+  "email": "5",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b8"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/tinessiameliad?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190e0"
+  },
+  "name": "Georgius Benny",
+  "email": "6",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b8"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/georgius-benny?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Political Officer at DPP Partai Perindo 2023-2024",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190e1"
+  },
+  "name": "Tiur Margaretha Malau",
+  "email": "7",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b8"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/tiurmargaretha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": " Ex-Partnership Officer Intern at Lembaga National Single Window, Ministry of Finance Republic of Indonesia",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190e2"
+  },
+  "name": "Ari Firmansyah",
+  "email": "8",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b7"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/ari-firmansyah/",
+  "title": "Ex Laboratory Assistant at Faculty of Animal Husbandry, Universitas Padjadjaran",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190e4"
+  },
+  "name": "Ragil Muhammad Ridho",
+  "email": "10",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b7"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/ragilmuhammadridho?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Ex-Intern at PT Charoen Pokphand Indonesia Tbk",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190e5"
+  },
+  "name": "Arum Kusuma Wardhani",
+  "email": "11",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b4"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/arum-kusuma-wardhani-078b39190",
+  "title": "Ex Recruitment, Assessment Center, and Employer Branding Intern at United Tractors",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190e6"
+  },
+  "name": "Devani Olivia Winardi",
+  "email": "12",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b4"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/devani-olivia-winardi-ba8831263",
+  "title": "Ex Research And Development Intern at Dian Indah Abadi",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190e7"
+  },
+  "name": "Farhan Aidhil Suhartono",
+  "email": "13",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b4"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/farhanaidhil?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "People Partner Intern at Ajaib; President of AIESEC in Unpad 2024",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190e8"
+  },
+  "name": "Noah Permana",
+  "email": "14",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b4"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/noah-permana-848a52201?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Young Doctor Faculty of Medicine Padjadjaran University",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190ec"
+  },
+  "name": "Mu'arrif Daffa",
+  "email": "18",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b9"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/muarrifdf?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Ex Intern at Ministry of Marine Affairs and Fisheries Republic of Indonesia",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190ed"
+  },
+  "name": "Roja Fadhlur Rahman",
+  "email": "19",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b9"
+  },
+  "quota": 3,
+  "linkedin": "instagram.com/rojafr",
+  "title": "Financing Ecosystem Development Associate at Efishery",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190ef"
+  },
+  "name": "Leviriandi Ahsani Taqwim",
+  "email": "21",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4ba"
+  },
+  "quota": 3,
+  "linkedin": "instagram.com/willem.helleniki",
+  "title": "Russian Translator and Subtitler",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190f0"
+  },
+  "name": "Agis Maulana",
+  "email": "22",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4ba"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/agismaulana/",
+  "title": "Ex-Marketing Intern at Telkom Indonesia",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190f1"
+  },
+  "name": "Nisa Nurrofiah",
+  "email": "23",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4ba"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/nisa-nurrofiah?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Ex - Business Development Intern at Shopee",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190f2"
+  },
+  "name": "Rifki Zainul Haq",
+  "email": "24",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4ba"
+  },
+  "quota": 3,
+  "linkedin": "instagram.com/rifkizainulh",
+  "title": "Finance & Tax Group Leader at Astra Heavy Equipment, Mining, Construction Energy",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190f3"
+  },
+  "name": "Rizki Nugraha",
+  "email": "25",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4ba"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/rizki-nugrahaa?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Pre Employment Training Program at PLN",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190f4"
+  },
+  "name": "Arfan Farokhi",
+  "email": "26",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4ba"
+  },
+  "quota": 3,
+  "linkedin": "https://id.linkedin.com/in/arfan-farokhi-771339223?trk=public_profile_browsemap",
+  "title": "Building Manager Intern at Perum Perumnas",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190f5"
+  },
+  "name": "Seisha Putri Naomy",
+  "email": "27",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b5"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/seishaputri?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Ex-Customer Business Development Intern at ParagonCorp",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190f6"
+  },
+  "name": "Adibah Utami Yasmin",
+  "email": "28",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b5"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/adibah-utami-yasmin-403b7a229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+  "title": "Assessor and Facilitator Intern at BMKG",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "670640b56eba98fa990190f7"
+  },
+  "name": "Fahmi Nur Alim",
+  "email": "29",
+  "sectorCategory": {
+    "$oid": "66db2a9539feaa847e49c4b5"
+  },
+  "quota": 3,
+  "linkedin": "https://www.linkedin.com/in/fahminur13/",
+  "title": "Ex QA QC Intern AQUA Danone",
+  "createdAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-09-26T12:00:00.000Z"
+  }
+}]
