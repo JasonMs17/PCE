@@ -109,7 +109,7 @@ const PBITable = () => {
                             <td className={`${styles.column}`}>{project.universitas}</td>
                             <td className={`${styles.column}`}>{project.fakultas}</td>
                             <td className={`${styles.column}`}>{project.jurusan}</td>
-                            <td className={`${styles.column}`}>a</td>
+                            <td className={`${styles.column}`}>{project.sectorCategory}</td>
                             <td className={`${styles.column}`}>
                                 <a href={project.twibbonUrl} className={`${styles.link}`} target="_blank" rel="noopener noreferrer">
                                     View Twibbon
