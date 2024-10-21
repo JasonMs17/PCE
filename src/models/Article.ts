@@ -6,6 +6,7 @@ export interface IArticle extends Document {
   thumbnail: string;
   author: string;
   isPublished: boolean,
+  published_date: Date;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -17,7 +18,7 @@ const articleSchema = new Schema({
   author: { type: String, required: true },
   published_date: { type: Date, default: Date.now },
   isPublished: { type: Boolean, default: false },
-});
+}, { timestamps: true }); 
 
 const modelName = "Article";
 
