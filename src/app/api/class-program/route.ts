@@ -4,26 +4,21 @@ import ClassProgram from "@/models/ClassPrograms";
 import SectorCategory from "@/models/SectorCategory";
 import { SectorCategories } from "@/utils/constant";
 import rateLimit from "@/utils/rateLimit";
-import transporter from "@/utils/email";
-import EmailClassProgram from "@/app/components/email/class-program";
-import { renderToStaticMarkup } from "react-dom/server";
-import React from "react";
+// import transporter from "@/utils/email";
+// import EmailClassProgram from "@/app/components/email/class-program";
+// import { renderToStaticMarkup } from "react-dom/server";
+// import React from "react";
 
 export async function POST(req: NextRequest) {
-  //const data = await req.json();
+  const formData = await req.formData();
 
-  const formData = await req.formData(); 
-
-  // Extract form fields
   const name = formData.get('nama');
   const email = (formData.get('email') ?? '').toString().toLowerCase();
   const whatsappNumber = formData.get('no');
   const university = formData.get('univ');
   const faculty = formData.get('fakultas');
   const major = formData.get('jurusan');
-  const sectorCategory =[ formData.get('sektor')];
-
-
+  const sectorCategory = [formData.get('sektor')];
 
   const rateLimitResult = await rateLimit(req);
 
@@ -31,52 +26,70 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ status: 400, error: true, message: "Too many requests, please try again later.", rateLimitResult });
   }
 
-
   try {
     await connectToDatabase();
 
     const isRegistered = await ClassProgram.findOne({ email }).select("email");
 
     if (isRegistered) {
-      return NextResponse.json({ status: 400, error: true, message: "Kamu sudah terdaftar di Class Program! Jangan lupa cek email dahulu." });
+      return NextResponse.json({
+        status: 400,
+        error: true,
+        message: "Kamu sudah terdaftar di Class Program! Jangan lupa cek email dahulu.",
+      });
     }
 
     const sectorCategoryData = await SectorCategory.find({ name: { $in: sectorCategory } }).select("_id theme");
     const sectorCategoryIds = sectorCategoryData.map((category) => category._id);
     const sectorCategoryTheme: string = sectorCategoryData.map((category) => category.theme).join(', ');
 
-
-  
     if (!sectorCategoryIds) {
       return NextResponse.json({ status: 400, error: true, message: "Sector category not found or invalid" });
     }
 
+    const classProgram = new ClassProgram({
+      name,
+      email,
+      whatsappNumber,
+      university,
+      faculty,
+      major,
+      sectorCategory: sectorCategoryIds,
+    });
 
-    const classProgram = new ClassProgram({ name, email, whatsappNumber, university, faculty, major, sectorCategory: sectorCategoryIds });
-    const template = EmailClassProgram(typeof sectorCategory[0] === 'string' ? sectorCategory[0] : (sectorCategory[0] as File).name, sectorCategoryTheme);
+    // const template = EmailClassProgram(
+    //   typeof sectorCategory[0] === 'string' ? sectorCategory[0] : (sectorCategory[0] as File).name,
+    //   sectorCategoryTheme
+    // );
 
+    // const mailOption = {
+    //   from: process.env.NODEMAIL,
+    //   to: email,
+    //   subject: "Class Program Registration in Padjadjaran Career Expo 2024",
+    //   html: template,
+    // };
 
-  
-
-    const mailOption = {
-      from: process.env.NODEMAIL,
-      to: email,
-      subject: "Class Program Registration in Padjadjaran Career Expo 2024",
-      html: template,
-    }; 
-
-    const send = await transporter.sendMail(mailOption);
-
-    console.log(send.messageId);
+    // const send = await transporter.sendMail(mailOption);
+    // console.log(send.messageId);
 
     await classProgram.save();
 
-    return NextResponse.json({ status: 200, error: false, message: "Registrasi Class Program berhasil! Silakan cek email kamu. <br> Sekarang kamu sudah dapat mendaftar kelas Mentoring!", classProgram });
+    return NextResponse.json({
+      status: 200,
+      error: false,
+      message: "Registrasi Class Program berhasil",
+      classProgram,
+    });
   } catch (error) {
     console.error("Error: ", error);
-    return NextResponse.json({ status: 500, error: true, message: "Something went wrong, "+error});
+    return NextResponse.json({
+      status: 500,
+      error: true,
+      message: "Something went wrong, " + error,
+    });
   }
 }
+
 
 export async function GET() {
   try {
